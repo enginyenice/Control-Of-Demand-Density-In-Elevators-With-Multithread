@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2AB0F1E7-B2F7-4A45-9BDB-69D2B48AEC6C}</ProjectGuid>
+    <ProjectGuid>{DB0015B1-07F6-4E4A-BD6E-07BB4178B7B6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Talep_Yogunlugunun_Multithread_Kontrolu</RootNamespace>
     <AssemblyName>Talep_Yogunlugunun_Multithread_Kontrolu</AssemblyName>
@@ -46,14 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShoppingCenterScreen.cs">
+    <Compile Include="ShoppingCenter\Elevator\Abstract\IElevator.cs" />
+    <Compile Include="ShoppingCenter\Elevator\Concrete\Elevator.cs" />
+    <Compile Include="ShoppingCenter\Floor\Abstract\IFloor.cs" />
+    <Compile Include="ShoppingCenter\Floor\Concrete\Floor.cs" />
+    <Compile Include="UI\ShoppingMallInformationDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShoppingCenterScreen.Designer.cs">
-      <DependentUpon>ShoppingCenterScreen.cs</DependentUpon>
+    <Compile Include="UI\ShoppingMallInformationDisplay.Designer.cs">
+      <DependentUpon>ShoppingMallInformationDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="UI\ShoppingMallInformationDisplay.resx">
+      <DependentUpon>ShoppingMallInformationDisplay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
