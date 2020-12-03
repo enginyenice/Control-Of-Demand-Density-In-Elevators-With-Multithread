@@ -13,7 +13,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Concre
 
         public bool Direction { get; set; } // (+) True (-) False
         public int Floor { get; set; } // 0-1-2-3-4
-
+        static object Kontrol = new object();
         private readonly int[] floorCount; // Katlarda inecek kişi sayısı
 
 
@@ -36,19 +36,25 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Concre
         }
         public void SetFloorCount(int floor, int count)
         {
-            this.floorCount[floor] += count;
-            this.Count += count;
+            lock (Kontrol)
+            {
+                this.floorCount[floor] += count;
+                this.Count += count;
+            }
         }
 
         public string FloorCountString()
         {
-            string queueList = "";
-            for (int i = 0; i < floorCount.Length; i++)
+            lock (Kontrol)
             {
-                queueList += "["+i + "," + floorCount[i]+"]";
+                string queueList = "";
+                for (int i = 0; i < floorCount.Length; i++)
+                {
+                    queueList += "[" + i + "," + floorCount[i] + "]";
+                }
+            return queueList;
             }
 
-            return queueList;
         }
         public int GetFloorCount(int floor)
         {
@@ -57,21 +63,28 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Concre
 
         public void floorCountClear()
         {
-            floorCount[0] = 0;
-            floorCount[1] = 0;
-            floorCount[2] = 0;
-            floorCount[3] = 0;
-            floorCount[4] = 0;
-            Count = 0;
+            lock (Kontrol)
+            {
+                floorCount[0] = 0;
+                floorCount[1] = 0;
+                floorCount[2] = 0;
+                floorCount[3] = 0;
+                floorCount[4] = 0;
+                Count = 0;
+            }
+
         }
         public int GetCount()
         {
-            int count = 0;
-            foreach (var t in floorCount)
-                count += t;
+            lock (Kontrol)
+            {
+                int count = 0;
+                foreach (var t in floorCount)
+                    count += t;
 
-            this.Count = count;
-            return Count;
+                this.Count = count;
+                return Count;
+            }
         }
     }
 }

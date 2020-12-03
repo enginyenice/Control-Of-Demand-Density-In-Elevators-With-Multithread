@@ -10,49 +10,64 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete
         public int FloorCount { get; set; }
         public int QueueCount { get; set; }
         private readonly Queue<string> floorQueue;
-
+        static object Kontrol = new object();
 
         public Floor(int name)
         {
-            this.Name = name;
-            this.FloorCount = 0;
-            this.QueueCount = 0;
-            this.floorQueue = new Queue<string>();
+            lock (Kontrol)
+            {
+                this.Name = name;
+                this.FloorCount = 0;
+                this.QueueCount = 0;
+                this.floorQueue = new Queue<string>();
+            }
         }
 
 
         public void RetryQueue(int floor, int count)
         {
-            if(floorQueue.Count != 0)
+            lock (Kontrol)
             {
+                if (floorQueue.Count != 0)
+                {
 
 
-                this.QueueCount = count; // // Kalan müşterisi güncelle
-                var items = floorQueue.ToArray();
-            floorQueue.Clear();
+                    this.QueueCount = count; // // Kalan müşterisi güncelle
+                    var items = floorQueue.ToArray();
+                    floorQueue.Clear();
 
-            floorQueue.Enqueue(floor+","+count);
-            foreach (var item in items)
-                floorQueue.Enqueue(item);
+                    floorQueue.Enqueue(floor + "," + count);
+                    foreach (var item in items)
+                        floorQueue.Enqueue(item);
+                }
             }
         }
 
         public void RemoveQueueFloor(int count)
         {
-            this.QueueCount -= count;
+            lock (Kontrol)
+            {
+                this.QueueCount -= count;
+            }
         }
 
         public void SetFloorQueue(int floor, int count)
         {
-            QueueCount += count;
-            FloorCount -= count;
-            floorQueue.Enqueue(floor + "," + count);
+            lock (Kontrol)
+            {
+                QueueCount += count;
+                FloorCount -= count;
+                floorQueue.Enqueue(floor + "," + count);
+            }
         }
 
         public void CreateFloorQueue(int floor, int count)
         {
-            QueueCount += count;
-            floorQueue.Enqueue(floor + "," + count);
+            lock (Kontrol)
+            {
+                QueueCount += count;
+                floorQueue.Enqueue(floor + "," + count);
+            }
         }
 
 

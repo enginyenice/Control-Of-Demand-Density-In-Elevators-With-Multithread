@@ -29,6 +29,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -113,6 +114,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label85 = new System.Windows.Forms.Label();
             this.label86 = new System.Windows.Forms.Label();
             this.label87 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -125,7 +127,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.44444F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.55556F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 287F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 289F));
             this.tableLayoutPanel1.Controls.Add(this.label15, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.label14, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.label13, 2, 3);
@@ -161,7 +163,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(194, 113);
+            this.label15.Location = new System.Drawing.Point(192, 113);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(23, 15);
             this.label15.TabIndex = 14;
@@ -170,7 +172,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(194, 92);
+            this.label14.Location = new System.Drawing.Point(192, 92);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(23, 15);
             this.label14.TabIndex = 13;
@@ -179,7 +181,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(194, 71);
+            this.label13.Location = new System.Drawing.Point(192, 71);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(23, 15);
             this.label13.TabIndex = 12;
@@ -188,7 +190,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(194, 50);
+            this.label12.Location = new System.Drawing.Point(192, 50);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(23, 15);
             this.label12.TabIndex = 11;
@@ -197,7 +199,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(194, 26);
+            this.label11.Location = new System.Drawing.Point(192, 26);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(23, 15);
             this.label11.TabIndex = 10;
@@ -206,7 +208,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(194, 1);
+            this.label23.Location = new System.Drawing.Point(192, 1);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(176, 15);
             this.label23.TabIndex = 9;
@@ -331,7 +333,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 318F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320F));
             this.tableLayoutPanel2.Controls.Add(this.label48, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.label54, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.label45, 7, 5);
@@ -398,7 +400,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label48.AutoSize = true;
             this.label48.BackColor = System.Drawing.Color.Transparent;
             this.label48.ForeColor = System.Drawing.Color.Black;
-            this.label48.Location = new System.Drawing.Point(75, 83);
+            this.label48.Location = new System.Drawing.Point(74, 83);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(23, 15);
             this.label48.TabIndex = 57;
@@ -409,7 +411,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label54.AutoSize = true;
             this.label54.BackColor = System.Drawing.Color.Transparent;
             this.label54.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label54.Location = new System.Drawing.Point(75, 104);
+            this.label54.Location = new System.Drawing.Point(74, 104);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(23, 15);
             this.label54.TabIndex = 13;
@@ -418,7 +420,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(551, 104);
+            this.label45.Location = new System.Drawing.Point(549, 104);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(23, 15);
             this.label45.TabIndex = 56;
@@ -427,7 +429,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(551, 83);
+            this.label38.Location = new System.Drawing.Point(549, 83);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(23, 15);
             this.label38.TabIndex = 55;
@@ -438,7 +440,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label47.AutoSize = true;
             this.label47.BackColor = System.Drawing.Color.Transparent;
             this.label47.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label47.Location = new System.Drawing.Point(75, 62);
+            this.label47.Location = new System.Drawing.Point(74, 62);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(23, 15);
             this.label47.TabIndex = 11;
@@ -447,7 +449,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(551, 62);
+            this.label36.Location = new System.Drawing.Point(549, 62);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(23, 15);
             this.label36.TabIndex = 54;
@@ -456,7 +458,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(551, 41);
+            this.label29.Location = new System.Drawing.Point(549, 41);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(23, 15);
             this.label29.TabIndex = 53;
@@ -465,7 +467,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(551, 21);
+            this.label27.Location = new System.Drawing.Point(549, 21);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(23, 15);
             this.label27.TabIndex = 52;
@@ -474,7 +476,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(551, 1);
+            this.label17.Location = new System.Drawing.Point(549, 1);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(191, 15);
             this.label17.TabIndex = 8;
@@ -530,14 +532,14 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(4, 1);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(64, 15);
+            this.label16.Size = new System.Drawing.Size(55, 19);
             this.label16.TabIndex = 0;
             this.label16.Text = "ASANSÖR";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(75, 1);
+            this.label18.Location = new System.Drawing.Point(74, 1);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(36, 15);
             this.label18.TabIndex = 2;
@@ -548,7 +550,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label30.AutoSize = true;
             this.label30.BackColor = System.Drawing.Color.Transparent;
             this.label30.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label30.Location = new System.Drawing.Point(75, 21);
+            this.label30.Location = new System.Drawing.Point(74, 21);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(23, 15);
             this.label30.TabIndex = 10;
@@ -559,7 +561,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label39.AutoSize = true;
             this.label39.BackColor = System.Drawing.Color.Transparent;
             this.label39.ForeColor = System.Drawing.Color.Black;
-            this.label39.Location = new System.Drawing.Point(75, 41);
+            this.label39.Location = new System.Drawing.Point(74, 41);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(23, 15);
             this.label39.TabIndex = 19;
@@ -568,7 +570,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label67
             // 
             this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(165, 104);
+            this.label67.Location = new System.Drawing.Point(163, 104);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(23, 15);
             this.label67.TabIndex = 47;
@@ -577,7 +579,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label58
             // 
             this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(165, 83);
+            this.label58.Location = new System.Drawing.Point(163, 83);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(23, 15);
             this.label58.TabIndex = 38;
@@ -586,7 +588,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label68
             // 
             this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(221, 104);
+            this.label68.Location = new System.Drawing.Point(219, 104);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(23, 15);
             this.label68.TabIndex = 48;
@@ -595,7 +597,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label59
             // 
             this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(221, 83);
+            this.label59.Location = new System.Drawing.Point(219, 83);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(23, 15);
             this.label59.TabIndex = 39;
@@ -604,7 +606,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label69
             // 
             this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(282, 104);
+            this.label69.Location = new System.Drawing.Point(280, 104);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(23, 15);
             this.label69.TabIndex = 49;
@@ -613,7 +615,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(282, 83);
+            this.label60.Location = new System.Drawing.Point(280, 83);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(23, 15);
             this.label60.TabIndex = 40;
@@ -622,7 +624,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label70
             // 
             this.label70.AutoSize = true;
-            this.label70.Location = new System.Drawing.Point(351, 104);
+            this.label70.Location = new System.Drawing.Point(349, 104);
             this.label70.Name = "label70";
             this.label70.Size = new System.Drawing.Size(23, 15);
             this.label70.TabIndex = 50;
@@ -631,7 +633,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label61
             // 
             this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(351, 83);
+            this.label61.Location = new System.Drawing.Point(349, 83);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(23, 15);
             this.label61.TabIndex = 41;
@@ -640,7 +642,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label71
             // 
             this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(428, 104);
+            this.label71.Location = new System.Drawing.Point(426, 104);
             this.label71.Name = "label71";
             this.label71.Size = new System.Drawing.Size(23, 15);
             this.label71.TabIndex = 51;
@@ -649,7 +651,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label62
             // 
             this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(428, 83);
+            this.label62.Location = new System.Drawing.Point(426, 83);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(23, 15);
             this.label62.TabIndex = 42;
@@ -658,7 +660,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(165, 1);
+            this.label19.Location = new System.Drawing.Point(163, 1);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(29, 15);
             this.label19.TabIndex = 3;
@@ -667,7 +669,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(165, 21);
+            this.label31.Location = new System.Drawing.Point(163, 21);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(23, 15);
             this.label31.TabIndex = 11;
@@ -676,7 +678,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(165, 41);
+            this.label40.Location = new System.Drawing.Point(163, 41);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(23, 15);
             this.label40.TabIndex = 20;
@@ -685,7 +687,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(165, 62);
+            this.label49.Location = new System.Drawing.Point(163, 62);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(23, 15);
             this.label49.TabIndex = 29;
@@ -694,7 +696,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(221, 62);
+            this.label50.Location = new System.Drawing.Point(219, 62);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(23, 15);
             this.label50.TabIndex = 30;
@@ -703,7 +705,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(221, 41);
+            this.label41.Location = new System.Drawing.Point(219, 41);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(23, 15);
             this.label41.TabIndex = 21;
@@ -712,7 +714,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(221, 21);
+            this.label32.Location = new System.Drawing.Point(219, 21);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(23, 15);
             this.label32.TabIndex = 12;
@@ -721,7 +723,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(221, 1);
+            this.label20.Location = new System.Drawing.Point(219, 1);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(48, 15);
             this.label20.TabIndex = 4;
@@ -730,7 +732,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(282, 1);
+            this.label24.Location = new System.Drawing.Point(280, 1);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(32, 15);
             this.label24.TabIndex = 5;
@@ -739,7 +741,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(282, 21);
+            this.label33.Location = new System.Drawing.Point(280, 21);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(23, 15);
             this.label33.TabIndex = 13;
@@ -748,7 +750,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(282, 41);
+            this.label42.Location = new System.Drawing.Point(280, 41);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(23, 15);
             this.label42.TabIndex = 22;
@@ -757,7 +759,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label51
             // 
             this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(282, 62);
+            this.label51.Location = new System.Drawing.Point(280, 62);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(23, 15);
             this.label51.TabIndex = 31;
@@ -766,7 +768,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(351, 62);
+            this.label52.Location = new System.Drawing.Point(349, 62);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(23, 15);
             this.label52.TabIndex = 32;
@@ -775,7 +777,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(351, 41);
+            this.label43.Location = new System.Drawing.Point(349, 41);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(23, 15);
             this.label43.TabIndex = 23;
@@ -784,7 +786,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(351, 21);
+            this.label34.Location = new System.Drawing.Point(349, 21);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(23, 15);
             this.label34.TabIndex = 14;
@@ -793,7 +795,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(351, 1);
+            this.label25.Location = new System.Drawing.Point(349, 1);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(63, 15);
             this.label25.TabIndex = 6;
@@ -802,7 +804,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(428, 1);
+            this.label26.Location = new System.Drawing.Point(426, 1);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(105, 15);
             this.label26.TabIndex = 7;
@@ -811,7 +813,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(428, 21);
+            this.label35.Location = new System.Drawing.Point(426, 21);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(23, 15);
             this.label35.TabIndex = 15;
@@ -820,7 +822,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(428, 41);
+            this.label44.Location = new System.Drawing.Point(426, 41);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(23, 15);
             this.label44.TabIndex = 24;
@@ -829,7 +831,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(428, 62);
+            this.label53.Location = new System.Drawing.Point(426, 62);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(23, 15);
             this.label53.TabIndex = 33;
@@ -1123,6 +1125,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

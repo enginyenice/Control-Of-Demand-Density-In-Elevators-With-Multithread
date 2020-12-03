@@ -9,12 +9,12 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
     public partial class ShoppingMallInformationDisplay : Form
     {
         private readonly int capacity = 10;
-        private int ms200 = 200;
-        private int ms500 = 500;
-        private int ms1000 = 1000;
+        private int ms200 = 2000;
+        private int ms500 = 5000;
+        private int ms1000 = 10000;
         private readonly Elevator[] elevators = new Elevator[5];
         private readonly Floor[] floors = new Floor[5];
-
+        static object Kontrol = new object();
 
         public ShoppingMallInformationDisplay()
         {
@@ -31,6 +31,8 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             floors[2] = new Floor(2);
             floors[3] = new Floor(3);
             floors[4] = new Floor(4);
+
+
 
             // 1. Asansörün hareketini aktifleştirir.
             elevators[0].IsActive = true; // 1. Asansör aktif edildi.
@@ -53,16 +55,13 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
            
             
             loginThread.Start();
-            exitThread.Start();
+           // exitThread.Start();
             controlThread.Start();
-
-
-
             elevatorThread0.Start();
-            elevatorThread1.Start();
-            elevatorThread2.Start();
-            elevatorThread3.Start();
-            elevatorThread4.Start();
+            //elevatorThread1.Start();
+            //elevatorThread2.Start();
+            //elevatorThread3.Start();
+            //elevatorThread4.Start();
 
             // floors[1].SetFloorQueue(1,5);
             // floors[1].SetFloorQueue(2,5);
@@ -101,6 +100,9 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             while (true)
             {
 
+                    
+                
+
                 if (elevator.GetCount() != 0)
                 {
                     //İndirme işlemi
@@ -108,7 +110,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
                     {
 
                         if (elevator.Floor > 0)
-                            floors[elevator.Floor].FloorCount += elevator.GetFloorCount(elevator.Floor); // Kat Müşteri Arttı.
+                            floors[elevator.Floor].FloorCount = floors[elevator.Floor].FloorCount + elevator.GetFloorCount(elevator.Floor); // Kat Müşteri Arttır.
 
                         elevator.SetFloorCount(elevator.Floor, (-1) * elevator.GetFloorCount(elevator.Floor)); // Asansör Azaldı
 
@@ -117,6 +119,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
                         {
                             elevator.Floor = 0;
                             elevator.Direction = true;
+                            elevator.Destinational = 1;
                             elevator.floorCountClear();
                             
                         }
@@ -125,79 +128,59 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
 
 
 
+                // Asansöre Bindirme İşlemii
+                if (elevator.IsActive == true)
+                { // Asansör aktif mi?
 
+                    ElevetorControl:
+                    if (floors[elevator.Floor].QueueCount > 0 && floors[elevator.Floor].GetFloorQueue().Count > 0)
+                    { // Katta kuyruk var mı
+                        
+                        string[] queueSplit = floors[elevator.Floor].GetFloorQueue().Peek().Split(','); // Kuyruk
+                        
 
+                        int floor = Int32.Parse(queueSplit[0]); // Hedef kat
+                        int count = Int32.Parse(queueSplit[1]); // Müşteri Sayısı
 
+                        if (elevator.GetCount() + count > capacity)
+                        { // Kuyruktaki müşteri sayısı ile asansördeki müşteri sayısının toplamı kapasiteden büyük mü?
 
+                            int maxCustomer = capacity - elevator.GetCount(); // Maksimum alacağı kişi sayısı
+                            int remainingCustomer = count - maxCustomer; // Katta kalan müşteri sayısı
 
+                            floors[elevator.Floor].GetFloorQueue().Dequeue();
 
-
-
-
-
-
-
-
-
-
-
-
-
-                if (elevator.IsActive == true) // Asansör Aktif Mi ?
-                {
-                    ControlGoTo:
-                    if (elevator.GetCount() <= capacity) // Asansörde Yer Var Mı ? 
-                    {
-                        if (floors[elevator.Floor].QueueCount > 0) // Bulunduğu katta kuyruk var mı ? 
+                            elevator.SetFloorCount(floor, maxCustomer); // Müşteriyi asansöre al
+                            floors[elevator.Floor].RemoveQueueFloor(maxCustomer); // Kat kuyruğundan müşteri sayısını çıkart.
+                            floors[elevator.Floor].RetryQueue(floor, remainingCustomer); // Kalan müşteriyi sıranın başına koyacak şekilde kuyruğu güncelle
+                            
+                        }
+                        else
                         {
-                            string[] queueSplit = floors[elevator.Floor].GetFloorQueue().Peek().Split(',');
+                            floors[elevator.Floor].GetFloorQueue().Dequeue();
 
-                            int floor = Int32.Parse(queueSplit[0]);
-                            int count = Int32.Parse(queueSplit[1]);
 
-                            // Asansördeki müşteriler ile kattaki müşteriler eklendiğinde asansöre sığmıyorsa
-                            if (elevator.GetCount() + count > capacity)
-                            {
-                                int maxCustomer = capacity - elevator.GetCount(); // Maksimum alacağı kişi sayısı
-                                int remainingCustomer = count - elevator.GetCount(); // Katta kalan müşteri sayısı
-                               
-                                elevator.SetFloorCount(0, maxCustomer);  // 0'a inecek müşterileri ekle.
-                                floors[elevator.Floor].RetryQueue(0,maxCustomer);
-                                floors[elevator.Floor].GetFloorQueue().Dequeue(); // Kuyruktan müşteriyi sil.
-                                floors[elevator.Floor].RemoveQueueFloor(remainingCustomer); // Kat kuyruğundan müşteri sayısını çıkart.
-                            }
-                            // Asansördeki müşteriler ile kattaki müşteriler eklendiğinde asansöre sığıyorsa
-                            else
-                            {
-                                elevator.SetFloorCount(0,count); // 0'a inecek müşterileri ekle.
-                                floors[elevator.Floor].GetFloorQueue().Dequeue(); // Kuyruktan müşteriyi sil.
-                                floors[elevator.Floor].RemoveQueueFloor(count); // Kat kuyruğundan müşteri sayısını çıkart.
-                            }
-
-                            goto ControlGoTo;
-
+                            elevator.SetFloorCount(floor, count);  // Müşteriyi asansöre al
+                            floors[elevator.Floor].RemoveQueueFloor(count); // Kat kuyruğundan müşteri sayısını çıkart.
                         }
                     }
-                    else
-                    {
-                        break;
+
+                    if (elevator.GetCount() != capacity && floors[elevator.Floor].QueueCount > 0)
+                    { // Asansörde yer varsa ve kuyrukta bekleyen müşteri varsa
+                        goto ElevetorControl;
                     }
                 }
 
 
 
 
-
-
-
-
-
-
-
-
+                if (floors[elevator.Floor].QueueCount < 0)
+                {
+                    Console.WriteLine("xxx");
+                }
                 
-                   if (elevator.GetCount() > 0 || elevator.IsActive == true)
-                     Console.WriteLine("Name: {0} Direction: {1} Status: {2} Count: {3} FloorCount: {4} Floor: {5}", elevator.Name, elevator.Direction, elevator.IsActive, elevator.GetCount(), elevator.FloorCountString(), elevator.Floor);
+                if (elevator.GetCount() > 0 || elevator.IsActive == true)
+                    Console.WriteLine("Name: {0} Direction: {1} Status: {2} Count: {3} FloorCount: {4} Floor: {5}", elevator.Name, elevator.Direction, elevator.IsActive, elevator.GetCount(), elevator.FloorCountString(), elevator.Floor);
 
                 
 
@@ -207,45 +190,42 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
                    
 
 
-                if (elevator.Direction == true)
-                {
-                    if (elevator.Floor < 4)
+                    if (elevator.Direction == true)
                     {
-                        ++elevator.Floor;
-                        elevator.Destinational = elevator.Floor + 1;
-                    }
-                    else
-                    {
-                        --elevator.Floor;
-                        elevator.Destinational = elevator.Floor - 1;
-                        elevator.Direction = false;
+                        if (elevator.Floor < 3)
+                        {
+                            elevator.Floor = elevator.Floor + 1;
+                            elevator.Destinational = elevator.Floor + 1;
+                        }
+                        else
+                        {
+                            elevator.Floor = elevator.Floor + 1;
+                            elevator.Destinational = 3;
+                            elevator.Direction = false;
 
-                    }
-                }
-
-                if (elevator.Direction == false)
-                {
-                    if (elevator.Floor != 0)
+                        }
+                    }else if (elevator.Direction == false)
                     {
-                        --elevator.Floor;
-                        elevator.Destinational = elevator.Floor - 1;
+                        if (elevator.Floor > 1)
+                        {
+                            elevator.Floor = elevator.Floor - 1;
+                            elevator.Destinational = elevator.Floor - 1;
+                        }
+                        else
+                        {
+                            elevator.Floor = elevator.Floor - 1;
+                            elevator.Destinational = 1;
+                            elevator.Direction = true;
+                        }
                     }
-                    else
-                    {
-                        ++elevator.Floor;
-                        elevator.Destinational = elevator.Floor + 1;
-                        elevator.Direction = true;
-                    }
-                }
 
-                AsansorVeBilgileri(elevator);
+                    
 
                 }
-
-
 
 
                 SistemBilgileri();
+                AsansorVeBilgileri(elevator);
                 Thread.Sleep(ms200);
             }
         }
@@ -266,13 +246,13 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             label14.Text = floors[3].QueueCount.ToString();
             label15.Text = floors[4].QueueCount.ToString();
 
-            /*
+            
             label76.Text = floors[0].FloorQueueString();
             label78.Text = floors[1].FloorQueueString();
             label80.Text = floors[2].FloorQueueString();
             label82.Text = floors[3].FloorQueueString();
             label83.Text = floors[4].FloorQueueString();
-            */
+            
         }
         private void AsansorVeBilgileri(Elevator elevator)
         {
@@ -281,7 +261,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
                 label28.Text = elevator.Name.ToString();
                 label30.Text = (elevator.IsActive == true) ? "Çalışıyor" : "Beklemede";
                 label31.Text = elevator.Floor.ToString();
-                label32.Text = Destination(elevator.Floor,elevator.Direction).ToString();
+                label32.Text = elevator.Destinational.ToString();
                 label33.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
                 label35.Text = elevator.GetCount().ToString();
                 label27.Text = elevator.FloorCountString();
@@ -290,7 +270,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
                 label37.Text = elevator.Name.ToString();
                 label39.Text = (elevator.IsActive == true) ? "Çalışıyor" : "Beklemede";
                 label40.Text = elevator.Floor.ToString();
-                label41.Text = Destination(elevator.Floor, elevator.Direction).ToString();
+                label41.Text = elevator.Destinational.ToString();
                 label42.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
                 label44.Text = elevator.GetCount().ToString();
                 label29.Text = elevator.FloorCountString();
@@ -300,7 +280,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
                 label46.Text = elevator.Name.ToString();
                 label47.Text = (elevator.IsActive == true) ? "Çalışıyor" : "Beklemede";
                 label49.Text = elevator.Floor.ToString();
-                label50.Text = Destination(elevator.Floor, elevator.Direction).ToString();
+                label50.Text = elevator.Destinational.ToString();
                 label51.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
                 label53.Text = elevator.GetCount().ToString();
                 label36.Text = elevator.FloorCountString();
@@ -310,7 +290,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
                 label55.Text = elevator.Name.ToString();
                 label48.Text = (elevator.IsActive == true) ? "Çalışıyor" : "Beklemede";
                 label58.Text = elevator.Floor.ToString();
-                label59.Text = Destination(elevator.Floor, elevator.Direction).ToString();
+                label59.Text = elevator.Destinational.ToString();
                 label60.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
                 label62.Text = elevator.GetCount().ToString();
                 label38.Text = elevator.FloorCountString();
@@ -320,25 +300,11 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
                 label64.Text = elevator.Name.ToString();
                 label54.Text = (elevator.IsActive == true) ? "Çalışıyor" : "Beklemede";
                 label67.Text = elevator.Floor.ToString();
-                label68.Text = Destination(elevator.Floor, elevator.Direction).ToString();
+                label68.Text = elevator.Destinational.ToString();
                 label69.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
                 label71.Text = elevator.GetCount().ToString();
                 label45.Text = elevator.FloorCountString();
             }
-
-        }
-        private int Destination(int floor, bool direction)
-        {
-            if (floor == 4)
-                return 3;
-            if (floor == 0)
-                return 1;
-
-            if (direction == true)
-                return floor + 1;
-            else
-                return floor - 1;
-
 
         }
         private void ControlThread()
@@ -373,7 +339,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
                     }
                 }
 
-
+                SistemBilgileri();
                 Thread.Sleep(ms500);
             }
         }
