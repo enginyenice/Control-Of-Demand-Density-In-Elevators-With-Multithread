@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Abstract;
+using ShoppingCenter.Floor.Abstract;
 
-namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete
+namespace ShoppingCenter.Floor.Concrete
 {
     public class Floor :IFloor // Kat
     {
@@ -10,7 +9,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete
         public int FloorCount { get; set; }
         public int QueueCount { get; set; }
         private readonly Queue<string> floorQueue;
-        static object Kontrol = new object();
+        static readonly object Kontrol = new object();
 
         public Floor(int name)
         {
@@ -28,18 +27,13 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete
         {
             lock (Kontrol)
             {
-                if (floorQueue.Count != 0)
-                {
-
-
-                    this.QueueCount = count; // // Kalan müşterisi güncelle
+                    //this.QueueCount = count; // // Kalan müşterisi güncelle
                     var items = floorQueue.ToArray();
                     floorQueue.Clear();
 
                     floorQueue.Enqueue(floor + "," + count);
                     foreach (var item in items)
                         floorQueue.Enqueue(item);
-                }
             }
         }
 
@@ -47,7 +41,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete
         {
             lock (Kontrol)
             {
-                this.QueueCount -= count;
+                QueueCount -= count;
             }
         }
 
@@ -93,8 +87,11 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete
 
         public Queue<string> GetFloorQueue()
         {
-
-            return floorQueue;
+            lock (Kontrol)
+            {
+                return floorQueue;
+            }
+            
         }
 
     }

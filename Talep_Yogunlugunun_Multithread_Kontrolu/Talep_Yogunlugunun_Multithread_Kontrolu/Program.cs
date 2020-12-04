@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Talep_Yogunlugunun_Multithread_Kontrolu.UI;
+using UI;
 
 namespace Talep_Yogunlugunun_Multithread_Kontrolu
 {

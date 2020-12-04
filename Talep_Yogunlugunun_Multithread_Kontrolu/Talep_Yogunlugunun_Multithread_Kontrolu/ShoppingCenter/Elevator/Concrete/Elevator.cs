@@ -1,6 +1,6 @@
-﻿using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Abstract;
+﻿using ShoppingCenter.Elevator.Abstract;
 
-namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Concrete
+namespace ShoppingCenter.Elevator.Concrete
 {
     public class Elevator : IElevator // Asansör
     {
@@ -13,7 +13,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Concre
 
         public bool Direction { get; set; } // (+) True (-) False
         public int Floor { get; set; } // 0-1-2-3-4
-        static object Kontrol = new object();
+        static readonly object Kontrol = new object();
         private readonly int[] floorCount; // Katlarda inecek kişi sayısı
 
 
@@ -61,7 +61,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Concre
             return this.floorCount[floor];
         }
 
-        public void floorCountClear()
+        public void FloorCountClear()
         {
             lock (Kontrol)
             {

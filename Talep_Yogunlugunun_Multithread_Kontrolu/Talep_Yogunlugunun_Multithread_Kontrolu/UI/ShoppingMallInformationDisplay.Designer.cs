@@ -1,5 +1,5 @@
 ﻿
-namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
+namespace UI
 {
     partial class ShoppingMallInformationDisplay
     {

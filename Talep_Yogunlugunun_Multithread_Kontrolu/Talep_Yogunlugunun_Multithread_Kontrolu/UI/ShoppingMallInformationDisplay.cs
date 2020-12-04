@@ -1,20 +1,21 @@
 ﻿using System;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
-using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Concrete;
-using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete;
+using ShoppingCenter.Elevator.Concrete;
+using ShoppingCenter.Floor.Concrete;
 
-namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
+namespace UI
 {
     public partial class ShoppingMallInformationDisplay : Form
     {
         private readonly int capacity = 10;
-        private int ms200 = 2000;
-        private int ms500 = 5000;
-        private int ms1000 = 10000;
+        private readonly int ms200 = 200;
+        private readonly int ms500 = 500;
+        private readonly int ms1000 = 1000;
         private readonly Elevator[] elevators = new Elevator[5];
         private readonly Floor[] floors = new Floor[5];
-        static object Kontrol = new object();
+        static readonly object Kontrol = new object();
 
         public ShoppingMallInformationDisplay()
         {
@@ -52,16 +53,18 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             var elevatorThread2 = new Thread(() => ElevatorThread(elevators[2]));
             var elevatorThread3 = new Thread(() => ElevatorThread(elevators[3]));
             var elevatorThread4 = new Thread(() => ElevatorThread(elevators[4]));
-           
-            
+            var screenThread = new Thread(ScreenThread);
+
             loginThread.Start();
-           // exitThread.Start();
+            exitThread.Start();
             controlThread.Start();
             elevatorThread0.Start();
-            //elevatorThread1.Start();
-            //elevatorThread2.Start();
-            //elevatorThread3.Start();
-            //elevatorThread4.Start();
+            elevatorThread1.Start();
+            elevatorThread2.Start();
+            elevatorThread3.Start();
+            elevatorThread4.Start();
+            screenThread.Start();
+
 
             // floors[1].SetFloorQueue(1,5);
             // floors[1].SetFloorQueue(2,5);
@@ -95,137 +98,152 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
 
         }
 
+        public void ScreenThread()
+        {
+            while (true)
+            {
+                SistemBilgileri();
+                AsansorVeBilgileri(elevators[0]);
+                AsansorVeBilgileri(elevators[1]);
+                AsansorVeBilgileri(elevators[2]);
+                AsansorVeBilgileri(elevators[3]);
+                AsansorVeBilgileri(elevators[4]);
+            }
+        }
         private void ElevatorThread(Elevator elevator)
         {
             while (true)
             {
 
-                    
-                
-
-                if (elevator.GetCount() != 0)
+                lock (Kontrol)
                 {
-                    //İndirme işlemi
-                    if (elevator.GetFloorCount(elevator.Floor) > 0)
+
+
+
+                    if (elevator.GetCount() > 0)
                     {
-
-                        if (elevator.Floor > 0)
-                            floors[elevator.Floor].FloorCount = floors[elevator.Floor].FloorCount + elevator.GetFloorCount(elevator.Floor); // Kat Müşteri Arttır.
-
-                        elevator.SetFloorCount(elevator.Floor, (-1) * elevator.GetFloorCount(elevator.Floor)); // Asansör Azaldı
-
-
-                        if (elevator.IsActive == false && elevator.GetCount() == 0)
+                        //İndirme işlemi
+                        if (elevator.GetFloorCount(elevator.Floor) > 0)
                         {
-                            elevator.Floor = 0;
-                            elevator.Direction = true;
-                            elevator.Destinational = 1;
-                            elevator.floorCountClear();
-                            
+
+                            if (elevator.Floor > 0)
+                                floors[elevator.Floor].FloorCount = floors[elevator.Floor].FloorCount + elevator.GetFloorCount(elevator.Floor); // Kat Müşteri Arttır.
+
+                            elevator.SetFloorCount(elevator.Floor, (-1) * elevator.GetFloorCount(elevator.Floor)); // Asansör Azaldı
+
+
+                            if (elevator.IsActive == false && elevator.GetCount() == 0)
+                            {
+                                elevator.Floor = 0;
+                                elevator.Direction = true;
+                                elevator.Destinational = 1;
+                                elevator.FloorCountClear();
+
+                            }
                         }
                     }
-                }
 
 
 
-                // Asansöre Bindirme İşlemii
-                if (elevator.IsActive == true)
-                { // Asansör aktif mi?
+                    // Asansöre Bindirme İşlemii
+                    if (elevator.IsActive == true)
+                    { // Asansör aktif mi?
 
                     ElevetorControl:
-                    if (floors[elevator.Floor].QueueCount > 0 && floors[elevator.Floor].GetFloorQueue().Count > 0)
-                    { // Katta kuyruk var mı
-                        
-                        string[] queueSplit = floors[elevator.Floor].GetFloorQueue().Peek().Split(','); // Kuyruk
-                        
+                        if (floors[elevator.Floor].GetFloorQueue().Count > 0)
+                        { // Katta kuyruk var mı
 
-                        int floor = Int32.Parse(queueSplit[0]); // Hedef kat
-                        int count = Int32.Parse(queueSplit[1]); // Müşteri Sayısı
+                            string[] queueSplit = floors[elevator.Floor].GetFloorQueue().Peek().Split(','); // Kuyruk
 
-                        if (elevator.GetCount() + count > capacity)
-                        { // Kuyruktaki müşteri sayısı ile asansördeki müşteri sayısının toplamı kapasiteden büyük mü?
 
-                            int maxCustomer = capacity - elevator.GetCount(); // Maksimum alacağı kişi sayısı
-                            int remainingCustomer = count - maxCustomer; // Katta kalan müşteri sayısı
+                            int floor = Int32.Parse(queueSplit[0]); // Hedef kat
+                            int count = Int32.Parse(queueSplit[1]); // Müşteri Sayısı
 
-                            floors[elevator.Floor].GetFloorQueue().Dequeue();
+                            if (elevator.GetCount() + count > capacity)
+                            { // Kuyruktaki müşteri sayısı ile asansördeki müşteri sayısının toplamı kapasiteden büyük mü?
 
-                            elevator.SetFloorCount(floor, maxCustomer); // Müşteriyi asansöre al
-                            floors[elevator.Floor].RemoveQueueFloor(maxCustomer); // Kat kuyruğundan müşteri sayısını çıkart.
-                            floors[elevator.Floor].RetryQueue(floor, remainingCustomer); // Kalan müşteriyi sıranın başına koyacak şekilde kuyruğu güncelle
-                            
+                                floors[elevator.Floor].GetFloorQueue().Dequeue(); //Müşteriyi kuyruktan sil.
+
+
+
+                                int maxCustomer = capacity - elevator.GetCount(); // Maksimum alacağı kişi sayısı
+                                int remainingCustomer = count - maxCustomer; // Katta kalan müşteri sayısı
+                                elevator.SetFloorCount(floor, maxCustomer); // Müşteriyi asansöre al
+                                floors[elevator.Floor].RemoveQueueFloor(maxCustomer); // Kat kuyruğundan müşteri sayısını çıkart.
+                                floors[elevator.Floor].RetryQueue(floor, remainingCustomer); // Kalan müşteriyi sıranın başına koyacak şekilde kuyruğu güncelle
+
+                            }
+                            else
+                            {
+                                floors[elevator.Floor].GetFloorQueue().Dequeue();
+
+
+                                elevator.SetFloorCount(floor, count);  // Müşteriyi asansöre al
+                                floors[elevator.Floor].RemoveQueueFloor(count); // Kat kuyruğundan müşteri sayısını çıkart.
+                            }
                         }
-                        else
-                        {
-                            floors[elevator.Floor].GetFloorQueue().Dequeue();
 
-
-                            elevator.SetFloorCount(floor, count);  // Müşteriyi asansöre al
-                            floors[elevator.Floor].RemoveQueueFloor(count); // Kat kuyruğundan müşteri sayısını çıkart.
+                        if (elevator.GetCount() != capacity && floors[elevator.Floor].QueueCount > 0)
+                        { // Asansörde yer varsa ve kuyrukta bekleyen müşteri varsa
+                            goto ElevetorControl;
                         }
                     }
 
-                    if (elevator.GetCount() != capacity && floors[elevator.Floor].QueueCount > 0)
-                    { // Asansörde yer varsa ve kuyrukta bekleyen müşteri varsa
-                        goto ElevetorControl;
-                    }
-                }
 
 
 
-
-                if (floors[elevator.Floor].QueueCount < 0)
-                {
-                    Console.WriteLine("xxx");
-                }
-                
-                if (elevator.GetCount() > 0 || elevator.IsActive == true)
-                    Console.WriteLine("Name: {0} Direction: {1} Status: {2} Count: {3} FloorCount: {4} Floor: {5}", elevator.Name, elevator.Direction, elevator.IsActive, elevator.GetCount(), elevator.FloorCountString(), elevator.Floor);
-
-                
-
-
-                if (elevator.GetCount() > 0 || elevator.IsActive == true)
-                {
-                   
-
-
-                    if (elevator.Direction == true)
+                    if (floors[elevator.Floor].QueueCount < 0)
                     {
-                        if (elevator.Floor < 3)
-                        {
-                            elevator.Floor = elevator.Floor + 1;
-                            elevator.Destinational = elevator.Floor + 1;
-                        }
-                        else
-                        {
-                            elevator.Floor = elevator.Floor + 1;
-                            elevator.Destinational = 3;
-                            elevator.Direction = false;
-
-                        }
-                    }else if (elevator.Direction == false)
-                    {
-                        if (elevator.Floor > 1)
-                        {
-                            elevator.Floor = elevator.Floor - 1;
-                            elevator.Destinational = elevator.Floor - 1;
-                        }
-                        else
-                        {
-                            elevator.Floor = elevator.Floor - 1;
-                            elevator.Destinational = 1;
-                            elevator.Direction = true;
-                        }
+                        Console.WriteLine("xxx");
                     }
 
-                    
+                    if (elevator.GetCount() > 0 || elevator.IsActive == true)
+                        Console.WriteLine("Name: {0} Direction: {1} Status: {2} Count: {3} FloorCount: {4} Floor: {5}", elevator.Name, elevator.Direction, elevator.IsActive, elevator.GetCount(), elevator.FloorCountString(), elevator.Floor);
+
+
+
+
+                    if (elevator.GetCount() > 0 || elevator.IsActive == true)
+                    {
+
+
+
+                        if (elevator.Direction == true)
+                        {
+                            if (elevator.Floor < 3)
+                            {
+                                elevator.Floor += 1;
+                                elevator.Destinational = elevator.Floor + 1;
+                            }
+                            else
+                            {
+                                elevator.Floor += 1;
+                                elevator.Destinational = 3;
+                                elevator.Direction = false;
+
+                            }
+                        }
+                        else if (elevator.Direction == false)
+                        {
+                            if (elevator.Floor > 1)
+                            {
+                                elevator.Floor -= 1;
+                                elevator.Destinational = elevator.Floor - 1;
+                            }
+                            else
+                            {
+                                elevator.Floor -= 1;
+                                elevator.Destinational = 1;
+                                elevator.Direction = true;
+                            }
+                        }
+
+
+
+                    }
 
                 }
 
-
-                SistemBilgileri();
-                AsansorVeBilgileri(elevator);
                 Thread.Sleep(ms200);
             }
         }
@@ -254,12 +272,26 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             label83.Text = floors[4].FloorQueueString();
             
         }
+        private void LabelColor(bool status,Label label)
+        {
+            if (status == true)
+            {
+                label.BackColor = Color.Green;
+                label.ForeColor = Color.Black;
+            }
+            else
+            {
+                label.BackColor = Color.DarkRed;
+                label.ForeColor = Color.White;
+            }
+        }
         private void AsansorVeBilgileri(Elevator elevator)
         {
             if (elevator.Name == 0)
             {
                 label28.Text = elevator.Name.ToString();
                 label30.Text = (elevator.IsActive == true) ? "Çalışıyor" : "Beklemede";
+                LabelColor(elevator.IsActive, label30);
                 label31.Text = elevator.Floor.ToString();
                 label32.Text = elevator.Destinational.ToString();
                 label33.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
@@ -269,6 +301,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             {
                 label37.Text = elevator.Name.ToString();
                 label39.Text = (elevator.IsActive == true) ? "Çalışıyor" : "Beklemede";
+                LabelColor(elevator.IsActive,label39);
                 label40.Text = elevator.Floor.ToString();
                 label41.Text = elevator.Destinational.ToString();
                 label42.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
@@ -279,6 +312,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             {
                 label46.Text = elevator.Name.ToString();
                 label47.Text = (elevator.IsActive == true) ? "Çalışıyor" : "Beklemede";
+                LabelColor(elevator.IsActive, label47);
                 label49.Text = elevator.Floor.ToString();
                 label50.Text = elevator.Destinational.ToString();
                 label51.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
@@ -289,6 +323,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             {
                 label55.Text = elevator.Name.ToString();
                 label48.Text = (elevator.IsActive == true) ? "Çalışıyor" : "Beklemede";
+                LabelColor(elevator.IsActive, label48);
                 label58.Text = elevator.Floor.ToString();
                 label59.Text = elevator.Destinational.ToString();
                 label60.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
@@ -299,6 +334,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             {
                 label64.Text = elevator.Name.ToString();
                 label54.Text = (elevator.IsActive == true) ? "Çalışıyor" : "Beklemede";
+                LabelColor(elevator.IsActive, label54);
                 label67.Text = elevator.Floor.ToString();
                 label68.Text = elevator.Destinational.ToString();
                 label69.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
@@ -338,8 +374,6 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
                         i++;
                     }
                 }
-
-                SistemBilgileri();
                 Thread.Sleep(ms500);
             }
         }
@@ -368,7 +402,6 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
                 {
                     goto NoExit;
                 }
-                SistemBilgileri();
                 Thread.Sleep(ms1000);
             }
         }
@@ -380,8 +413,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             {
                 
                 var count = randomNumber.Next(1, 10);
-                floors[0].CreateFloorQueue(randomNumber.Next(1, 4), count);
-                SistemBilgileri();
+                floors[0].CreateFloorQueue(randomNumber.Next(1, 5), count);
                 Thread.Sleep(ms500);
             }
 
