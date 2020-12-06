@@ -8,27 +8,27 @@ Talep_Yogunlugunun_Multithread_Kontrolu
 │   └── ShoppingMallInformationDisplay.resx
 └── ShoppingCenter/
 	├── Core
-	|	├── Settings.cs
-	├── Elevator/
-	|	├── Abstract/
-	|	|	└── IElevator.cs
-	|	└── Concrete/
-	|		└── IElevator.cs
-	├── Floor/
-	|	├── Abstract/
-	|	|	└── IFloor.cs
-	|	└── Concrete/
-	|		└── Floor.cs
+	│	├── Settings.cs
+	│── Elevator/
+	│	├── Abstract/
+	│	│	└── IElevator.cs
+	│	└── Concrete/
+	│		└── IElevator.cs
+	│── Floor/
+	│	├── Abstract/
+	│	│	└── IFloor.cs
+	│	└── Concrete/
+	│		└── Floor.cs
 	└── Threads/
 		├── Abstract/
-		|	├── ITControl.cs
-		|	├── ITElevator.cs
-		|	├── ITExit.cs
-		|	└── ITLogin.cs
+		│	│── ITControl.cs
+		│	│── ITElevator.cs
+		│	│── ITExit.cs
+		│	└── ITLogin.cs
 		└── Concrete/
-			├── TControl.cs
-			├── TElevator.cs
-			├── TExit.cs
+			│── TControl.cs
+			│── TElevator.cs
+			│── TExit.cs
 			└── TLogin.cs
 ```
 ## AVM Özellikleri
