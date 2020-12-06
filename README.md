@@ -1,3 +1,36 @@
+
+## Klasör Yapısı
+```plaintext
+Talep_Yogunlugunun_Multithread_Kontrolu
+├── UI/
+│   ├── ShoppingMallInformationDisplay.cs
+│   ├── ShoppingMallInformationDisplay.Designer.cs
+│   └── ShoppingMallInformationDisplay.resx
+└── ShoppingCenter/
+	├── Core
+	|	├── Settings.cs
+	├── Elevator/
+	|	├── Abstract/
+	|	|		└── IElevator.cs
+	|	└── Concrete/
+	|			└── IElevator.cs
+	├── Floor/
+	|	├── Abstract/
+	|	|		└── IFloor.cs
+	|	└── Concrete/
+	|			└── Floor.cs
+	└── Threads/
+		├── Abstract/
+		|		├── ITControl.cs
+		|		├── ITElevator.cs
+		|		├── ITExit.cs
+		|		└── ITLogin.cs
+		└── Concrete/
+				├── TControl.cs
+				├── TElevator.cs
+				├── TExit.cs
+				└── TLogin.cs
+```
 ## AVM Özellikleri
 
  - AVM deki kat sayısı 5'tir.
