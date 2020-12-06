@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ShoppingCenter.Threads.Abstract;
 
 namespace ShoppingCenter.Threads.Concrete
@@ -43,12 +44,17 @@ namespace ShoppingCenter.Threads.Concrete
             // Asansör aktif mi?
 
             ElevetorControl:
+            lock (floors[elevator.Floor].GetFloorQueue())
+            {
+
                 if (floors[elevator.Floor].GetFloorQueue().Count > 0)
                 {
+                    string[] queueSplit;
                     // Katta kuyruk var mı
-
-                    var queueSplit = floors[elevator.Floor].GetFloorQueue().Peek().Split(','); // Kuyruk
-
+                    lock (floors[elevator.Floor].GetFloorQueue()) 
+                    {
+                        queueSplit = floors[elevator.Floor].GetFloorQueue().Peek().Split(','); // Kuyruk
+                    }
                     var floor = int.Parse(queueSplit[0]); // Hedef kat
                     var count = int.Parse(queueSplit[1]); // Müşteri Sayısı
 
@@ -77,17 +83,25 @@ namespace ShoppingCenter.Threads.Concrete
                     }
                     else
                     {
-                        floors[elevator.Floor].GetFloorQueue().Dequeue();
-
-                        elevator.SetFloorCount(floor, count); // Müşteriyi asansöre al
-                        floors[elevator.Floor]
-                            .RemoveQueueFloor(count); // Kat kuyruğundan müşteri sayısını çıkart.
+                        try
+                        {
+                            floors[elevator.Floor].GetFloorQueue().Dequeue();
+                            elevator.SetFloorCount(floor, count); // Müşteriyi asansöre al
+                            floors[elevator.Floor]
+                                .RemoveQueueFloor(count); // Kat kuyruğundan müşteri sayısını çıkart.
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+                        }
+                        
                     }
                 }
-
+           
                 if (elevator.GetCount() != capacity && floors[elevator.Floor].QueueCount > 0)
                     // Asansörde yer varsa ve kuyrukta bekleyen müşteri varsa
                     goto ElevetorControl;
+            }
             }
         }
 

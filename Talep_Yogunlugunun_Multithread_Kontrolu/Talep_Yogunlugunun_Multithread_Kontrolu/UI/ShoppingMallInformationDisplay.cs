@@ -66,7 +66,6 @@ namespace UI
             elevatorThread4.Start();
             screenThread.Start();
         }
-
         private void ScreenThread()
         {
             while (true)
@@ -74,7 +73,6 @@ namespace UI
                 GeneralInformation();
             }
         }
-
         private void ElevatorThread(Elevator elevator)
         {
             TElevator tElevator = new TElevator();
@@ -86,7 +84,6 @@ namespace UI
                 Thread.Sleep(settings.Ms200);
             }
         }
-
         private void ControlThread()
         {
             TControl tControl = new TControl();
@@ -97,7 +94,6 @@ namespace UI
                     Thread.Sleep(settings.Ms500);
             }
         }
-
         private void ExitThread()
         {
             TExit tExit = new TExit();
@@ -108,7 +104,6 @@ namespace UI
                 Thread.Sleep(settings.Ms1000);
             }
         }
-
         private void LoginThread()
         {
             TLogin tLogin = new TLogin();
@@ -119,7 +114,6 @@ namespace UI
                 Thread.Sleep(settings.Ms500);
             }
         }
-
         private void GeneralInformation()
         {
             label6.Text = (floors[0].FloorCount + floors[0].QueueCount).ToString();
@@ -140,7 +134,6 @@ namespace UI
             label82.Text = floors[3].FloorQueueString();
             label83.Text = floors[4].FloorQueueString();
         }
-
         private void LabelColor(bool status, int floor, Label label)
         {
 
@@ -163,7 +156,6 @@ namespace UI
                 label.ForeColor = Color.White;
             }
         }
-
         private void ElevatorInformation(Elevator elevator)
         {
             string capacity = settings.Capacity.ToString();
@@ -224,7 +216,6 @@ namespace UI
                 label45.Text = elevator.FloorCountString();
             }
         }
-
         private void ShoppingMallInformationDisplay_FormClosing(object sender, FormClosingEventArgs e)
         {
             loginThread.Abort();
@@ -236,6 +227,10 @@ namespace UI
             elevatorThread3.Abort();
             elevatorThread4.Abort();
             screenThread.Abort();
+        }
+        private void ShoppingMallInformationDisplay_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -17,7 +17,6 @@ namespace ShoppingCenter.Threads.Concrete
                     foreach (var elevator in elevators)
                         if (elevator.IsActive == false && elevator.GetCount() == 0 && elevator.Floor == 0)
                         {
-                            //Console.WriteLine("Asansör Aktif Edildi");
                             elevator.IsActive = true;
                             control = true;
                             break;
