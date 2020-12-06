@@ -7,7 +7,7 @@
     <ProjectGuid>{DB0015B1-07F6-4E4A-BD6E-07BB4178B7B6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Talep_Yogunlugunun_Multithread_Kontrolu</RootNamespace>
-    <AssemblyName>Talep_Yogunlugunun_Multithread_Kontrolu</AssemblyName>
+    <AssemblyName>Alışveriş Merkezi Bilgi Ekranı</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>pngtree-vector-lift-icon-png-image_334551.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,10 +49,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ShoppingCenter\Core\Settings.cs" />
     <Compile Include="ShoppingCenter\Elevator\Abstract\IElevator.cs" />
     <Compile Include="ShoppingCenter\Elevator\Concrete\Elevator.cs" />
     <Compile Include="ShoppingCenter\Floor\Abstract\IFloor.cs" />
     <Compile Include="ShoppingCenter\Floor\Concrete\Floor.cs" />
+    <Compile Include="ShoppingCenter\Threads\Abstract\ITControl.cs" />
+    <Compile Include="ShoppingCenter\Threads\Abstract\ITElevator.cs" />
+    <Compile Include="ShoppingCenter\Threads\Abstract\ITExit.cs" />
+    <Compile Include="ShoppingCenter\Threads\Abstract\ITLogin.cs" />
+    <Compile Include="ShoppingCenter\Threads\Concrete\TControl.cs" />
+    <Compile Include="ShoppingCenter\Threads\Concrete\TElevator.cs" />
+    <Compile Include="ShoppingCenter\Threads\Concrete\TExit.cs" />
+    <Compile Include="ShoppingCenter\Threads\Concrete\TLogin.cs" />
     <Compile Include="UI\ShoppingMallInformationDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +95,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="pngtree-vector-lift-icon-png-image_334551.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,8 +4,6 @@ namespace ShoppingCenter.Elevator.Concrete
 {
     public class Elevator : IElevator // Asansör
     {
-
-
         public int Name { get; set; }
         private int Count;
         public bool IsActive { get; set; }
@@ -13,10 +11,8 @@ namespace ShoppingCenter.Elevator.Concrete
 
         public bool Direction { get; set; } // (+) True (-) False
         public int Floor { get; set; } // 0-1-2-3-4
-        static readonly object Kontrol = new object();
+        private static readonly object Kontrol = new object();
         private readonly int[] floorCount; // Katlarda inecek kişi sayısı
-
-
 
         public Elevator(int name)
         {
@@ -32,8 +28,8 @@ namespace ShoppingCenter.Elevator.Concrete
             floorCount[2] = 0;
             floorCount[3] = 0;
             floorCount[4] = 0;
-
         }
+
         public void SetFloorCount(int floor, int count)
         {
             lock (Kontrol)
@@ -52,10 +48,10 @@ namespace ShoppingCenter.Elevator.Concrete
                 {
                     queueList += "[" + i + "," + floorCount[i] + "]";
                 }
-            return queueList;
+                return queueList;
             }
-
         }
+
         public int GetFloorCount(int floor)
         {
             return this.floorCount[floor];
@@ -72,8 +68,8 @@ namespace ShoppingCenter.Elevator.Concrete
                 floorCount[4] = 0;
                 Count = 0;
             }
-
         }
+
         public int GetCount()
         {
             lock (Kontrol)

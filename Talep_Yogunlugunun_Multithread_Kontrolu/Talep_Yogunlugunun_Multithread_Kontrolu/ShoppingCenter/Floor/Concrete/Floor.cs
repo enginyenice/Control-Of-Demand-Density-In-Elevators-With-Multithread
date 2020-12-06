@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using ShoppingCenter.Floor.Abstract;
+﻿using ShoppingCenter.Floor.Abstract;
+using System.Collections.Generic;
 
 namespace ShoppingCenter.Floor.Concrete
 {
-    public class Floor :IFloor // Kat
+    public class Floor : IFloor // Kat
     {
         public int Name { get; set; }
         public int FloorCount { get; set; }
         public int QueueCount { get; set; }
         private readonly Queue<string> floorQueue;
-        static readonly object Kontrol = new object();
+        private static readonly object Kontrol = new object();
 
         public Floor(int name)
         {
@@ -22,18 +22,17 @@ namespace ShoppingCenter.Floor.Concrete
             }
         }
 
-
         public void RetryQueue(int floor, int count)
         {
             lock (Kontrol)
             {
-                    //this.QueueCount = count; // // Kalan müşterisi güncelle
-                    var items = floorQueue.ToArray();
-                    floorQueue.Clear();
+                //this.QueueCount = count; // // Kalan müşterisi güncelle
+                var items = floorQueue.ToArray();
+                floorQueue.Clear();
 
-                    floorQueue.Enqueue(floor + "," + count);
-                    foreach (var item in items)
-                        floorQueue.Enqueue(item);
+                floorQueue.Enqueue(floor + "," + count);
+                foreach (var item in items)
+                    floorQueue.Enqueue(item);
             }
         }
 
@@ -64,25 +63,24 @@ namespace ShoppingCenter.Floor.Concrete
             }
         }
 
-
-
-
         public string FloorQueueString()
         {
-            if(floorQueue.Count > 0)
+            if (floorQueue.Count > 0)
             {
                 string queueList = "";
-                foreach (string queue in GetFloorQueue())
-            {
-                queueList += "[" + queue + "] ";
-            }
-            return queueList;
+                lock (Kontrol)
+                {
+                    foreach (string queue in GetFloorQueue())
+                    {
+                        queueList += "[" + queue + "] ";
+                    }
+                    return queueList;
+                }
             }
             else
             {
                 return "";
             }
-            
         }
 
         public Queue<string> GetFloorQueue()
@@ -91,8 +89,6 @@ namespace ShoppingCenter.Floor.Concrete
             {
                 return floorQueue;
             }
-            
         }
-
     }
 }
