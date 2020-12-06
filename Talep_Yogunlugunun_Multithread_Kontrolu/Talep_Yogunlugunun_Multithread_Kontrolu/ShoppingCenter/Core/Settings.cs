@@ -7,8 +7,8 @@
         public int Ms500 { get; }
         public int Ms1000 { get; }
 
-        public int totalLoginCount;
-        public int totalExitCount;
+        private int totalLoginCount;
+        private int totalExitCount;
 
         public int TotalLoginCount
         {

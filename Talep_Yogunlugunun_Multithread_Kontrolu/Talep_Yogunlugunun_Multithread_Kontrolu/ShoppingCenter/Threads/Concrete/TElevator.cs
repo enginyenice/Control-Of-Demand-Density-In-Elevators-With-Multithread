@@ -4,6 +4,19 @@
     {
         public void ElevetorThread(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, int capacity)
         {
+
+            // Asansörden yolcu indirme işlemi
+            PassengerLowering(elevator, floors);
+            // Asansöre yolcu nindirme İşlemi
+            PassengerBoarding(elevator, floors, capacity);
+            // Asansör kat değiştirme işlemi
+            FloorChange(elevator);
+
+
+        }
+
+        private void PassengerLowering(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors)
+        {
             if (elevator.GetCount() > 0)
                 //İndirme işlemi
                 if (elevator.GetFloorCount(elevator.Floor) > 0)
@@ -21,8 +34,9 @@
                         elevator.FloorCountClear();
                     }
                 }
-
-            // Asansöre Bindirme İşlemii
+        }
+        private void PassengerBoarding(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, int capacity)
+        {
             if (elevator.IsActive)
             {
             // Asansör aktif mi?
@@ -67,6 +81,10 @@
                     goto ElevetorControl;
             }
 
+        }
+
+        private void FloorChange(Elevator.Concrete.Elevator elevator)
+        {
             if (elevator.GetCount() > 0 || elevator.IsActive || elevator.Floor > 0)
             {
                 if (elevator.Direction)
@@ -99,5 +117,6 @@
                 }
             }
         }
+
     }
 }
