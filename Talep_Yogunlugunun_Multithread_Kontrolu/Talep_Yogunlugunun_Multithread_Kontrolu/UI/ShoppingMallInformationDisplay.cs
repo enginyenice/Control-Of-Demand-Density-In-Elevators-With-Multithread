@@ -14,6 +14,15 @@ namespace UI
         private readonly Elevator[] elevators = new Elevator[5];
         private readonly Floor[] floors = new Floor[5];
         private readonly Settings settings = new Settings();
+        private readonly Thread loginThread;
+        private readonly Thread controlThread;
+        private readonly Thread exitThread;
+        private readonly Thread elevatorThread0;
+        private readonly Thread elevatorThread1;
+        private readonly Thread elevatorThread2;
+        private readonly Thread elevatorThread3;
+        private readonly Thread elevatorThread4;
+        private readonly Thread screenThread;
 
         public ShoppingMallInformationDisplay()
         {
@@ -36,21 +45,7 @@ namespace UI
 
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
-        }
 
-
-        private Thread loginThread;
-        private Thread controlThread;
-        private Thread exitThread;
-        private Thread elevatorThread0;
-        private Thread elevatorThread1;
-        private Thread elevatorThread2;
-        private Thread elevatorThread3;
-        private Thread elevatorThread4;
-        private Thread screenThread;
-
-        private void ShoppingMallInformationDisplay_Load(object sender, EventArgs e)
-        {
             loginThread = new Thread(LoginThread);
             controlThread = new Thread(ControlThread);
             exitThread = new Thread(ExitThread);
@@ -72,7 +67,7 @@ namespace UI
             screenThread.Start();
         }
 
-        public void ScreenThread()
+        private void ScreenThread()
         {
             while (true)
             {

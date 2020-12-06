@@ -1,4 +1,4 @@
-﻿namespace TShoppingCenter.Threads.Abstract
+﻿namespace ShoppingCenter.Threads.Abstract
 {
     public interface ITElevator
     {

@@ -1,18 +1,18 @@
-﻿namespace ShoppingCenter.Threads.Concrete
+﻿using System;
+using ShoppingCenter.Threads.Abstract;
+
+namespace ShoppingCenter.Threads.Concrete
 {
-    public class TElevator
+    public class TElevator : ITElevator
     {
         public void ElevetorThread(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, int capacity)
         {
-
             // Asansörden yolcu indirme işlemi
             PassengerLowering(elevator, floors);
             // Asansöre yolcu nindirme İşlemi
             PassengerBoarding(elevator, floors, capacity);
             // Asansör kat değiştirme işlemi
             FloorChange(elevator);
-
-
         }
 
         private void PassengerLowering(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors)
@@ -35,6 +35,7 @@
                     }
                 }
         }
+
         private void PassengerBoarding(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, int capacity)
         {
             if (elevator.IsActive)
@@ -55,16 +56,24 @@
                     {
                         // Kuyruktaki müşteri sayısı ile asansördeki müşteri sayısının toplamı kapasiteden büyük mü?
 
-                        floors[elevator.Floor].GetFloorQueue().Dequeue(); //Müşteriyi kuyruktan sil.
+                        try
+                        {
+                            floors[elevator.Floor].GetFloorQueue().Dequeue(); //Müşteriyi kuyruktan sil.
 
-                        var maxCustomer = capacity - elevator.GetCount(); // Maksimum alacağı kişi sayısı
-                        var remainingCustomer = count - maxCustomer; // Katta kalan müşteri sayısı
-                        elevator.SetFloorCount(floor, maxCustomer); // Müşteriyi asansöre al
-                        floors[elevator.Floor]
-                            .RemoveQueueFloor(maxCustomer); // Kat kuyruğundan müşteri sayısını çıkart.
-                        floors[elevator.Floor]
-                            .RetryQueue(floor,
-                                remainingCustomer); // Kalan müşteriyi sıranın başına koyacak şekilde kuyruğu güncelle
+                            var maxCustomer = capacity - elevator.GetCount(); // Maksimum alacağı kişi sayısı
+                            var remainingCustomer = count - maxCustomer; // Katta kalan müşteri sayısı
+                            elevator.SetFloorCount(floor, maxCustomer); // Müşteriyi asansöre al
+                            floors[elevator.Floor]
+                                .RemoveQueueFloor(maxCustomer); // Kat kuyruğundan müşteri sayısını çıkart.
+                            floors[elevator.Floor]
+                                .RetryQueue(floor,
+                                    remainingCustomer); // Kalan müşteriyi sıranın başına koyacak şekilde kuyruğu güncelle
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+                        }
+                        
                     }
                     else
                     {
@@ -80,7 +89,6 @@
                     // Asansörde yer varsa ve kuyrukta bekleyen müşteri varsa
                     goto ElevetorControl;
             }
-
         }
 
         private void FloorChange(Elevator.Concrete.Elevator elevator)
@@ -117,6 +125,5 @@
                 }
             }
         }
-
     }
 }
