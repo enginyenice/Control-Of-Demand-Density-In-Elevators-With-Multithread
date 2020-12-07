@@ -13,7 +13,7 @@ Talep_Yogunlugunun_Multithread_Kontrolu
 	│	├── Abstract/
 	│	│	└── IElevator.cs
 	│	└── Concrete/
-	│		└── IElevator.cs
+	│		└── Elevator.cs
 	├── Floor/
 	│	├── Abstract/
 	│	│	└── IFloor.cs
