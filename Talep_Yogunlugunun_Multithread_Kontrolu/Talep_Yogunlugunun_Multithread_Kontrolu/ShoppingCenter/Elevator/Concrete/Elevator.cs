@@ -1,4 +1,5 @@
-﻿using ShoppingCenter.Elevator.Abstract;
+﻿using Microsoft.Win32;
+using ShoppingCenter.Elevator.Abstract;
 
 namespace ShoppingCenter.Elevator.Concrete
 {
@@ -82,5 +83,33 @@ namespace ShoppingCenter.Elevator.Concrete
                 return Count;
             }
         }
+
+        public int GetMaxDestinational()
+        {
+            int maxDestinationalFloor = 0;
+            for (int i = 0; i < floorCount.Length; i++)
+            {
+                if (floorCount[i] > 0)
+                    maxDestinationalFloor = i;
+            }
+
+            return maxDestinationalFloor;
+        }
+
+        public int GetFirstDestinational()
+        {
+            int firstDestinationalFloor = -1;
+            for (int i = Floor; i < floorCount.Length; i++)
+            {
+                if (floorCount[i] > 0 && Floor != i)
+                {
+                    firstDestinationalFloor = i;
+                    break;
+                }
+            }
+
+            return firstDestinationalFloor;
+        }
+
     }
 }

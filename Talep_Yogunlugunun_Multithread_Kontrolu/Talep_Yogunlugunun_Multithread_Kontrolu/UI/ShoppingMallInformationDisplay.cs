@@ -41,11 +41,6 @@ namespace UI
             floors[4] = new Floor(4);
 
             // 1. Asansörün hareketini aktifleştirir.
-            elevators[0].IsActive = true; // 1. Asansör aktif edildi.
-
-            InitializeComponent();
-            CheckForIllegalCrossThreadCalls = false;
-
             loginThread = new Thread(LoginThread);
             controlThread = new Thread(ControlThread);
             exitThread = new Thread(ExitThread);
@@ -55,16 +50,10 @@ namespace UI
             elevatorThread3 = new Thread(() => ElevatorThread(elevators[3]));
             elevatorThread4 = new Thread(() => ElevatorThread(elevators[4]));
             screenThread = new Thread(ScreenThread);
+            elevators[0].IsActive = true; // 1. Asansör aktif edildi.
 
-            loginThread.Start();
-            exitThread.Start();
-            controlThread.Start();
-            elevatorThread0.Start();
-            elevatorThread1.Start();
-            elevatorThread2.Start();
-            elevatorThread3.Start();
-            elevatorThread4.Start();
-            screenThread.Start();
+            InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
         }
         private void ScreenThread()
         {
@@ -134,7 +123,7 @@ namespace UI
             label82.Text = floors[3].FloorQueueString();
             label83.Text = floors[4].FloorQueueString();
         }
-        private void LabelColor(bool status, int floor, Label label)
+        private void LabelColor(bool status,int count, Label label)
         {
 
             label.Text = (status == true) ? "Aktif" : "Pasif";
@@ -144,7 +133,7 @@ namespace UI
                 label.BackColor = Color.FromArgb(48, 164, 4);
                 label.ForeColor = Color.White;
             }
-            else if (status == false && floor > 0)
+            else if (status == false && count > 0)
             {
                 label.Text = "Durduruluyor";
                 label.BackColor = Color.FromArgb(77, 146, 184);
@@ -168,7 +157,7 @@ namespace UI
             if (elevator.Name == 0)
             {
                 label28.Text = elevator.Name.ToString();
-                LabelColor(elevator.IsActive, elevator.Floor, label30);
+                LabelColor(elevator.IsActive, elevator.GetCount(), label30);
                 label31.Text = elevator.Floor.ToString();
                 label32.Text = elevator.Destinational.ToString();
                 label33.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
@@ -178,7 +167,7 @@ namespace UI
             else if (elevator.Name == 1)
             {
                 label37.Text = elevator.Name.ToString();
-                LabelColor(elevator.IsActive, elevator.Floor, label39);
+                LabelColor(elevator.IsActive, elevator.GetCount(), label39);
                 label40.Text = elevator.Floor.ToString();
                 label41.Text = elevator.Destinational.ToString();
                 label42.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
@@ -188,7 +177,7 @@ namespace UI
             else if (elevator.Name == 2)
             {
                 label46.Text = elevator.Name.ToString();
-                LabelColor(elevator.IsActive, elevator.Floor, label47);
+                LabelColor(elevator.IsActive, elevator.GetCount(), label47);
                 label49.Text = elevator.Floor.ToString();
                 label50.Text = elevator.Destinational.ToString();
                 label51.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
@@ -231,6 +220,24 @@ namespace UI
         private void ShoppingMallInformationDisplay_Load(object sender, EventArgs e)
         {
 
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+                button1.BackColor = Color.FromArgb(210, 66, 106);
+                button1.Text = "Çalışıyor...";
+                button1.Enabled = false;
+                loginThread.Start();
+                exitThread.Start();
+                controlThread.Start();
+                elevatorThread0.Start();
+                elevatorThread1.Start();
+                elevatorThread2.Start();
+                elevatorThread3.Start();
+                elevatorThread4.Start();
+                screenThread.Start();
+
+
+           
         }
     }
 }

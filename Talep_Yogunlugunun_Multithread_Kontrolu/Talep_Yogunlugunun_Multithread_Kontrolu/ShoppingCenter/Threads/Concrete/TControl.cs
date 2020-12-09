@@ -15,7 +15,7 @@ namespace ShoppingCenter.Threads.Concrete
                 bool control = false;
                 if (queueCount > (capacity * 2))
                     foreach (var elevator in elevators)
-                        if (elevator.IsActive == false && elevator.GetCount() == 0 && elevator.Floor == 0)
+                        if (elevator.IsActive == false && elevator.GetCount() == 0)
                         {
                             elevator.IsActive = true;
                             control = true;
