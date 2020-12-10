@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using ShoppingCenter.Threads.Abstract;
 
 namespace ShoppingCenter.Threads.Concrete
@@ -54,7 +53,12 @@ namespace ShoppingCenter.Threads.Concrete
                     //Yolcuları indir
                     PassengerLowering(elevator, floors);
                 }
-                
+
+
+                if (elevator.Floor > elevator.Destinational)
+                {
+                    elevator.Direction = false;
+                }
             }
             if (elevator.Floor > 0 && elevator.Floor < 4 && elevator.Direction == false)
             {

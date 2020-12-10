@@ -60,6 +60,11 @@ namespace UI
             while (true)
             {
                 GeneralInformation();
+                ElevatorInformation(elevators[0]);
+                ElevatorInformation(elevators[1]);
+                ElevatorInformation(elevators[2]);
+                ElevatorInformation(elevators[3]);
+                ElevatorInformation(elevators[4]);
             }
         }
         private void ElevatorThread(Elevator elevator)
@@ -68,7 +73,7 @@ namespace UI
             while (true)
             {
                 tElevator.ElevetorThread(elevator, floors, settings.Capacity);
-                ElevatorInformation(elevator);
+                
 
                 Thread.Sleep(settings.Ms200);
             }
@@ -126,10 +131,11 @@ namespace UI
         private void LabelColor(bool status,int count, Label label)
         {
 
-            label.Text = (status == true) ? "Aktif" : "Pasif";
+
 
             if (status == true)
             {
+                label.Text = "Aktif";
                 label.BackColor = Color.FromArgb(48, 164, 4);
                 label.ForeColor = Color.White;
             }
@@ -141,12 +147,17 @@ namespace UI
             }
             else
             {
+                label.Text = "Pasif";
                 label.BackColor = Color.FromArgb(210, 66, 106);
                 label.ForeColor = Color.White;
             }
         }
         private void ElevatorInformation(Elevator elevator)
         {
+            lock (elevator)
+            {
+                
+           
             string capacity = settings.Capacity.ToString();
             label34.Text = capacity;
             label43.Text = capacity;
@@ -203,6 +214,7 @@ namespace UI
                 label69.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
                 label71.Text = elevator.GetCount().ToString();
                 label45.Text = elevator.FloorCountString();
+            }
             }
         }
         private void ShoppingMallInformationDisplay_FormClosing(object sender, FormClosingEventArgs e)
