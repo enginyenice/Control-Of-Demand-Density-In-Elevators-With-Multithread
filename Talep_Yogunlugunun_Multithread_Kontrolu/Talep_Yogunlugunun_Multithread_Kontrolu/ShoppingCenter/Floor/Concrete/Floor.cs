@@ -10,7 +10,6 @@ namespace ShoppingCenter.Floor.Concrete
         public int QueueCount { get; set; }
         private readonly Queue<string> floorQueue;
         private static readonly object Kontrol = new object();
-
         public Floor(int name)
         {
             lock (Kontrol)
@@ -21,7 +20,6 @@ namespace ShoppingCenter.Floor.Concrete
                 this.floorQueue = new Queue<string>();
             }
         }
-
         public void RetryQueue(int floor, int count)
         {
             lock (Kontrol)
@@ -35,7 +33,6 @@ namespace ShoppingCenter.Floor.Concrete
                     floorQueue.Enqueue(item);
             }
         }
-
         public void RemoveQueueFloor(int count)
         {
             lock (Kontrol)
@@ -43,7 +40,6 @@ namespace ShoppingCenter.Floor.Concrete
                 QueueCount -= count;
             }
         }
-
         public void SetFloorQueue(int floor, int count)
         {
             lock (Kontrol)
@@ -53,7 +49,6 @@ namespace ShoppingCenter.Floor.Concrete
                 floorQueue.Enqueue(floor + "," + count);
             }
         }
-
         public void CreateFloorQueue(int floor, int count)
         {
             lock (Kontrol)
@@ -62,7 +57,6 @@ namespace ShoppingCenter.Floor.Concrete
                 floorQueue.Enqueue(floor + "," + count);
             }
         }
-
         public string FloorQueueString()
         {
             if (floorQueue.Count > 0)
@@ -82,7 +76,6 @@ namespace ShoppingCenter.Floor.Concrete
                 return "";
             }
         }
-
         public Queue<string> GetFloorQueue()
         {
             lock (Kontrol)

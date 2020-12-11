@@ -3,9 +3,10 @@ using ShoppingCenter.Threads.Abstract;
 
 namespace ShoppingCenter.Threads.Concrete
 {
+
     public class TElevator : ITElevator
     {
-        public void ElevetorThread(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, int capacity)
+        public void ElevatorThread(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, int capacity)
         {
 
             if (elevator.Floor == 0 && elevator.Direction == false)
@@ -78,6 +79,9 @@ namespace ShoppingCenter.Threads.Concrete
             //FloorChange(elevator);
         }
 
+      
+        
+        
         private void FloorChange(Elevator.Concrete.Elevator elevator)
         {
             
@@ -92,7 +96,6 @@ namespace ShoppingCenter.Threads.Concrete
             }
 
         }
-
         private int CheckTopFloor(Floor.Concrete.Floor[] floors, int maxDestinationalFloor)
         {
             int isThere = -1; // Üst katta müşteri var mı
@@ -108,7 +111,6 @@ namespace ShoppingCenter.Threads.Concrete
 
             return isThere;
         }
-
         private int CheckButtomFloor(Floor.Concrete.Floor[] floors, int elevatorFloor)
         {
             int isThere = 0; // Alt katta müşteri var mı
@@ -124,7 +126,6 @@ namespace ShoppingCenter.Threads.Concrete
 
             return isThere;
         }
-
         private void PassengerLowering(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors)
         {
             if (elevator.GetCount() > 0)
@@ -145,7 +146,6 @@ namespace ShoppingCenter.Threads.Concrete
                     }
                 }
         }
-
         private void PassengerBoarding(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, int capacity)
         {
             if (elevator.IsActive)

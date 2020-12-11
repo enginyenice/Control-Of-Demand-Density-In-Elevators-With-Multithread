@@ -59,12 +59,19 @@ namespace UI
         {
             while (true)
             {
-                GeneralInformation();
-                ElevatorInformation(elevators[0]);
-                ElevatorInformation(elevators[1]);
-                ElevatorInformation(elevators[2]);
-                ElevatorInformation(elevators[3]);
-                ElevatorInformation(elevators[4]);
+                lock (controlThread)
+                {
+                    lock (screenThread)
+                    {
+                        GeneralInformation();
+                        ElevatorInformation(elevators[0]);
+                        ElevatorInformation(elevators[1]);
+                        ElevatorInformation(elevators[2]);
+                        ElevatorInformation(elevators[3]);
+                        ElevatorInformation(elevators[4]);
+                    }
+                }
+               Thread.Sleep(100);
             }
         }
         private void ElevatorThread(Elevator elevator)
@@ -72,7 +79,7 @@ namespace UI
             TElevator tElevator = new TElevator();
             while (true)
             {
-                tElevator.ElevetorThread(elevator, floors, settings.Capacity);
+                tElevator.ElevatorThread(elevator, floors, settings.Capacity);
                 
 
                 Thread.Sleep(settings.Ms200);
@@ -94,7 +101,7 @@ namespace UI
             while (true)
             {
                 tExit.ExitThread(floors, settings);
-                label89.Text = "Çıkış Kuyruğu: " + settings.TotalExitCount;
+                
                 Thread.Sleep(settings.Ms1000);
             }
         }
@@ -104,12 +111,14 @@ namespace UI
             while (true)
             {
                 tLogin.LoginThread(floors, settings);
-                label88.Text = "Giriş Kuyruğu: " + settings.TotalLoginCount;
                 Thread.Sleep(settings.Ms500);
             }
         }
         private void GeneralInformation()
         {
+            label88.Text = "Giriş Kuyruğu: " + settings.TotalLoginCount;
+            label89.Text = "Çıkış Kuyruğu: " + settings.TotalExitCount;
+            label90.Text = "Giriş - Çıkış: " + (settings.TotalLoginCount - settings.TotalExitCount);
             label6.Text = (floors[0].FloorCount + floors[0].QueueCount).ToString();
             label7.Text = (floors[1].FloorCount + floors[1].QueueCount).ToString();
             label8.Text = (floors[2].FloorCount + floors[2].QueueCount).ToString();
@@ -127,6 +136,7 @@ namespace UI
             label80.Text = floors[2].FloorQueueString();
             label82.Text = floors[3].FloorQueueString();
             label83.Text = floors[4].FloorQueueString();
+            
         }
         private void LabelColor(bool status,int count, Label label)
         {
@@ -242,11 +252,11 @@ namespace UI
                 exitThread.Start();
                 controlThread.Start();
                 elevatorThread0.Start();
-                elevatorThread1.Start();
-                elevatorThread2.Start();
-                elevatorThread3.Start();
-                elevatorThread4.Start();
-                screenThread.Start();
+            elevatorThread1.Start();
+            elevatorThread2.Start();
+            elevatorThread3.Start();
+            elevatorThread4.Start();
+            screenThread.Start();
 
 
            
