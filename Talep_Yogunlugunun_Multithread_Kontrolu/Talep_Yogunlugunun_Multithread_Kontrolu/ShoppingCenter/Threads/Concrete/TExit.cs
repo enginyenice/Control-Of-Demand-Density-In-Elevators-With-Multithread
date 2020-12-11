@@ -1,12 +1,13 @@
-﻿using ShoppingCenter.Core;
-using ShoppingCenter.Threads.Abstract;
-using System;
+﻿using System;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Core;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Abstract;
 
 namespace ShoppingCenter.Threads.Concrete
 {
     public class TExit : ITExit
     {
-        public void ExitThread(Floor.Concrete.Floor[] floors, Settings settings)
+        public void ExitThread(Floor[] floors, Settings settings)
         {
             var randomNumber = new Random();
             var exitCustomerCount = randomNumber.Next(1, 5);

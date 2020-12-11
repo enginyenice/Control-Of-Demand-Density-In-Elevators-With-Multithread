@@ -1,14 +1,13 @@
-﻿using Microsoft.Win32;
-using ShoppingCenter.Elevator.Abstract;
+﻿using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Abstract;
 
-namespace ShoppingCenter.Elevator.Concrete
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Concrete
 {
     public class Elevator : IElevator // Asansör
     {
         public int Name { get; set; }
         private int Count;
         public bool IsActive { get; set; }
-        public int Destinational { get; set; }
+        public int Destination { get; set; }
 
         public bool Direction { get; set; } // (+) True (-) False
         public int Floor { get; set; } // 0-1-2-3-4
@@ -17,7 +16,7 @@ namespace ShoppingCenter.Elevator.Concrete
 
         public Elevator(int name)
         {
-            this.Destinational = 1;
+            this.Destination = 1;
             this.Floor = 0;
             this.Count = 0;
             this.Direction = true;
@@ -84,19 +83,7 @@ namespace ShoppingCenter.Elevator.Concrete
             }
         }
 
-        public int GetMaxDestinational()
-        {
-            int maxDestinationalFloor = 0;
-            for (int i = 0; i < floorCount.Length; i++)
-            {
-                if (floorCount[i] > 0)
-                    maxDestinationalFloor = i;
-            }
-
-            return maxDestinationalFloor;
-        }
-
-        public int GetFirstDestinational()
+        public int GetFirstDestination()
         {
             int firstDestinationalFloor = -1;
             for (int i = Floor; i < floorCount.Length; i++)
@@ -110,6 +97,5 @@ namespace ShoppingCenter.Elevator.Concrete
 
             return firstDestinationalFloor;
         }
-
     }
 }

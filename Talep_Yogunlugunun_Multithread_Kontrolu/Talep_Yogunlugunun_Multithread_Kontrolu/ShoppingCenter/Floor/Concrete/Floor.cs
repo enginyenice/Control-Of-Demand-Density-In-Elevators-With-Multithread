@@ -1,7 +1,7 @@
-﻿using ShoppingCenter.Floor.Abstract;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Abstract;
 
-namespace ShoppingCenter.Floor.Concrete
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete
 {
     public class Floor : IFloor // Kat
     {
@@ -10,6 +10,7 @@ namespace ShoppingCenter.Floor.Concrete
         public int QueueCount { get; set; }
         private readonly Queue<string> floorQueue;
         private static readonly object Kontrol = new object();
+
         public Floor(int name)
         {
             lock (Kontrol)
@@ -20,6 +21,7 @@ namespace ShoppingCenter.Floor.Concrete
                 this.floorQueue = new Queue<string>();
             }
         }
+
         public void RetryQueue(int floor, int count)
         {
             lock (Kontrol)
@@ -33,6 +35,7 @@ namespace ShoppingCenter.Floor.Concrete
                     floorQueue.Enqueue(item);
             }
         }
+
         public void RemoveQueueFloor(int count)
         {
             lock (Kontrol)
@@ -40,6 +43,7 @@ namespace ShoppingCenter.Floor.Concrete
                 QueueCount -= count;
             }
         }
+
         public void SetFloorQueue(int floor, int count)
         {
             lock (Kontrol)
@@ -49,6 +53,7 @@ namespace ShoppingCenter.Floor.Concrete
                 floorQueue.Enqueue(floor + "," + count);
             }
         }
+
         public void CreateFloorQueue(int floor, int count)
         {
             lock (Kontrol)
@@ -57,6 +62,7 @@ namespace ShoppingCenter.Floor.Concrete
                 floorQueue.Enqueue(floor + "," + count);
             }
         }
+
         public string FloorQueueString()
         {
             if (floorQueue.Count > 0)
@@ -76,6 +82,7 @@ namespace ShoppingCenter.Floor.Concrete
                 return "";
             }
         }
+
         public Queue<string> GetFloorQueue()
         {
             lock (Kontrol)

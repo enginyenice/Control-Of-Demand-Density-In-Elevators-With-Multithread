@@ -1,10 +1,13 @@
-﻿namespace ShoppingCenter.Threads.Abstract
+﻿namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Abstract
 {
     public interface ITElevator
     {
         /// <summary>
-        /// Asansörün genel işlevlerinin yerine getirildiği genel metot.
-        /// Alışveriş merkezi içerisinde bulunan müşterilerin taşınmasını sağlar.
+        /// Katlardaki kuyrukları kontrol eder.
+        /// Maksimum kapasiteyi aşmayacak şekilde kuyruktaki müşterilerin talep ettikleri katlarda
+        /// taşınabilmesini sağlar. Bu thread asansör sayısı kadar (5 adet) olmalıdır.
+        /// NOT: Zemin kattan diğer katlara (AVM’ye) giriş yapmak isteyenler,
+        /// ya da diğer katlardan (AVM’den) çıkış yapmak isteyenler kuyruk oluştururlar.
         /// </summary>
         /// <param name="elevator">Asansör nesnesi</param>
         /// <param name="floors">Alışveriş merkezinde bulunan tüm katların bilgilerinin dizi olarak belirtildiği parametre</param>

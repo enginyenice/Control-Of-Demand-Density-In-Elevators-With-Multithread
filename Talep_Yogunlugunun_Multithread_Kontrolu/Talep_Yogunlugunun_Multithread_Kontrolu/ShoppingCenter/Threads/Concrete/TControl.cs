@@ -1,6 +1,6 @@
-﻿using ShoppingCenter.Threads.Abstract;
+﻿using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Abstract;
 
-namespace ShoppingCenter.Threads.Concrete
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concrete
 {
     public class TControl : ITControl
     {

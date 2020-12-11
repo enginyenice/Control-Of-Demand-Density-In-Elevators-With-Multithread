@@ -1,13 +1,14 @@
-﻿using ShoppingCenter.Core;
-using ShoppingCenter.Elevator.Concrete;
-using ShoppingCenter.Floor.Concrete;
-using ShoppingCenter.Threads.Concrete;
+﻿using ShoppingCenter.Threads.Concrete;
 using System;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Core;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Concrete;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concrete;
 
-namespace UI
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
 {
     public partial class ShoppingMallInformationDisplay : Form
     {
@@ -55,6 +56,7 @@ namespace UI
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
         }
+
         private void ScreenThread()
         {
             while (true)
@@ -71,20 +73,21 @@ namespace UI
                         ElevatorInformation(elevators[4]);
                     }
                 }
-               Thread.Sleep(100);
+                Thread.Sleep(100);
             }
         }
+
         private void ElevatorThread(Elevator elevator)
         {
             TElevator tElevator = new TElevator();
             while (true)
             {
                 tElevator.ElevatorThread(elevator, floors, settings.Capacity);
-                
 
                 Thread.Sleep(settings.Ms200);
             }
         }
+
         private void ControlThread()
         {
             TControl tControl = new TControl();
@@ -95,16 +98,18 @@ namespace UI
                     Thread.Sleep(settings.Ms500);
             }
         }
+
         private void ExitThread()
         {
             TExit tExit = new TExit();
             while (true)
             {
                 tExit.ExitThread(floors, settings);
-                
+
                 Thread.Sleep(settings.Ms1000);
             }
         }
+
         private void LoginThread()
         {
             TLogin tLogin = new TLogin();
@@ -114,6 +119,7 @@ namespace UI
                 Thread.Sleep(settings.Ms500);
             }
         }
+
         private void GeneralInformation()
         {
             label88.Text = "Giriş Kuyruğu: " + settings.TotalLoginCount;
@@ -136,13 +142,10 @@ namespace UI
             label80.Text = floors[2].FloorQueueString();
             label82.Text = floors[3].FloorQueueString();
             label83.Text = floors[4].FloorQueueString();
-            
         }
-        private void LabelColor(bool status,int count, Label label)
+
+        private void LabelColor(bool status, int count, Label label)
         {
-
-
-
             if (status == true)
             {
                 label.Text = "Aktif";
@@ -162,71 +165,71 @@ namespace UI
                 label.ForeColor = Color.White;
             }
         }
+
         private void ElevatorInformation(Elevator elevator)
         {
             lock (elevator)
             {
-                
-           
-            string capacity = settings.Capacity.ToString();
-            label34.Text = capacity;
-            label43.Text = capacity;
-            label52.Text = capacity;
-            label61.Text = capacity;
-            label70.Text = capacity;
+                string capacity = settings.Capacity.ToString();
+                label34.Text = capacity;
+                label43.Text = capacity;
+                label52.Text = capacity;
+                label61.Text = capacity;
+                label70.Text = capacity;
 
-            if (elevator.Name == 0)
-            {
-                label28.Text = elevator.Name.ToString();
-                LabelColor(elevator.IsActive, elevator.GetCount(), label30);
-                label31.Text = elevator.Floor.ToString();
-                label32.Text = elevator.Destinational.ToString();
-                label33.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
-                label35.Text = elevator.GetCount().ToString();
-                label27.Text = elevator.FloorCountString();
-            }
-            else if (elevator.Name == 1)
-            {
-                label37.Text = elevator.Name.ToString();
-                LabelColor(elevator.IsActive, elevator.GetCount(), label39);
-                label40.Text = elevator.Floor.ToString();
-                label41.Text = elevator.Destinational.ToString();
-                label42.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
-                label44.Text = elevator.GetCount().ToString();
-                label29.Text = elevator.FloorCountString();
-            }
-            else if (elevator.Name == 2)
-            {
-                label46.Text = elevator.Name.ToString();
-                LabelColor(elevator.IsActive, elevator.GetCount(), label47);
-                label49.Text = elevator.Floor.ToString();
-                label50.Text = elevator.Destinational.ToString();
-                label51.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
-                label53.Text = elevator.GetCount().ToString();
-                label36.Text = elevator.FloorCountString();
-            }
-            else if (elevator.Name == 3)
-            {
-                label55.Text = elevator.Name.ToString();
-                LabelColor(elevator.IsActive, elevator.GetCount(), label48);
-                label58.Text = elevator.Floor.ToString();
-                label59.Text = elevator.Destinational.ToString();
-                label60.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
-                label62.Text = elevator.GetCount().ToString();
-                label38.Text = elevator.FloorCountString();
-            }
-            else
-            {
-                label64.Text = elevator.Name.ToString();
-                LabelColor(elevator.IsActive, elevator.GetCount(), label54);
-                label67.Text = elevator.Floor.ToString();
-                label68.Text = elevator.Destinational.ToString();
-                label69.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
-                label71.Text = elevator.GetCount().ToString();
-                label45.Text = elevator.FloorCountString();
-            }
+                if (elevator.Name == 0)
+                {
+                    label28.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), label30);
+                    label31.Text = elevator.Floor.ToString();
+                    label32.Text = elevator.Destination.ToString();
+                    label33.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    label35.Text = elevator.GetCount().ToString();
+                    label27.Text = elevator.FloorCountString();
+                }
+                else if (elevator.Name == 1)
+                {
+                    label37.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), label39);
+                    label40.Text = elevator.Floor.ToString();
+                    label41.Text = elevator.Destination.ToString();
+                    label42.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    label44.Text = elevator.GetCount().ToString();
+                    label29.Text = elevator.FloorCountString();
+                }
+                else if (elevator.Name == 2)
+                {
+                    label46.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), label47);
+                    label49.Text = elevator.Floor.ToString();
+                    label50.Text = elevator.Destination.ToString();
+                    label51.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    label53.Text = elevator.GetCount().ToString();
+                    label36.Text = elevator.FloorCountString();
+                }
+                else if (elevator.Name == 3)
+                {
+                    label55.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), label48);
+                    label58.Text = elevator.Floor.ToString();
+                    label59.Text = elevator.Destination.ToString();
+                    label60.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    label62.Text = elevator.GetCount().ToString();
+                    label38.Text = elevator.FloorCountString();
+                }
+                else
+                {
+                    label64.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), label54);
+                    label67.Text = elevator.Floor.ToString();
+                    label68.Text = elevator.Destination.ToString();
+                    label69.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    label71.Text = elevator.GetCount().ToString();
+                    label45.Text = elevator.FloorCountString();
+                }
             }
         }
+
         private void ShoppingMallInformationDisplay_FormClosing(object sender, FormClosingEventArgs e)
         {
             loginThread.Abort();
@@ -239,27 +242,29 @@ namespace UI
             elevatorThread4.Abort();
             screenThread.Abort();
         }
-        private void ShoppingMallInformationDisplay_Load(object sender, EventArgs e)
-        {
 
-        }
-        private void button1_Click(object sender, EventArgs e)
+       
+
+        private void StartBtn_Click(object sender, EventArgs e)
         {
-                button1.BackColor = Color.FromArgb(210, 66, 106);
-                button1.Text = "Çalışıyor...";
-                button1.Enabled = false;
-                loginThread.Start();
-                exitThread.Start();
-                controlThread.Start();
-                elevatorThread0.Start();
+            
+            StartBtn.BackColor = Color.FromArgb(210, 66, 106);
+            StartBtn.Text = "Çalışıyor...";
+            StartBtn.Enabled = false;
+            loginThread.Start();
+            exitThread.Start();
+            controlThread.Start();
+            elevatorThread0.Start();
             elevatorThread1.Start();
             elevatorThread2.Start();
             elevatorThread3.Start();
             elevatorThread4.Start();
             screenThread.Start();
+        }
 
+        private void ShoppingMallInformationDisplay_Load(object sender, EventArgs e)
+        {
 
-           
         }
     }
 }

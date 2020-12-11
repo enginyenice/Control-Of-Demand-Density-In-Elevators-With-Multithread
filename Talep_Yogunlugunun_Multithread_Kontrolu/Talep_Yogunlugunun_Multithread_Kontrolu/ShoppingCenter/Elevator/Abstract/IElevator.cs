@@ -1,40 +1,117 @@
-﻿namespace ShoppingCenter.Elevator.Abstract
+﻿namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Abstract
 {
     public interface IElevator
     {
+        /// <summary>
+        /// Asansörün isminin güncellenmesi ve getirilmesi işlemini yapar.
+        /// </summary>
+        /// <returns>
+        /// Asansörün ismi
+        /// </returns>
+        /// <param name="value">
+        /// Asansörün ismi
+        /// </param>
         int Name { get; set; }
-        //Asansörün ismi
 
+        /// <summary>
+        /// Asansörün çalışıp çalışmadığının bilgisinin güncellenmesi ve getirilmesi işlemini yapar.
+        /// </summary>
+        /// <returns>
+        /// True: Asansör aktif. False: Asansör pasif
+        /// </returns>
+        /// <param name="value">
+        /// Asansörün o anlık durumu
+        /// </param>
         bool IsActive { get; set; }
-        //Asansör aktif mi?
 
-        int Destinational { get; set; }
-        //Asansörün bir sonraki kat hedefi
+        /// <summary>
+        /// Asansörün gitmek için hedeflediği katın bilgisinin güncellenmesi ve getirilmesi işlemini yapar.
+        /// </summary>
+        /// <returns>
+        /// 0-> Zemin Kat, 1-2-3-4 Diğer katlar.
+        /// </returns>
+        /// <param name="value">
+        /// Asansörün hedeflediği kat
+        /// </param>
+        int Destination { get; set; }
 
+        /// <summary>
+        /// Asansörün gidece yönü belirtir ve  güncellenmesi ve getirilmesi işlemini yapar.
+        /// </summary>
+        /// <returns>
+        /// True: Yukarı, False: Aşağı
+        /// </returns>
+        /// <param name="value">
+        /// Asansörün gideceği yön: True: Yukarı, False: Aşağı
+        /// </param>
         bool Direction { get; set; }
-        // (Yukarı -> True ) | (Aşağı -> False)
 
+        /// <summary>
+        /// Asansörün bulunduğu katı belirtir ve  güncellenmesi ve getirilmesi işlemini yapar.
+        /// </summary>
+        /// <returns>
+        /// 0-> Zemin Kat, 1-2-3-4 Diğer katlar.
+        /// </returns>
+        /// <param name="value">
+        /// Bulunduğu kat
+        /// </param>
         int Floor { get; set; }
-        // Şuan bulundğu kat
 
+        /// <summary>
+        /// Asansörde bulunan müşteri sayısını günceller.
+        /// </summary>
+        /// <returns>
+        /// void
+        /// </returns>
+        /// <param name="floor">
+        /// Gidilecek kat
+        /// </param>
+        /// <param name="count">
+        /// Gidecek müşteri sayısı
+        /// </param>
         void SetFloorCount(int floor, int count);
 
-        //Asansörde bulunan müşteri sayısını güncelle
-
+        /// <summary>
+        /// Asansörde bulunan müşterileri belirli bir formatta string olarak geri döndürür
+        /// </summary>
+        /// <returns>
+        /// [Gidilecek kat, Gidecek müşteri sayısı] ->[0,2] [1,2] [2,0] [3,0] [4,0]
+        /// </returns>
         string FloorCountString();
 
-        //Asansör içerisinde bulunan müşterilerin metin olarak dönüştürülmüş hali
-
+        /// <summary>
+        /// Parametre olarak gönderilen katta inecek kişi sayısını geriye döndürür.
+        /// </summary>
+        /// <returns>
+        /// İnecek kişi sayısı
+        /// </returns>
+        /// <param name="floor">
+        /// Hangi katta inilecek müşteri sayısı getirilsin.
+        /// </param>
         int GetFloorCount(int floor);
 
-        //Parametre olarak gelen katta inecek müşteri sayısı
-
+        /// <summary>
+        /// Asansörde bulunan tüm müşterileri temizle.
+        /// </summary>
+        /// <returns>
+        /// void
+        /// </returns>
         void FloorCountClear();
 
-        //Katlardaki müşteri sayısını sıfırla
-
+        /// <summary>
+        /// Asansör içerisinde kaç adet müşteri olduğunu döndürür.
+        /// </summary>
+        /// <returns>
+        /// Asansör içerisinde bulunan müşteri sayısı
+        /// </returns>
         int GetCount();
 
-        //Asansör içerisinde bulunan müşteri sayısı
+        /// <summary>
+        /// Bulunduğu kata en yakın hedefi belirler.
+        /// </summary>
+        /// <returns>
+        /// Hedeflenen kat
+        /// </returns>
+        int GetFirstDestination();
     }
 }
