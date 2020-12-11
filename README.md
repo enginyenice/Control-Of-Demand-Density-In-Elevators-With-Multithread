@@ -5,8 +5,8 @@ Talep_Yogunlugunun_Multithread_Kontrolu
 ├── UI/
 │   └── ShoppingMallInformationDisplay.cs
 └── ShoppingCenter/
-	├── Core
-	│	├── Settings.cs
+	├── Core/
+	│	└── Settings.cs
 	├── Elevator/
 	│	├── Abstract/
 	│	│	└── IElevator.cs
