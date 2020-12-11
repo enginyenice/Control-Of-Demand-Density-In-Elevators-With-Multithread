@@ -122,26 +122,26 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
 
         private void GeneralInformation()
         {
-            label88.Text = "Giriş Kuyruğu: " + settings.TotalLoginCount;
-            label89.Text = "Çıkış Kuyruğu: " + settings.TotalExitCount;
+            LoginThreadCount.Text = "Giriş Kuyruğu: " + settings.TotalLoginCount;
+            ExitThreadCount.Text = "Çıkış Kuyruğu: " + settings.TotalExitCount;
             label90.Text = "Giriş - Çıkış: " + (settings.TotalLoginCount - settings.TotalExitCount);
-            label6.Text = (floors[0].FloorCount + floors[0].QueueCount).ToString();
-            label7.Text = (floors[1].FloorCount + floors[1].QueueCount).ToString();
-            label8.Text = (floors[2].FloorCount + floors[2].QueueCount).ToString();
-            label9.Text = (floors[3].FloorCount + floors[3].QueueCount).ToString();
-            label10.Text = (floors[4].FloorCount + floors[4].QueueCount).ToString();
+            tbl1KisiSayisiZemin.Text = (floors[0].FloorCount + floors[0].QueueCount).ToString();
+            tbl1KisiSayisiBir.Text = (floors[1].FloorCount + floors[1].QueueCount).ToString();
+            tbl1KisiSayisiIki.Text = (floors[2].FloorCount + floors[2].QueueCount).ToString();
+            tbl1KisiSayisiUc.Text = (floors[3].FloorCount + floors[3].QueueCount).ToString();
+            tbl1KisiSayisiDort.Text = (floors[4].FloorCount + floors[4].QueueCount).ToString();
 
-            label11.Text = floors[0].QueueCount.ToString();
-            label12.Text = floors[1].QueueCount.ToString();
-            label13.Text = floors[2].QueueCount.ToString();
-            label14.Text = floors[3].QueueCount.ToString();
-            label15.Text = floors[4].QueueCount.ToString();
+            tbl1KuyrukZemin.Text = floors[0].QueueCount.ToString();
+            tbl1KuyrukBir.Text = floors[1].QueueCount.ToString();
+            tbl1KuyrukIki.Text = floors[2].QueueCount.ToString();
+            tbl1KuyrukUc.Text = floors[3].QueueCount.ToString();
+            tbl1KuyrukDort.Text = floors[4].QueueCount.ToString();
 
-            label76.Text = floors[0].FloorQueueString();
-            label78.Text = floors[1].FloorQueueString();
-            label80.Text = floors[2].FloorQueueString();
-            label82.Text = floors[3].FloorQueueString();
-            label83.Text = floors[4].FloorQueueString();
+            tbl2KuyrukZemin.Text = floors[0].FloorQueueString();
+            tbl2KuyrukBir.Text = floors[1].FloorQueueString();
+            tbl2KuyrukIki.Text = floors[2].FloorQueueString();
+            tbl2KuyrukUc.Text = floors[3].FloorQueueString();
+            tbl2KuyrukDort.Text = floors[4].FloorQueueString();
         }
 
         private void LabelColor(bool status, int count, Label label)
@@ -171,61 +171,61 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             lock (elevator)
             {
                 string capacity = settings.Capacity.ToString();
-                label34.Text = capacity;
-                label43.Text = capacity;
-                label52.Text = capacity;
-                label61.Text = capacity;
-                label70.Text = capacity;
+                tbl3KapasiteSifir.Text = capacity;
+                tbl3KapasiteBir.Text = capacity;
+                tbl3KapasiteIki.Text = capacity;
+                tbl3KapasiteUc.Text = capacity;
+                tbl3KapasiteDort.Text = capacity;
 
                 if (elevator.Name == 0)
                 {
-                    label28.Text = elevator.Name.ToString();
-                    LabelColor(elevator.IsActive, elevator.GetCount(), label30);
-                    label31.Text = elevator.Floor.ToString();
-                    label32.Text = elevator.Destination.ToString();
-                    label33.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
-                    label35.Text = elevator.GetCount().ToString();
-                    label27.Text = elevator.FloorCountString();
+                    tbl3AsansorSifir.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), tbl3ModSifir);
+                    tbl3KatSifir.Text = elevator.Floor.ToString();
+                    tbl3HedefSifir.Text = elevator.Destination.ToString();
+                    tbl3YonSifir.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    tbl3AnlikSifir.Text = elevator.GetCount().ToString();
+                    tbl3KuyrukSifir.Text = elevator.FloorCountString();
                 }
                 else if (elevator.Name == 1)
                 {
-                    label37.Text = elevator.Name.ToString();
-                    LabelColor(elevator.IsActive, elevator.GetCount(), label39);
-                    label40.Text = elevator.Floor.ToString();
-                    label41.Text = elevator.Destination.ToString();
-                    label42.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
-                    label44.Text = elevator.GetCount().ToString();
-                    label29.Text = elevator.FloorCountString();
+                    tbl3AsansorBir.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), tbl3ModBir);
+                    tbl3KatBir.Text = elevator.Floor.ToString();
+                    tbl3HedefBir.Text = elevator.Destination.ToString();
+                    tbl3YonBir.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    tbl3AnlikBir.Text = elevator.GetCount().ToString();
+                    tbl3KuyrukBir.Text = elevator.FloorCountString();
                 }
                 else if (elevator.Name == 2)
                 {
-                    label46.Text = elevator.Name.ToString();
-                    LabelColor(elevator.IsActive, elevator.GetCount(), label47);
-                    label49.Text = elevator.Floor.ToString();
-                    label50.Text = elevator.Destination.ToString();
-                    label51.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
-                    label53.Text = elevator.GetCount().ToString();
-                    label36.Text = elevator.FloorCountString();
+                    tbl3AsansorIki.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), tbl3ModIki);
+                    tbl3KatIki.Text = elevator.Floor.ToString();
+                    tbl3HedefIki.Text = elevator.Destination.ToString();
+                    tbl3YonIki.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    tbl3AnlikIki.Text = elevator.GetCount().ToString();
+                    tbl3KuyrukIki.Text = elevator.FloorCountString();
                 }
                 else if (elevator.Name == 3)
                 {
-                    label55.Text = elevator.Name.ToString();
-                    LabelColor(elevator.IsActive, elevator.GetCount(), label48);
-                    label58.Text = elevator.Floor.ToString();
-                    label59.Text = elevator.Destination.ToString();
-                    label60.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
-                    label62.Text = elevator.GetCount().ToString();
-                    label38.Text = elevator.FloorCountString();
+                    tbl3AsansorUc.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), tbl3ModUc);
+                    tbl3KatUc.Text = elevator.Floor.ToString();
+                    tbl3HedefUc.Text = elevator.Destination.ToString();
+                    tbl3YonUc.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    tbl3AnlikUc.Text = elevator.GetCount().ToString();
+                    tbl3KuyrukUc.Text = elevator.FloorCountString();
                 }
                 else
                 {
-                    label64.Text = elevator.Name.ToString();
-                    LabelColor(elevator.IsActive, elevator.GetCount(), label54);
-                    label67.Text = elevator.Floor.ToString();
-                    label68.Text = elevator.Destination.ToString();
-                    label69.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
-                    label71.Text = elevator.GetCount().ToString();
-                    label45.Text = elevator.FloorCountString();
+                    tbl3AsansorDort.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), tbl3ModDort);
+                    tbl3KatDort.Text = elevator.Floor.ToString();
+                    tbl3HedefDort.Text = elevator.Destination.ToString();
+                    tbl3YonDort.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    tbl3AnlikDort.Text = elevator.GetCount().ToString();
+                    tbl3KuyrukDort.Text = elevator.FloorCountString();
                 }
             }
         }
