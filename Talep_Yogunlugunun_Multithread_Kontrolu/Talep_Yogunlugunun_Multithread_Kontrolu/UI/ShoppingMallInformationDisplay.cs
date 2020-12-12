@@ -54,6 +54,10 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             elevators[0].IsActive = true; // 1. Asansör aktif edildi.
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
+            CapacityLbl.Text = "Maksimum Asansör Kapasitesi: " + settings.Capacity.ToString();
+            ElevatorSpeedLbl.Text = "Asansör Thread Hızı: " + settings.ElevatorSpeed.ToString() + "ms";
+            LoginThreadSpeedLbl.Text = "Login Thread Hızı: " + settings.LoginSpeed.ToString() + "ms";
+            LoginThreadSpeedLbl.Text = "Exit Thread Hızı: " + settings.ExitSpeed.ToString() + "ms";
         }
 
         private void ScreenThread()
@@ -76,7 +80,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             {
                 tElevator.ElevatorThread(elevator, floors, settings.Capacity, settings);
 
-                Thread.Sleep(settings.Ms200);
+                Thread.Sleep(settings.ElevatorSpeed);
             }
         }
 
@@ -87,7 +91,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             {
                 bool sleep = tControl.ControlThread(floors, elevators, settings.Capacity);
                 if (sleep)
-                    Thread.Sleep(settings.Ms500);
+                    Thread.Sleep(settings.ElevatorSpeed);
             }
         }
 
@@ -98,7 +102,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             {
                 tExit.ExitThread(floors, settings);
 
-                Thread.Sleep(settings.Ms1000);
+                Thread.Sleep(settings.ExitSpeed);
             }
         }
 
@@ -108,7 +112,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             while (true)
             {
                 tLogin.LoginThread(floors, settings);
-                Thread.Sleep(settings.Ms500);
+                Thread.Sleep(settings.LoginSpeed);
             }
         }
 
@@ -163,13 +167,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
         {
             lock (elevator)
             {
-                string capacity = settings.Capacity.ToString();
-                tbl3KapasiteSifir.Text = capacity;
-                tbl3KapasiteBir.Text = capacity;
-                tbl3KapasiteIki.Text = capacity;
-                tbl3KapasiteUc.Text = capacity;
-                tbl3KapasiteDort.Text = capacity;
-
+                
                 if (elevator.Name == 0)
                 {
                     tbl3AsansorSifir.Text = elevator.Name.ToString();

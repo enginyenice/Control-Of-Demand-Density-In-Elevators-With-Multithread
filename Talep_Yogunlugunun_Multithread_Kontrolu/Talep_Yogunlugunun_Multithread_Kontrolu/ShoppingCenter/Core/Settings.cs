@@ -14,28 +14,28 @@
         public int Capacity { get; }
 
         /// <summary>
-        /// 200ms degerini tutar
+        /// Asansör(Elevator) thread hızını belirler.
         /// </summary>
         /// <returns>
         /// Varsayılan: 200
         /// </returns>
-        public int Ms200 { get; }
+        public int ElevatorSpeed { get; }
 
         /// <summary>
-        /// 500ms degerini tutar
+        /// Giriş(Login) threadının hızını belirler.
         /// </summary>
         /// <returns>
         /// Varsayılan: 500
         /// </returns>
-        public int Ms500 { get; }
+        public int LoginSpeed { get; }
 
         /// <summary>
-        /// 1000ms degerini tutar
+        /// Çıkış(Exit) threadının hızını belirler.
         /// </summary>
         /// <returns>
         /// Varsayılan: 1000
         /// </returns>
-        public int Ms1000 { get; }
+        public int ExitSpeed { get; }
 
         private int totalLoginCount;
         private int totalExitCount;
@@ -94,9 +94,9 @@
             totalLoginCount = 0;
             totalExitCount = 0;
             Capacity = 10;
-            Ms200 = 200 * 1;
-            Ms500 = 500 * 1;
-            Ms1000 = 1000 * 1;
+            ElevatorSpeed = 200 * 1;
+            LoginSpeed = 500 * 1;
+            ExitSpeed = 1000 * 1;
         }
     }
 }
