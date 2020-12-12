@@ -1,92 +1,90 @@
 ﻿using System;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Core;
 using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Abstract;
 
 namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concrete
 {
     public class TElevator : ITElevator
     {
-        public void ElevatorThread(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, int capacity)
+        public void ElevatorThread(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, int capacity, Settings settings)
         {
-            if (elevator.Floor == 0 && elevator.Direction == false)
-            {
-                elevator.Direction = true;
-                PassengerLowering(elevator, floors);
-            } // Yolcuları indir ve yönü değiştir.
 
-            if (elevator.Floor == 0 && elevator.Direction == true)
-            {
-                PassengerBoarding(elevator, floors, capacity);
-                elevator.Destination =
-                    (elevator.GetFirstDestination() == -1) ? 0 : elevator.GetFirstDestination();
-            } // Zemin katta bulunan yolduları asansöre bindir. Ve bir hedef belirlet.
 
-            if (elevator.Floor == 4 && elevator.Direction == true)
+
+
+            lock (elevator)
             {
-                PassengerLowering(elevator, floors);
-                PassengerBoarding(elevator, floors, capacity);
-                elevator.Direction = false;
-                elevator.Destination = CheckButtomFloor(floors, 4);
-            }
-            if (elevator.Floor > 0 && elevator.Floor < 4 && elevator.Direction == true)
-            {
-                if (elevator.Floor == elevator.Destination)
-                { // Başka hedef belirle
-                    if (elevator.GetFirstDestination() == -1)
-                    {
-                        if (CheckTopFloor(floors, elevator.Floor) == -1)
-                        {
-                            elevator.Direction = false;
-                        }
-                        else
-                        {
-                            elevator.Destination = CheckTopFloor(floors, elevator.Floor);
-                        }
-                    }
-                    else
-                    {
-                        elevator.Destination = elevator.GetFirstDestination();
-                    }
-                    //Yolcuları indir
-                    PassengerLowering(elevator, floors);
+                if (elevator.IsActive)
+                {
+
+                    PassengerLowering(elevator, floors, settings);
+                    PassengerBoarding(elevator, floors, capacity);
                 }
 
-                if (elevator.Floor > elevator.Destination)
+                else if (elevator.IsActive == false && elevator.GetCount() > 0)
                 {
+                    PassengerLowering(elevator, floors, settings);
+                }
+
+            }
+
+
+            lock (elevator)
+            {
+                if (elevator.Destination == elevator.Floor)
+                {
+
+
+                    if (elevator.GetFirstDestination() != -1) elevator.Destination = elevator.GetFirstDestination();
+
+
+                    else if (CheckTopFloor(floors, elevator.Floor) > 0 && elevator.Direction == true)
+                        elevator.Destination = CheckTopFloor(floors, elevator.Floor);
+                    else if (CheckButtomFloor(floors, elevator.Floor) > 0 && elevator.Direction == false)
+                        elevator.Destination = CheckButtomFloor(floors, elevator.Floor);
+                    else elevator.Destination = 0;
+
+                    if (elevator.Floor < elevator.Destination) elevator.Direction = true;
+                    else elevator.Direction = false;
+                }
+
+            }
+
+            lock (elevator)
+            {
+                
+            
+            if (elevator.GetCount() > 0 || elevator.IsActive == true)
+                    FloorChange(elevator);
+            }
+
+
+        }
+
+        private void FloorChange(Elevator.Concrete.Elevator elevator)
+        {
+            lock (elevator)
+            {
+
+                if (elevator.Direction == true)
+                {
+                    elevator.Floor++;
+                }
+
+                if (elevator.Direction == false)
+                {
+                    elevator.Floor--;
+                }
+
+                if (elevator.Floor < 0)
+                {
+                    elevator.Floor = 0;
                     elevator.Direction = false;
                 }
             }
-            if (elevator.Floor > 0 && elevator.Floor < 4 && elevator.Direction == false)
-            {
-                PassengerBoarding(elevator, floors, capacity); // Yolcuları al
-                elevator.Destination = CheckButtomFloor(floors, elevator.Floor); // Yeni hedef belirle
-            }
-
-            if (elevator.GetCount() > 0 || elevator.IsActive == true)
-                FloorChange(elevator);
-
-            //    /////////////////////////////////////////////
-            //// Asansörden yolcu indirme işlemi
-            //PassengerLowering(elevator, floors);
-            //// Asansöre yolcu bindirme İşlemi
-            //PassengerBoarding(elevator, floors, capacity);
-            //// Asansör kat değiştirme işlemi
-            //FloorChange(elevator);
         }
 
-        private void FloorChange(global::Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Concrete.Elevator elevator)
-        {
-            if (elevator.Direction == true)
-            {
-                elevator.Floor++;
-            }
-
-            if (elevator.Direction == false)
-            {
-                elevator.Floor--;
-            }
-        }
-
-        private int CheckTopFloor(global::Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete.Floor[] floors, int maxDestinationalFloor)
+        private int CheckTopFloor(Floor.Concrete.Floor[] floors, int maxDestinationalFloor)
         {
             int isThere = -1; // Üst katta müşteri var mı
             for (int i = maxDestinationalFloor; i < floors.Length; i++)
@@ -101,9 +99,9 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concret
             return isThere;
         }
 
-        private int CheckButtomFloor(global::Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete.Floor[] floors, int elevatorFloor)
+        private int CheckButtomFloor(Floor.Concrete.Floor[] floors, int elevatorFloor)
         {
-            int isThere = 0; // Alt katta müşteri var mı
+            int isThere = -1; // Alt katta müşteri var mı
             for (int i = elevatorFloor; i > 0; i--)
             {
                 if (floors[i].QueueCount > 0)
@@ -116,7 +114,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concret
             return isThere;
         }
 
-        private void PassengerLowering(global::Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Concrete.Elevator elevator, global::Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete.Floor[] floors)
+        private void PassengerLowering(Elevator.Concrete.Elevator elevator,Floor.Concrete.Floor[] floors,Settings settings)
         {
             if (elevator.GetCount() > 0)
                 //İndirme işlemi
@@ -126,18 +124,18 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concret
                         floors[elevator.Floor].FloorCount = floors[elevator.Floor].FloorCount +
                                                             elevator.GetFloorCount(elevator
                                                                 .Floor); // Kat Müşteri Arttır.
+                    if (elevator.Floor == 0)
+                    {
+                        settings.TotalLogoutCount = elevator.GetFloorCount(elevator.Floor);
+                    }
+
 
                     elevator.SetFloorCount(elevator.Floor,
                         -1 * elevator.GetFloorCount(elevator.Floor)); // Asansör Azaldı
-
-                    if (elevator.IsActive == false && elevator.GetCount() == 0)
-                    {
-                        elevator.FloorCountClear();
-                    }
                 }
         }
 
-        private void PassengerBoarding(global::Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Concrete.Elevator elevator, global::Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete.Floor[] floors, int capacity)
+        private void PassengerBoarding(Elevator.Concrete.Elevator elevator, global::Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete.Floor[] floors, int capacity)
         {
             if (elevator.IsActive)
             {

@@ -124,6 +124,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label63 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
             this.label90 = new System.Windows.Forms.Label();
+            this.LogoutThreadCount = new System.Windows.Forms.Label();
             tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             tableLayoutPanel2.SuspendLayout();
@@ -143,7 +144,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 326F));
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 328F));
             tableLayoutPanel2.Controls.Add(this.tbl3ModUc, 1, 4);
             tableLayoutPanel2.Controls.Add(this.tbl3ModDort, 1, 5);
             tableLayoutPanel2.Controls.Add(this.tbl3KuyrukDort, 7, 5);
@@ -231,7 +232,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KuyrukDort
             // 
             this.tbl3KuyrukDort.AutoSize = true;
-            this.tbl3KuyrukDort.Location = new System.Drawing.Point(689, 103);
+            this.tbl3KuyrukDort.Location = new System.Drawing.Point(687, 103);
             this.tbl3KuyrukDort.Name = "tbl3KuyrukDort";
             this.tbl3KuyrukDort.Size = new System.Drawing.Size(24, 16);
             this.tbl3KuyrukDort.TabIndex = 56;
@@ -240,7 +241,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KuyrukUc
             // 
             this.tbl3KuyrukUc.AutoSize = true;
-            this.tbl3KuyrukUc.Location = new System.Drawing.Point(689, 82);
+            this.tbl3KuyrukUc.Location = new System.Drawing.Point(687, 82);
             this.tbl3KuyrukUc.Name = "tbl3KuyrukUc";
             this.tbl3KuyrukUc.Size = new System.Drawing.Size(24, 16);
             this.tbl3KuyrukUc.TabIndex = 55;
@@ -260,7 +261,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KuyrukIki
             // 
             this.tbl3KuyrukIki.AutoSize = true;
-            this.tbl3KuyrukIki.Location = new System.Drawing.Point(689, 61);
+            this.tbl3KuyrukIki.Location = new System.Drawing.Point(687, 61);
             this.tbl3KuyrukIki.Name = "tbl3KuyrukIki";
             this.tbl3KuyrukIki.Size = new System.Drawing.Size(24, 16);
             this.tbl3KuyrukIki.TabIndex = 54;
@@ -269,7 +270,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KuyrukBir
             // 
             this.tbl3KuyrukBir.AutoSize = true;
-            this.tbl3KuyrukBir.Location = new System.Drawing.Point(689, 40);
+            this.tbl3KuyrukBir.Location = new System.Drawing.Point(687, 40);
             this.tbl3KuyrukBir.Name = "tbl3KuyrukBir";
             this.tbl3KuyrukBir.Size = new System.Drawing.Size(24, 16);
             this.tbl3KuyrukBir.TabIndex = 53;
@@ -278,7 +279,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KuyrukSifir
             // 
             this.tbl3KuyrukSifir.AutoSize = true;
-            this.tbl3KuyrukSifir.Location = new System.Drawing.Point(689, 22);
+            this.tbl3KuyrukSifir.Location = new System.Drawing.Point(687, 22);
             this.tbl3KuyrukSifir.Name = "tbl3KuyrukSifir";
             this.tbl3KuyrukSifir.Size = new System.Drawing.Size(24, 16);
             this.tbl3KuyrukSifir.TabIndex = 52;
@@ -287,7 +288,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KUYRUK
             // 
             this.tbl3KUYRUK.AutoSize = true;
-            this.tbl3KUYRUK.Location = new System.Drawing.Point(689, 1);
+            this.tbl3KUYRUK.Location = new System.Drawing.Point(687, 1);
             this.tbl3KUYRUK.Name = "tbl3KUYRUK";
             this.tbl3KUYRUK.Size = new System.Drawing.Size(213, 16);
             this.tbl3KUYRUK.TabIndex = 8;
@@ -381,7 +382,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KatDort
             // 
             this.tbl3KatDort.AutoSize = true;
-            this.tbl3KatDort.Location = new System.Drawing.Point(251, 103);
+            this.tbl3KatDort.Location = new System.Drawing.Point(249, 103);
             this.tbl3KatDort.Name = "tbl3KatDort";
             this.tbl3KatDort.Size = new System.Drawing.Size(24, 16);
             this.tbl3KatDort.TabIndex = 47;
@@ -390,7 +391,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KatUc
             // 
             this.tbl3KatUc.AutoSize = true;
-            this.tbl3KatUc.Location = new System.Drawing.Point(251, 82);
+            this.tbl3KatUc.Location = new System.Drawing.Point(249, 82);
             this.tbl3KatUc.Name = "tbl3KatUc";
             this.tbl3KatUc.Size = new System.Drawing.Size(24, 16);
             this.tbl3KatUc.TabIndex = 38;
@@ -399,7 +400,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3HedefDort
             // 
             this.tbl3HedefDort.AutoSize = true;
-            this.tbl3HedefDort.Location = new System.Drawing.Point(335, 103);
+            this.tbl3HedefDort.Location = new System.Drawing.Point(333, 103);
             this.tbl3HedefDort.Name = "tbl3HedefDort";
             this.tbl3HedefDort.Size = new System.Drawing.Size(24, 16);
             this.tbl3HedefDort.TabIndex = 48;
@@ -408,7 +409,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3HedefUc
             // 
             this.tbl3HedefUc.AutoSize = true;
-            this.tbl3HedefUc.Location = new System.Drawing.Point(335, 82);
+            this.tbl3HedefUc.Location = new System.Drawing.Point(333, 82);
             this.tbl3HedefUc.Name = "tbl3HedefUc";
             this.tbl3HedefUc.Size = new System.Drawing.Size(24, 16);
             this.tbl3HedefUc.TabIndex = 39;
@@ -417,7 +418,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3YonDort
             // 
             this.tbl3YonDort.AutoSize = true;
-            this.tbl3YonDort.Location = new System.Drawing.Point(406, 103);
+            this.tbl3YonDort.Location = new System.Drawing.Point(404, 103);
             this.tbl3YonDort.Name = "tbl3YonDort";
             this.tbl3YonDort.Size = new System.Drawing.Size(24, 16);
             this.tbl3YonDort.TabIndex = 49;
@@ -426,7 +427,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3YonUc
             // 
             this.tbl3YonUc.AutoSize = true;
-            this.tbl3YonUc.Location = new System.Drawing.Point(406, 82);
+            this.tbl3YonUc.Location = new System.Drawing.Point(404, 82);
             this.tbl3YonUc.Name = "tbl3YonUc";
             this.tbl3YonUc.Size = new System.Drawing.Size(24, 16);
             this.tbl3YonUc.TabIndex = 40;
@@ -435,7 +436,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KapasiteDort
             // 
             this.tbl3KapasiteDort.AutoSize = true;
-            this.tbl3KapasiteDort.Location = new System.Drawing.Point(477, 103);
+            this.tbl3KapasiteDort.Location = new System.Drawing.Point(475, 103);
             this.tbl3KapasiteDort.Name = "tbl3KapasiteDort";
             this.tbl3KapasiteDort.Size = new System.Drawing.Size(24, 16);
             this.tbl3KapasiteDort.TabIndex = 50;
@@ -444,7 +445,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KapasiteUc
             // 
             this.tbl3KapasiteUc.AutoSize = true;
-            this.tbl3KapasiteUc.Location = new System.Drawing.Point(477, 82);
+            this.tbl3KapasiteUc.Location = new System.Drawing.Point(475, 82);
             this.tbl3KapasiteUc.Name = "tbl3KapasiteUc";
             this.tbl3KapasiteUc.Size = new System.Drawing.Size(24, 16);
             this.tbl3KapasiteUc.TabIndex = 41;
@@ -453,7 +454,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3AnlikDort
             // 
             this.tbl3AnlikDort.AutoSize = true;
-            this.tbl3AnlikDort.Location = new System.Drawing.Point(563, 103);
+            this.tbl3AnlikDort.Location = new System.Drawing.Point(561, 103);
             this.tbl3AnlikDort.Name = "tbl3AnlikDort";
             this.tbl3AnlikDort.Size = new System.Drawing.Size(24, 16);
             this.tbl3AnlikDort.TabIndex = 51;
@@ -462,7 +463,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3AnlikUc
             // 
             this.tbl3AnlikUc.AutoSize = true;
-            this.tbl3AnlikUc.Location = new System.Drawing.Point(563, 82);
+            this.tbl3AnlikUc.Location = new System.Drawing.Point(561, 82);
             this.tbl3AnlikUc.Name = "tbl3AnlikUc";
             this.tbl3AnlikUc.Size = new System.Drawing.Size(24, 16);
             this.tbl3AnlikUc.TabIndex = 42;
@@ -471,7 +472,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KAT
             // 
             this.tbl3KAT.AutoSize = true;
-            this.tbl3KAT.Location = new System.Drawing.Point(251, 1);
+            this.tbl3KAT.Location = new System.Drawing.Point(249, 1);
             this.tbl3KAT.Name = "tbl3KAT";
             this.tbl3KAT.Size = new System.Drawing.Size(34, 16);
             this.tbl3KAT.TabIndex = 3;
@@ -480,7 +481,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KatSifir
             // 
             this.tbl3KatSifir.AutoSize = true;
-            this.tbl3KatSifir.Location = new System.Drawing.Point(251, 22);
+            this.tbl3KatSifir.Location = new System.Drawing.Point(249, 22);
             this.tbl3KatSifir.Name = "tbl3KatSifir";
             this.tbl3KatSifir.Size = new System.Drawing.Size(24, 16);
             this.tbl3KatSifir.TabIndex = 11;
@@ -489,7 +490,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KatBir
             // 
             this.tbl3KatBir.AutoSize = true;
-            this.tbl3KatBir.Location = new System.Drawing.Point(251, 40);
+            this.tbl3KatBir.Location = new System.Drawing.Point(249, 40);
             this.tbl3KatBir.Name = "tbl3KatBir";
             this.tbl3KatBir.Size = new System.Drawing.Size(24, 16);
             this.tbl3KatBir.TabIndex = 20;
@@ -498,7 +499,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KatIki
             // 
             this.tbl3KatIki.AutoSize = true;
-            this.tbl3KatIki.Location = new System.Drawing.Point(251, 61);
+            this.tbl3KatIki.Location = new System.Drawing.Point(249, 61);
             this.tbl3KatIki.Name = "tbl3KatIki";
             this.tbl3KatIki.Size = new System.Drawing.Size(24, 16);
             this.tbl3KatIki.TabIndex = 29;
@@ -507,7 +508,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3HedefIki
             // 
             this.tbl3HedefIki.AutoSize = true;
-            this.tbl3HedefIki.Location = new System.Drawing.Point(335, 61);
+            this.tbl3HedefIki.Location = new System.Drawing.Point(333, 61);
             this.tbl3HedefIki.Name = "tbl3HedefIki";
             this.tbl3HedefIki.Size = new System.Drawing.Size(24, 16);
             this.tbl3HedefIki.TabIndex = 30;
@@ -516,7 +517,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3HedefBir
             // 
             this.tbl3HedefBir.AutoSize = true;
-            this.tbl3HedefBir.Location = new System.Drawing.Point(335, 40);
+            this.tbl3HedefBir.Location = new System.Drawing.Point(333, 40);
             this.tbl3HedefBir.Name = "tbl3HedefBir";
             this.tbl3HedefBir.Size = new System.Drawing.Size(24, 16);
             this.tbl3HedefBir.TabIndex = 21;
@@ -525,7 +526,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3HedefSifir
             // 
             this.tbl3HedefSifir.AutoSize = true;
-            this.tbl3HedefSifir.Location = new System.Drawing.Point(335, 22);
+            this.tbl3HedefSifir.Location = new System.Drawing.Point(333, 22);
             this.tbl3HedefSifir.Name = "tbl3HedefSifir";
             this.tbl3HedefSifir.Size = new System.Drawing.Size(24, 16);
             this.tbl3HedefSifir.TabIndex = 12;
@@ -534,7 +535,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3HEDEF
             // 
             this.tbl3HEDEF.AutoSize = true;
-            this.tbl3HEDEF.Location = new System.Drawing.Point(335, 1);
+            this.tbl3HEDEF.Location = new System.Drawing.Point(333, 1);
             this.tbl3HEDEF.Name = "tbl3HEDEF";
             this.tbl3HEDEF.Size = new System.Drawing.Size(54, 16);
             this.tbl3HEDEF.TabIndex = 4;
@@ -543,7 +544,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3YON
             // 
             this.tbl3YON.AutoSize = true;
-            this.tbl3YON.Location = new System.Drawing.Point(406, 1);
+            this.tbl3YON.Location = new System.Drawing.Point(404, 1);
             this.tbl3YON.Name = "tbl3YON";
             this.tbl3YON.Size = new System.Drawing.Size(37, 16);
             this.tbl3YON.TabIndex = 5;
@@ -552,7 +553,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3YonSifir
             // 
             this.tbl3YonSifir.AutoSize = true;
-            this.tbl3YonSifir.Location = new System.Drawing.Point(406, 22);
+            this.tbl3YonSifir.Location = new System.Drawing.Point(404, 22);
             this.tbl3YonSifir.Name = "tbl3YonSifir";
             this.tbl3YonSifir.Size = new System.Drawing.Size(24, 16);
             this.tbl3YonSifir.TabIndex = 13;
@@ -561,7 +562,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3YonBir
             // 
             this.tbl3YonBir.AutoSize = true;
-            this.tbl3YonBir.Location = new System.Drawing.Point(406, 40);
+            this.tbl3YonBir.Location = new System.Drawing.Point(404, 40);
             this.tbl3YonBir.Name = "tbl3YonBir";
             this.tbl3YonBir.Size = new System.Drawing.Size(24, 16);
             this.tbl3YonBir.TabIndex = 22;
@@ -570,7 +571,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3YonIki
             // 
             this.tbl3YonIki.AutoSize = true;
-            this.tbl3YonIki.Location = new System.Drawing.Point(406, 61);
+            this.tbl3YonIki.Location = new System.Drawing.Point(404, 61);
             this.tbl3YonIki.Name = "tbl3YonIki";
             this.tbl3YonIki.Size = new System.Drawing.Size(24, 16);
             this.tbl3YonIki.TabIndex = 31;
@@ -579,7 +580,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KapasiteIki
             // 
             this.tbl3KapasiteIki.AutoSize = true;
-            this.tbl3KapasiteIki.Location = new System.Drawing.Point(477, 61);
+            this.tbl3KapasiteIki.Location = new System.Drawing.Point(475, 61);
             this.tbl3KapasiteIki.Name = "tbl3KapasiteIki";
             this.tbl3KapasiteIki.Size = new System.Drawing.Size(24, 16);
             this.tbl3KapasiteIki.TabIndex = 32;
@@ -588,7 +589,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KapasiteBir
             // 
             this.tbl3KapasiteBir.AutoSize = true;
-            this.tbl3KapasiteBir.Location = new System.Drawing.Point(477, 40);
+            this.tbl3KapasiteBir.Location = new System.Drawing.Point(475, 40);
             this.tbl3KapasiteBir.Name = "tbl3KapasiteBir";
             this.tbl3KapasiteBir.Size = new System.Drawing.Size(24, 16);
             this.tbl3KapasiteBir.TabIndex = 23;
@@ -597,7 +598,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KapasiteSifir
             // 
             this.tbl3KapasiteSifir.AutoSize = true;
-            this.tbl3KapasiteSifir.Location = new System.Drawing.Point(477, 22);
+            this.tbl3KapasiteSifir.Location = new System.Drawing.Point(475, 22);
             this.tbl3KapasiteSifir.Name = "tbl3KapasiteSifir";
             this.tbl3KapasiteSifir.Size = new System.Drawing.Size(24, 16);
             this.tbl3KapasiteSifir.TabIndex = 14;
@@ -606,7 +607,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3KAPASITE
             // 
             this.tbl3KAPASITE.AutoSize = true;
-            this.tbl3KAPASITE.Location = new System.Drawing.Point(477, 1);
+            this.tbl3KAPASITE.Location = new System.Drawing.Point(475, 1);
             this.tbl3KAPASITE.Name = "tbl3KAPASITE";
             this.tbl3KAPASITE.Size = new System.Drawing.Size(73, 16);
             this.tbl3KAPASITE.TabIndex = 6;
@@ -615,7 +616,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3ANLIK
             // 
             this.tbl3ANLIK.AutoSize = true;
-            this.tbl3ANLIK.Location = new System.Drawing.Point(563, 1);
+            this.tbl3ANLIK.Location = new System.Drawing.Point(561, 1);
             this.tbl3ANLIK.Name = "tbl3ANLIK";
             this.tbl3ANLIK.Size = new System.Drawing.Size(116, 16);
             this.tbl3ANLIK.TabIndex = 7;
@@ -624,7 +625,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3AnlikSifir
             // 
             this.tbl3AnlikSifir.AutoSize = true;
-            this.tbl3AnlikSifir.Location = new System.Drawing.Point(563, 22);
+            this.tbl3AnlikSifir.Location = new System.Drawing.Point(561, 22);
             this.tbl3AnlikSifir.Name = "tbl3AnlikSifir";
             this.tbl3AnlikSifir.Size = new System.Drawing.Size(24, 16);
             this.tbl3AnlikSifir.TabIndex = 15;
@@ -633,7 +634,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3AnlikBir
             // 
             this.tbl3AnlikBir.AutoSize = true;
-            this.tbl3AnlikBir.Location = new System.Drawing.Point(563, 40);
+            this.tbl3AnlikBir.Location = new System.Drawing.Point(561, 40);
             this.tbl3AnlikBir.Name = "tbl3AnlikBir";
             this.tbl3AnlikBir.Size = new System.Drawing.Size(24, 16);
             this.tbl3AnlikBir.TabIndex = 24;
@@ -642,7 +643,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl3AnlikIki
             // 
             this.tbl3AnlikIki.AutoSize = true;
-            this.tbl3AnlikIki.Location = new System.Drawing.Point(563, 61);
+            this.tbl3AnlikIki.Location = new System.Drawing.Point(561, 61);
             this.tbl3AnlikIki.Name = "tbl3AnlikIki";
             this.tbl3AnlikIki.Size = new System.Drawing.Size(24, 16);
             this.tbl3AnlikIki.TabIndex = 33;
@@ -796,7 +797,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.45454F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.54546F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
             this.tableLayoutPanel1.Controls.Add(this.tbl1KuyrukDort, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.tbl1KuyrukUc, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.tbl1KuyrukIki, 2, 3);
@@ -832,7 +833,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl1KuyrukDort
             // 
             this.tbl1KuyrukDort.AutoSize = true;
-            this.tbl1KuyrukDort.Location = new System.Drawing.Point(249, 113);
+            this.tbl1KuyrukDort.Location = new System.Drawing.Point(247, 113);
             this.tbl1KuyrukDort.Name = "tbl1KuyrukDort";
             this.tbl1KuyrukDort.Size = new System.Drawing.Size(24, 16);
             this.tbl1KuyrukDort.TabIndex = 14;
@@ -841,7 +842,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl1KuyrukUc
             // 
             this.tbl1KuyrukUc.AutoSize = true;
-            this.tbl1KuyrukUc.Location = new System.Drawing.Point(249, 92);
+            this.tbl1KuyrukUc.Location = new System.Drawing.Point(247, 92);
             this.tbl1KuyrukUc.Name = "tbl1KuyrukUc";
             this.tbl1KuyrukUc.Size = new System.Drawing.Size(24, 16);
             this.tbl1KuyrukUc.TabIndex = 13;
@@ -850,7 +851,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl1KuyrukIki
             // 
             this.tbl1KuyrukIki.AutoSize = true;
-            this.tbl1KuyrukIki.Location = new System.Drawing.Point(249, 71);
+            this.tbl1KuyrukIki.Location = new System.Drawing.Point(247, 71);
             this.tbl1KuyrukIki.Name = "tbl1KuyrukIki";
             this.tbl1KuyrukIki.Size = new System.Drawing.Size(24, 16);
             this.tbl1KuyrukIki.TabIndex = 12;
@@ -859,7 +860,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl1KuyrukBir
             // 
             this.tbl1KuyrukBir.AutoSize = true;
-            this.tbl1KuyrukBir.Location = new System.Drawing.Point(249, 50);
+            this.tbl1KuyrukBir.Location = new System.Drawing.Point(247, 50);
             this.tbl1KuyrukBir.Name = "tbl1KuyrukBir";
             this.tbl1KuyrukBir.Size = new System.Drawing.Size(24, 16);
             this.tbl1KuyrukBir.TabIndex = 11;
@@ -868,7 +869,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl1KuyrukZemin
             // 
             this.tbl1KuyrukZemin.AutoSize = true;
-            this.tbl1KuyrukZemin.Location = new System.Drawing.Point(249, 26);
+            this.tbl1KuyrukZemin.Location = new System.Drawing.Point(247, 26);
             this.tbl1KuyrukZemin.Name = "tbl1KuyrukZemin";
             this.tbl1KuyrukZemin.Size = new System.Drawing.Size(24, 16);
             this.tbl1KuyrukZemin.TabIndex = 10;
@@ -877,7 +878,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl1KUYRUKTABEKLEYENSAYISI
             // 
             this.tbl1KUYRUKTABEKLEYENSAYISI.AutoSize = true;
-            this.tbl1KUYRUKTABEKLEYENSAYISI.Location = new System.Drawing.Point(249, 1);
+            this.tbl1KUYRUKTABEKLEYENSAYISI.Location = new System.Drawing.Point(247, 1);
             this.tbl1KUYRUKTABEKLEYENSAYISI.Name = "tbl1KUYRUKTABEKLEYENSAYISI";
             this.tbl1KUYRUKTABEKLEYENSAYISI.Size = new System.Drawing.Size(199, 16);
             this.tbl1KUYRUKTABEKLEYENSAYISI.TabIndex = 9;
@@ -886,7 +887,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl1KISISAYISI
             // 
             this.tbl1KISISAYISI.AutoSize = true;
-            this.tbl1KISISAYISI.Location = new System.Drawing.Point(135, 1);
+            this.tbl1KISISAYISI.Location = new System.Drawing.Point(134, 1);
             this.tbl1KISISAYISI.Name = "tbl1KISISAYISI";
             this.tbl1KISISAYISI.Size = new System.Drawing.Size(76, 16);
             this.tbl1KISISAYISI.TabIndex = 8;
@@ -913,7 +914,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl1KisiSayisiDort
             // 
             this.tbl1KisiSayisiDort.AutoSize = true;
-            this.tbl1KisiSayisiDort.Location = new System.Drawing.Point(135, 113);
+            this.tbl1KisiSayisiDort.Location = new System.Drawing.Point(134, 113);
             this.tbl1KisiSayisiDort.Name = "tbl1KisiSayisiDort";
             this.tbl1KisiSayisiDort.Size = new System.Drawing.Size(24, 16);
             this.tbl1KisiSayisiDort.TabIndex = 6;
@@ -922,7 +923,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl1KisiSayisiUc
             // 
             this.tbl1KisiSayisiUc.AutoSize = true;
-            this.tbl1KisiSayisiUc.Location = new System.Drawing.Point(135, 92);
+            this.tbl1KisiSayisiUc.Location = new System.Drawing.Point(134, 92);
             this.tbl1KisiSayisiUc.Name = "tbl1KisiSayisiUc";
             this.tbl1KisiSayisiUc.Size = new System.Drawing.Size(24, 16);
             this.tbl1KisiSayisiUc.TabIndex = 4;
@@ -967,7 +968,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl1KisiSayisiIki
             // 
             this.tbl1KisiSayisiIki.AutoSize = true;
-            this.tbl1KisiSayisiIki.Location = new System.Drawing.Point(135, 71);
+            this.tbl1KisiSayisiIki.Location = new System.Drawing.Point(134, 71);
             this.tbl1KisiSayisiIki.Name = "tbl1KisiSayisiIki";
             this.tbl1KisiSayisiIki.Size = new System.Drawing.Size(24, 16);
             this.tbl1KisiSayisiIki.TabIndex = 3;
@@ -976,7 +977,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl1KisiSayisiBir
             // 
             this.tbl1KisiSayisiBir.AutoSize = true;
-            this.tbl1KisiSayisiBir.Location = new System.Drawing.Point(135, 50);
+            this.tbl1KisiSayisiBir.Location = new System.Drawing.Point(134, 50);
             this.tbl1KisiSayisiBir.Name = "tbl1KisiSayisiBir";
             this.tbl1KisiSayisiBir.Size = new System.Drawing.Size(24, 16);
             this.tbl1KisiSayisiBir.TabIndex = 2;
@@ -985,7 +986,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // tbl1KisiSayisiZemin
             // 
             this.tbl1KisiSayisiZemin.AutoSize = true;
-            this.tbl1KisiSayisiZemin.Location = new System.Drawing.Point(135, 26);
+            this.tbl1KisiSayisiZemin.Location = new System.Drawing.Point(134, 26);
             this.tbl1KisiSayisiZemin.Name = "tbl1KisiSayisiZemin";
             this.tbl1KisiSayisiZemin.Size = new System.Drawing.Size(24, 16);
             this.tbl1KisiSayisiZemin.TabIndex = 1;
@@ -1085,7 +1086,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.ExitThreadCount.AutoSize = true;
             this.ExitThreadCount.Cursor = System.Windows.Forms.Cursors.No;
             this.ExitThreadCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.ExitThreadCount.Location = new System.Drawing.Point(187, 418);
+            this.ExitThreadCount.Location = new System.Drawing.Point(187, 412);
             this.ExitThreadCount.Name = "ExitThreadCount";
             this.ExitThreadCount.Size = new System.Drawing.Size(103, 13);
             this.ExitThreadCount.TabIndex = 13;
@@ -1130,17 +1131,29 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // label90
             // 
             this.label90.AutoSize = true;
-            this.label90.Location = new System.Drawing.Point(361, 412);
+            this.label90.Location = new System.Drawing.Point(434, 431);
             this.label90.Name = "label90";
             this.label90.Size = new System.Drawing.Size(41, 13);
             this.label90.TabIndex = 17;
             this.label90.Text = "label90";
+            // 
+            // LogoutThreadCount
+            // 
+            this.LogoutThreadCount.AutoSize = true;
+            this.LogoutThreadCount.Cursor = System.Windows.Forms.Cursors.No;
+            this.LogoutThreadCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.LogoutThreadCount.Location = new System.Drawing.Point(187, 431);
+            this.LogoutThreadCount.Name = "LogoutThreadCount";
+            this.LogoutThreadCount.Size = new System.Drawing.Size(149, 13);
+            this.LogoutThreadCount.TabIndex = 18;
+            this.LogoutThreadCount.Text = "AVM Çıkan Kişi Sayısı : 0";
             // 
             // ShoppingMallInformationDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 453);
+            this.Controls.Add(this.LogoutThreadCount);
             this.Controls.Add(this.label90);
             this.Controls.Add(this.label63);
             this.Controls.Add(this.label65);
@@ -1269,6 +1282,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.Label label65;
         private System.Windows.Forms.Label label90;
+        private System.Windows.Forms.Label LogoutThreadCount;
     }
 }
 

@@ -1,4 +1,6 @@
-﻿namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Abstract
+﻿using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Core;
+
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Abstract
 {
     public interface ITElevator
     {
@@ -12,9 +14,10 @@
         /// <param name="elevator">Asansör nesnesi</param>
         /// <param name="floors">Alışveriş merkezinde bulunan tüm katların bilgilerinin dizi olarak belirtildiği parametre</param>
         /// <param name="capacity">Asansörün içerisinde bulunacak maksimum kişi sayısı</param>
+        /// <param name="settings">Genel Ayarlar</param>
         /// <returns>
         /// Dönüş Yok
         /// </returns>
-        void ElevatorThread(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, int capacity);
+        void ElevatorThread(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, int capacity, Settings settings);
     }
 }

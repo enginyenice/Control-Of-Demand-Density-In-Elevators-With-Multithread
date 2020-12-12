@@ -39,6 +39,7 @@
 
         private int totalLoginCount;
         private int totalExitCount;
+        private int totalLogoutCount;
 
         /// <summary>
         /// Alışveriş merkezine giren toplam müşteri sayısını günceller ve döndürür
@@ -56,7 +57,7 @@
         }
 
         /// <summary>
-        /// Alışveriş merkezinden çıkan toplam müşteri sayısını günceller ve döndürür
+        /// Alışveriş merkezinden çıkan ve çıkmak için kuyruğa giren toplam müşteri sayısını günceller ve döndürür
         /// </summary>
         /// <returns>
         /// Alışveriş merkezinden çıkan toplam müşteri sayısı
@@ -69,6 +70,20 @@
             get { return totalExitCount; }
             set { totalExitCount += value; }
         }
+        /// <summary>
+        /// Alışveriş merkezinden çıkan toplam müşteri sayısını günceller ve döndürür
+        /// </summary>
+        /// <returns>
+        /// Alışveriş merkezinden çıkan toplam müşteri sayısı
+        /// </returns>
+        /// <param name="value">
+        /// Alışveriş merkezinden anlık olarak çıkan müşteri sayısı
+        /// </param>
+        public int TotalLogoutCount
+        {
+            get { return totalLogoutCount; }
+            set { totalLogoutCount += value; }
+        }
 
         /// <summary>
         /// Alışveriş merkezinin genel ayarlarının tutulduğu yapıcı metot.
@@ -79,9 +94,9 @@
             totalLoginCount = 0;
             totalExitCount = 0;
             Capacity = 10;
-            Ms200 = 200;
-            Ms500 = 500;
-            Ms1000 = 1000;
+            Ms200 = 200 *2;
+            Ms500 = 500 * 2;
+            Ms1000 = 1000 * 2;
         }
     }
 }

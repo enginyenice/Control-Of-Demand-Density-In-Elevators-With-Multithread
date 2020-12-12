@@ -52,7 +52,6 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             elevatorThread4 = new Thread(() => ElevatorThread(elevators[4]));
             screenThread = new Thread(ScreenThread);
             elevators[0].IsActive = true; // 1. Asansör aktif edildi.
-
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
         }
@@ -61,19 +60,16 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
         {
             while (true)
             {
-                lock (controlThread)
-                {
-                    lock (screenThread)
-                    {
-                        GeneralInformation();
-                        ElevatorInformation(elevators[0]);
-                        ElevatorInformation(elevators[1]);
-                        ElevatorInformation(elevators[2]);
-                        ElevatorInformation(elevators[3]);
-                        ElevatorInformation(elevators[4]);
-                    }
-                }
-                Thread.Sleep(100);
+                
+
+                    GeneralInformation();
+                    ElevatorInformation(elevators[0]);
+                    ElevatorInformation(elevators[1]);
+                    ElevatorInformation(elevators[2]);
+                    ElevatorInformation(elevators[3]);
+                    ElevatorInformation(elevators[4]);
+
+                    
             }
         }
 
@@ -82,7 +78,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             TElevator tElevator = new TElevator();
             while (true)
             {
-                tElevator.ElevatorThread(elevator, floors, settings.Capacity);
+                tElevator.ElevatorThread(elevator, floors, settings.Capacity,settings);
 
                 Thread.Sleep(settings.Ms200);
             }
@@ -122,6 +118,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
 
         private void GeneralInformation()
         {
+            LogoutThreadCount.Text = "AVM Çıkan Kişi Sayısı : " + settings.TotalLogoutCount;
             LoginThreadCount.Text = "Giriş Kuyruğu: " + settings.TotalLoginCount;
             ExitThreadCount.Text = "Çıkış Kuyruğu: " + settings.TotalExitCount;
             label90.Text = "Giriş - Çıkış: " + (settings.TotalLoginCount - settings.TotalExitCount);
@@ -242,12 +239,9 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             elevatorThread4.Abort();
             screenThread.Abort();
         }
-
-       
-
         private void StartBtn_Click(object sender, EventArgs e)
         {
-            
+
             StartBtn.BackColor = Color.FromArgb(210, 66, 106);
             StartBtn.Text = "Çalışıyor...";
             StartBtn.Enabled = false;
@@ -260,8 +254,8 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             elevatorThread3.Start();
             elevatorThread4.Start();
             screenThread.Start();
+          
         }
-
         private void ShoppingMallInformationDisplay_Load(object sender, EventArgs e)
         {
 
