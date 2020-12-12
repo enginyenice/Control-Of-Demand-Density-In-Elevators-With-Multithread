@@ -70,6 +70,7 @@
             get { return totalExitCount; }
             set { totalExitCount += value; }
         }
+
         /// <summary>
         /// Alışveriş merkezinden çıkan toplam müşteri sayısını günceller ve döndürür
         /// </summary>
@@ -88,15 +89,14 @@
         /// <summary>
         /// Alışveriş merkezinin genel ayarlarının tutulduğu yapıcı metot.
         /// </summary>
-
         public Settings()
         {
             totalLoginCount = 0;
             totalExitCount = 0;
             Capacity = 10;
-            Ms200 = 200 *2;
-            Ms500 = 500 * 2;
-            Ms1000 = 1000 * 2;
+            Ms200 = 200 * 1;
+            Ms500 = 500 * 1;
+            Ms1000 = 1000 * 1;
         }
     }
 }

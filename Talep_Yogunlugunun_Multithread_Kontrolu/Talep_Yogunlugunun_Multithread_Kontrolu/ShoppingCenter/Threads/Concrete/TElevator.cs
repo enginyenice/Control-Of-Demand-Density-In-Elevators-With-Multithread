@@ -8,36 +8,24 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concret
     {
         public void ElevatorThread(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, int capacity, Settings settings)
         {
-
-
-
-
             lock (elevator)
             {
                 if (elevator.IsActive)
                 {
-
                     PassengerLowering(elevator, floors, settings);
                     PassengerBoarding(elevator, floors, capacity);
                 }
-
                 else if (elevator.IsActive == false && elevator.GetCount() > 0)
                 {
                     PassengerLowering(elevator, floors, settings);
                 }
-
             }
-
 
             lock (elevator)
             {
                 if (elevator.Destination == elevator.Floor)
                 {
-
-
                     if (elevator.GetFirstDestination() != -1) elevator.Destination = elevator.GetFirstDestination();
-
-
                     else if (CheckTopFloor(floors, elevator.Floor) > 0 && elevator.Direction == true)
                         elevator.Destination = CheckTopFloor(floors, elevator.Floor);
                     else if (CheckButtomFloor(floors, elevator.Floor) > 0 && elevator.Direction == false)
@@ -47,25 +35,19 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concret
                     if (elevator.Floor < elevator.Destination) elevator.Direction = true;
                     else elevator.Direction = false;
                 }
-
             }
 
             lock (elevator)
             {
-                
-            
-            if (elevator.GetCount() > 0 || elevator.IsActive == true)
+                if (elevator.GetCount() > 0 || elevator.IsActive == true)
                     FloorChange(elevator);
             }
-
-
         }
 
         private void FloorChange(Elevator.Concrete.Elevator elevator)
         {
             lock (elevator)
             {
-
                 if (elevator.Direction == true)
                 {
                     elevator.Floor++;
@@ -114,7 +96,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concret
             return isThere;
         }
 
-        private void PassengerLowering(Elevator.Concrete.Elevator elevator,Floor.Concrete.Floor[] floors,Settings settings)
+        private void PassengerLowering(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, Settings settings)
         {
             if (elevator.GetCount() > 0)
                 //İndirme işlemi
@@ -128,7 +110,6 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concret
                     {
                         settings.TotalLogoutCount = elevator.GetFloorCount(elevator.Floor);
                     }
-
 
                     elevator.SetFloorCount(elevator.Floor,
                         -1 * elevator.GetFloorCount(elevator.Floor)); // Asansör Azaldı

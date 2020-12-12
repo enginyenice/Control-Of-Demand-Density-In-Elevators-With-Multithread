@@ -60,16 +60,12 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
         {
             while (true)
             {
-                
-
-                    GeneralInformation();
-                    ElevatorInformation(elevators[0]);
-                    ElevatorInformation(elevators[1]);
-                    ElevatorInformation(elevators[2]);
-                    ElevatorInformation(elevators[3]);
-                    ElevatorInformation(elevators[4]);
-
-                    
+                GeneralInformation();
+                ElevatorInformation(elevators[0]);
+                ElevatorInformation(elevators[1]);
+                ElevatorInformation(elevators[2]);
+                ElevatorInformation(elevators[3]);
+                ElevatorInformation(elevators[4]);
             }
         }
 
@@ -78,7 +74,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             TElevator tElevator = new TElevator();
             while (true)
             {
-                tElevator.ElevatorThread(elevator, floors, settings.Capacity,settings);
+                tElevator.ElevatorThread(elevator, floors, settings.Capacity, settings);
 
                 Thread.Sleep(settings.Ms200);
             }
@@ -121,7 +117,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             LogoutThreadCount.Text = "AVM Çıkan Kişi Sayısı : " + settings.TotalLogoutCount;
             LoginThreadCount.Text = "Giriş Kuyruğu: " + settings.TotalLoginCount;
             ExitThreadCount.Text = "Çıkış Kuyruğu: " + settings.TotalExitCount;
-            label90.Text = "Giriş - Çıkış: " + (settings.TotalLoginCount - settings.TotalExitCount);
+            //label90.Text = "Giriş - Çıkış: " + (settings.TotalLoginCount - settings.TotalExitCount);
             tbl1KisiSayisiZemin.Text = (floors[0].FloorCount + floors[0].QueueCount).ToString();
             tbl1KisiSayisiBir.Text = (floors[1].FloorCount + floors[1].QueueCount).ToString();
             tbl1KisiSayisiIki.Text = (floors[2].FloorCount + floors[2].QueueCount).ToString();
@@ -239,9 +235,9 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             elevatorThread4.Abort();
             screenThread.Abort();
         }
+
         private void StartBtn_Click(object sender, EventArgs e)
         {
-
             StartBtn.BackColor = Color.FromArgb(210, 66, 106);
             StartBtn.Text = "Çalışıyor...";
             StartBtn.Enabled = false;
@@ -254,11 +250,10 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             elevatorThread3.Start();
             elevatorThread4.Start();
             screenThread.Start();
-          
         }
+
         private void ShoppingMallInformationDisplay_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

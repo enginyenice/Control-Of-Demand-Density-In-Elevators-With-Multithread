@@ -29,8 +29,6 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-            System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShoppingMallInformationDisplay));
             this.tbl3ModUc = new System.Windows.Forms.Label();
             this.tbl3ModDort = new System.Windows.Forms.Label();
@@ -92,7 +90,6 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.tbl2KatZemin = new System.Windows.Forms.Label();
             this.tbl2KUYRUK = new System.Windows.Forms.Label();
             this.tbl2KAT = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tbl1KuyrukDort = new System.Windows.Forms.Label();
             this.tbl1KuyrukUc = new System.Windows.Forms.Label();
             this.tbl1KuyrukIki = new System.Windows.Forms.Label();
@@ -111,9 +108,6 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.tbl1KisiSayisiIki = new System.Windows.Forms.Label();
             this.tbl1KisiSayisiBir = new System.Windows.Forms.Label();
             this.tbl1KisiSayisiZemin = new System.Windows.Forms.Label();
-            this.label85 = new System.Windows.Forms.Label();
-            this.label86 = new System.Windows.Forms.Label();
-            this.label87 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
@@ -123,98 +117,23 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.StartBtn = new System.Windows.Forms.Button();
             this.label63 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
-            this.label90 = new System.Windows.Forms.Label();
             this.LogoutThreadCount = new System.Windows.Forms.Label();
-            tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            tableLayoutPanel2.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            tableLayoutPanel2.ColumnCount = 8;
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.18898F));
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.81102F));
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 328F));
-            tableLayoutPanel2.Controls.Add(this.tbl3ModUc, 1, 4);
-            tableLayoutPanel2.Controls.Add(this.tbl3ModDort, 1, 5);
-            tableLayoutPanel2.Controls.Add(this.tbl3KuyrukDort, 7, 5);
-            tableLayoutPanel2.Controls.Add(this.tbl3KuyrukUc, 7, 4);
-            tableLayoutPanel2.Controls.Add(this.tbl3ModIki, 1, 3);
-            tableLayoutPanel2.Controls.Add(this.tbl3KuyrukIki, 7, 3);
-            tableLayoutPanel2.Controls.Add(this.tbl3KuyrukBir, 7, 2);
-            tableLayoutPanel2.Controls.Add(this.tbl3KuyrukSifir, 7, 1);
-            tableLayoutPanel2.Controls.Add(this.tbl3KUYRUK, 7, 0);
-            tableLayoutPanel2.Controls.Add(this.tbl3AsansorDort, 0, 5);
-            tableLayoutPanel2.Controls.Add(this.tbl3AsansorUc, 0, 4);
-            tableLayoutPanel2.Controls.Add(this.tbl3AsansorIki, 0, 3);
-            tableLayoutPanel2.Controls.Add(this.tbl3AsansorBir, 0, 2);
-            tableLayoutPanel2.Controls.Add(this.tbl3AsansorSifir, 0, 1);
-            tableLayoutPanel2.Controls.Add(this.tbl3Asansor, 0, 0);
-            tableLayoutPanel2.Controls.Add(this.tbl3MOD, 1, 0);
-            tableLayoutPanel2.Controls.Add(this.tbl3ModSifir, 1, 1);
-            tableLayoutPanel2.Controls.Add(this.tbl3ModBir, 1, 2);
-            tableLayoutPanel2.Controls.Add(this.tbl3KatDort, 2, 5);
-            tableLayoutPanel2.Controls.Add(this.tbl3KatUc, 2, 4);
-            tableLayoutPanel2.Controls.Add(this.tbl3HedefDort, 3, 5);
-            tableLayoutPanel2.Controls.Add(this.tbl3HedefUc, 3, 4);
-            tableLayoutPanel2.Controls.Add(this.tbl3YonDort, 4, 5);
-            tableLayoutPanel2.Controls.Add(this.tbl3YonUc, 4, 4);
-            tableLayoutPanel2.Controls.Add(this.tbl3KapasiteDort, 5, 5);
-            tableLayoutPanel2.Controls.Add(this.tbl3KapasiteUc, 5, 4);
-            tableLayoutPanel2.Controls.Add(this.tbl3AnlikDort, 6, 5);
-            tableLayoutPanel2.Controls.Add(this.tbl3AnlikUc, 6, 4);
-            tableLayoutPanel2.Controls.Add(this.tbl3KAT, 2, 0);
-            tableLayoutPanel2.Controls.Add(this.tbl3KatSifir, 2, 1);
-            tableLayoutPanel2.Controls.Add(this.tbl3KatBir, 2, 2);
-            tableLayoutPanel2.Controls.Add(this.tbl3KatIki, 2, 3);
-            tableLayoutPanel2.Controls.Add(this.tbl3HedefIki, 3, 3);
-            tableLayoutPanel2.Controls.Add(this.tbl3HedefBir, 3, 2);
-            tableLayoutPanel2.Controls.Add(this.tbl3HedefSifir, 3, 1);
-            tableLayoutPanel2.Controls.Add(this.tbl3HEDEF, 3, 0);
-            tableLayoutPanel2.Controls.Add(this.tbl3YON, 4, 0);
-            tableLayoutPanel2.Controls.Add(this.tbl3YonSifir, 4, 1);
-            tableLayoutPanel2.Controls.Add(this.tbl3YonBir, 4, 2);
-            tableLayoutPanel2.Controls.Add(this.tbl3YonIki, 4, 3);
-            tableLayoutPanel2.Controls.Add(this.tbl3KapasiteIki, 5, 3);
-            tableLayoutPanel2.Controls.Add(this.tbl3KapasiteBir, 5, 2);
-            tableLayoutPanel2.Controls.Add(this.tbl3KapasiteSifir, 5, 1);
-            tableLayoutPanel2.Controls.Add(this.tbl3KAPASITE, 5, 0);
-            tableLayoutPanel2.Controls.Add(this.tbl3ANLIK, 6, 0);
-            tableLayoutPanel2.Controls.Add(this.tbl3AnlikSifir, 6, 1);
-            tableLayoutPanel2.Controls.Add(this.tbl3AnlikBir, 6, 2);
-            tableLayoutPanel2.Controls.Add(this.tbl3AnlikIki, 6, 3);
-            tableLayoutPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            tableLayoutPanel2.ForeColor = System.Drawing.Color.Black;
-            tableLayoutPanel2.Location = new System.Drawing.Point(13, 261);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 6;
-            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.33333F));
-            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.66667F));
-            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel2.Size = new System.Drawing.Size(1014, 125);
-            tableLayoutPanel2.TabIndex = 1;
             // 
             // tbl3ModUc
             // 
             this.tbl3ModUc.AutoSize = true;
             this.tbl3ModUc.BackColor = System.Drawing.Color.Transparent;
-            this.tbl3ModUc.ForeColor = System.Drawing.Color.Black;
-            this.tbl3ModUc.Location = new System.Drawing.Point(98, 82);
+            this.tbl3ModUc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(3)))), ((int)(((byte)(9)))));
+            this.tbl3ModUc.Location = new System.Drawing.Point(99, 148);
             this.tbl3ModUc.Name = "tbl3ModUc";
-            this.tbl3ModUc.Size = new System.Drawing.Size(24, 16);
+            this.tbl3ModUc.Size = new System.Drawing.Size(19, 13);
             this.tbl3ModUc.TabIndex = 57;
             this.tbl3ModUc.Text = "----";
             // 
@@ -222,28 +141,28 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // 
             this.tbl3ModDort.AutoSize = true;
             this.tbl3ModDort.BackColor = System.Drawing.Color.Transparent;
-            this.tbl3ModDort.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbl3ModDort.Location = new System.Drawing.Point(98, 103);
+            this.tbl3ModDort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(3)))), ((int)(((byte)(9)))));
+            this.tbl3ModDort.Location = new System.Drawing.Point(99, 179);
             this.tbl3ModDort.Name = "tbl3ModDort";
-            this.tbl3ModDort.Size = new System.Drawing.Size(24, 16);
+            this.tbl3ModDort.Size = new System.Drawing.Size(19, 13);
             this.tbl3ModDort.TabIndex = 13;
             this.tbl3ModDort.Text = "----";
             // 
             // tbl3KuyrukDort
             // 
             this.tbl3KuyrukDort.AutoSize = true;
-            this.tbl3KuyrukDort.Location = new System.Drawing.Point(687, 103);
+            this.tbl3KuyrukDort.Location = new System.Drawing.Point(712, 179);
             this.tbl3KuyrukDort.Name = "tbl3KuyrukDort";
-            this.tbl3KuyrukDort.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KuyrukDort.Size = new System.Drawing.Size(19, 13);
             this.tbl3KuyrukDort.TabIndex = 56;
             this.tbl3KuyrukDort.Text = "----";
             // 
             // tbl3KuyrukUc
             // 
             this.tbl3KuyrukUc.AutoSize = true;
-            this.tbl3KuyrukUc.Location = new System.Drawing.Point(687, 82);
+            this.tbl3KuyrukUc.Location = new System.Drawing.Point(712, 148);
             this.tbl3KuyrukUc.Name = "tbl3KuyrukUc";
-            this.tbl3KuyrukUc.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KuyrukUc.Size = new System.Drawing.Size(19, 13);
             this.tbl3KuyrukUc.TabIndex = 55;
             this.tbl3KuyrukUc.Text = "----";
             // 
@@ -251,109 +170,109 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // 
             this.tbl3ModIki.AutoSize = true;
             this.tbl3ModIki.BackColor = System.Drawing.Color.Transparent;
-            this.tbl3ModIki.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbl3ModIki.Location = new System.Drawing.Point(98, 61);
+            this.tbl3ModIki.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(3)))), ((int)(((byte)(9)))));
+            this.tbl3ModIki.Location = new System.Drawing.Point(99, 120);
             this.tbl3ModIki.Name = "tbl3ModIki";
-            this.tbl3ModIki.Size = new System.Drawing.Size(24, 16);
+            this.tbl3ModIki.Size = new System.Drawing.Size(19, 13);
             this.tbl3ModIki.TabIndex = 11;
             this.tbl3ModIki.Text = "----";
             // 
             // tbl3KuyrukIki
             // 
             this.tbl3KuyrukIki.AutoSize = true;
-            this.tbl3KuyrukIki.Location = new System.Drawing.Point(687, 61);
+            this.tbl3KuyrukIki.Location = new System.Drawing.Point(712, 120);
             this.tbl3KuyrukIki.Name = "tbl3KuyrukIki";
-            this.tbl3KuyrukIki.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KuyrukIki.Size = new System.Drawing.Size(19, 13);
             this.tbl3KuyrukIki.TabIndex = 54;
             this.tbl3KuyrukIki.Text = "----";
             // 
             // tbl3KuyrukBir
             // 
             this.tbl3KuyrukBir.AutoSize = true;
-            this.tbl3KuyrukBir.Location = new System.Drawing.Point(687, 40);
+            this.tbl3KuyrukBir.Location = new System.Drawing.Point(712, 91);
             this.tbl3KuyrukBir.Name = "tbl3KuyrukBir";
-            this.tbl3KuyrukBir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KuyrukBir.Size = new System.Drawing.Size(19, 13);
             this.tbl3KuyrukBir.TabIndex = 53;
             this.tbl3KuyrukBir.Text = "----";
             // 
             // tbl3KuyrukSifir
             // 
             this.tbl3KuyrukSifir.AutoSize = true;
-            this.tbl3KuyrukSifir.Location = new System.Drawing.Point(687, 22);
+            this.tbl3KuyrukSifir.Location = new System.Drawing.Point(712, 58);
             this.tbl3KuyrukSifir.Name = "tbl3KuyrukSifir";
-            this.tbl3KuyrukSifir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KuyrukSifir.Size = new System.Drawing.Size(19, 13);
             this.tbl3KuyrukSifir.TabIndex = 52;
             this.tbl3KuyrukSifir.Text = "----";
             // 
             // tbl3KUYRUK
             // 
             this.tbl3KUYRUK.AutoSize = true;
-            this.tbl3KUYRUK.Location = new System.Drawing.Point(687, 1);
+            this.tbl3KUYRUK.Location = new System.Drawing.Point(712, 33);
             this.tbl3KUYRUK.Name = "tbl3KUYRUK";
-            this.tbl3KUYRUK.Size = new System.Drawing.Size(213, 16);
+            this.tbl3KUYRUK.Size = new System.Drawing.Size(173, 13);
             this.tbl3KUYRUK.TabIndex = 8;
             this.tbl3KUYRUK.Text = "ASANSÖRDE BULUNAN KİŞİLER";
             // 
             // tbl3AsansorDort
             // 
             this.tbl3AsansorDort.AutoSize = true;
-            this.tbl3AsansorDort.Location = new System.Drawing.Point(4, 103);
+            this.tbl3AsansorDort.Location = new System.Drawing.Point(6, 179);
             this.tbl3AsansorDort.Name = "tbl3AsansorDort";
-            this.tbl3AsansorDort.Size = new System.Drawing.Size(24, 16);
+            this.tbl3AsansorDort.Size = new System.Drawing.Size(19, 13);
             this.tbl3AsansorDort.TabIndex = 44;
             this.tbl3AsansorDort.Text = "----";
             // 
             // tbl3AsansorUc
             // 
             this.tbl3AsansorUc.AutoSize = true;
-            this.tbl3AsansorUc.Location = new System.Drawing.Point(4, 82);
+            this.tbl3AsansorUc.Location = new System.Drawing.Point(6, 148);
             this.tbl3AsansorUc.Name = "tbl3AsansorUc";
-            this.tbl3AsansorUc.Size = new System.Drawing.Size(24, 16);
+            this.tbl3AsansorUc.Size = new System.Drawing.Size(19, 13);
             this.tbl3AsansorUc.TabIndex = 35;
             this.tbl3AsansorUc.Text = "----";
             // 
             // tbl3AsansorIki
             // 
             this.tbl3AsansorIki.AutoSize = true;
-            this.tbl3AsansorIki.Location = new System.Drawing.Point(4, 61);
+            this.tbl3AsansorIki.Location = new System.Drawing.Point(6, 120);
             this.tbl3AsansorIki.Name = "tbl3AsansorIki";
-            this.tbl3AsansorIki.Size = new System.Drawing.Size(24, 16);
+            this.tbl3AsansorIki.Size = new System.Drawing.Size(19, 13);
             this.tbl3AsansorIki.TabIndex = 26;
             this.tbl3AsansorIki.Text = "----";
             // 
             // tbl3AsansorBir
             // 
             this.tbl3AsansorBir.AutoSize = true;
-            this.tbl3AsansorBir.Location = new System.Drawing.Point(4, 40);
+            this.tbl3AsansorBir.Location = new System.Drawing.Point(6, 91);
             this.tbl3AsansorBir.Name = "tbl3AsansorBir";
-            this.tbl3AsansorBir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3AsansorBir.Size = new System.Drawing.Size(19, 13);
             this.tbl3AsansorBir.TabIndex = 17;
             this.tbl3AsansorBir.Text = "----";
             // 
             // tbl3AsansorSifir
             // 
             this.tbl3AsansorSifir.AutoSize = true;
-            this.tbl3AsansorSifir.Location = new System.Drawing.Point(4, 22);
+            this.tbl3AsansorSifir.Location = new System.Drawing.Point(6, 58);
             this.tbl3AsansorSifir.Name = "tbl3AsansorSifir";
-            this.tbl3AsansorSifir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3AsansorSifir.Size = new System.Drawing.Size(19, 13);
             this.tbl3AsansorSifir.TabIndex = 2;
             this.tbl3AsansorSifir.Text = "----";
             // 
             // tbl3Asansor
             // 
             this.tbl3Asansor.AutoSize = true;
-            this.tbl3Asansor.Location = new System.Drawing.Point(4, 1);
+            this.tbl3Asansor.Location = new System.Drawing.Point(6, 33);
             this.tbl3Asansor.Name = "tbl3Asansor";
-            this.tbl3Asansor.Size = new System.Drawing.Size(74, 16);
+            this.tbl3Asansor.Size = new System.Drawing.Size(59, 13);
             this.tbl3Asansor.TabIndex = 0;
             this.tbl3Asansor.Text = "ASANSÖR";
             // 
             // tbl3MOD
             // 
             this.tbl3MOD.AutoSize = true;
-            this.tbl3MOD.Location = new System.Drawing.Point(98, 1);
+            this.tbl3MOD.Location = new System.Drawing.Point(99, 33);
             this.tbl3MOD.Name = "tbl3MOD";
-            this.tbl3MOD.Size = new System.Drawing.Size(39, 16);
+            this.tbl3MOD.Size = new System.Drawing.Size(32, 13);
             this.tbl3MOD.TabIndex = 2;
             this.tbl3MOD.Text = "MOD";
             // 
@@ -361,10 +280,10 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // 
             this.tbl3ModSifir.AutoSize = true;
             this.tbl3ModSifir.BackColor = System.Drawing.Color.Transparent;
-            this.tbl3ModSifir.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tbl3ModSifir.Location = new System.Drawing.Point(98, 22);
+            this.tbl3ModSifir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(3)))), ((int)(((byte)(9)))));
+            this.tbl3ModSifir.Location = new System.Drawing.Point(99, 58);
             this.tbl3ModSifir.Name = "tbl3ModSifir";
-            this.tbl3ModSifir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3ModSifir.Size = new System.Drawing.Size(19, 13);
             this.tbl3ModSifir.TabIndex = 10;
             this.tbl3ModSifir.Text = "----";
             // 
@@ -372,659 +291,552 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // 
             this.tbl3ModBir.AutoSize = true;
             this.tbl3ModBir.BackColor = System.Drawing.Color.Transparent;
-            this.tbl3ModBir.ForeColor = System.Drawing.Color.Black;
-            this.tbl3ModBir.Location = new System.Drawing.Point(98, 40);
+            this.tbl3ModBir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(3)))), ((int)(((byte)(9)))));
+            this.tbl3ModBir.Location = new System.Drawing.Point(99, 91);
             this.tbl3ModBir.Name = "tbl3ModBir";
-            this.tbl3ModBir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3ModBir.Size = new System.Drawing.Size(19, 13);
             this.tbl3ModBir.TabIndex = 19;
             this.tbl3ModBir.Text = "----";
             // 
             // tbl3KatDort
             // 
             this.tbl3KatDort.AutoSize = true;
-            this.tbl3KatDort.Location = new System.Drawing.Point(249, 103);
+            this.tbl3KatDort.Location = new System.Drawing.Point(208, 179);
             this.tbl3KatDort.Name = "tbl3KatDort";
-            this.tbl3KatDort.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KatDort.Size = new System.Drawing.Size(19, 13);
             this.tbl3KatDort.TabIndex = 47;
             this.tbl3KatDort.Text = "----";
             // 
             // tbl3KatUc
             // 
             this.tbl3KatUc.AutoSize = true;
-            this.tbl3KatUc.Location = new System.Drawing.Point(249, 82);
+            this.tbl3KatUc.Location = new System.Drawing.Point(208, 148);
             this.tbl3KatUc.Name = "tbl3KatUc";
-            this.tbl3KatUc.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KatUc.Size = new System.Drawing.Size(19, 13);
             this.tbl3KatUc.TabIndex = 38;
             this.tbl3KatUc.Text = "----";
             // 
             // tbl3HedefDort
             // 
             this.tbl3HedefDort.AutoSize = true;
-            this.tbl3HedefDort.Location = new System.Drawing.Point(333, 103);
+            this.tbl3HedefDort.Location = new System.Drawing.Point(309, 179);
             this.tbl3HedefDort.Name = "tbl3HedefDort";
-            this.tbl3HedefDort.Size = new System.Drawing.Size(24, 16);
+            this.tbl3HedefDort.Size = new System.Drawing.Size(19, 13);
             this.tbl3HedefDort.TabIndex = 48;
             this.tbl3HedefDort.Text = "----";
             // 
             // tbl3HedefUc
             // 
             this.tbl3HedefUc.AutoSize = true;
-            this.tbl3HedefUc.Location = new System.Drawing.Point(333, 82);
+            this.tbl3HedefUc.Location = new System.Drawing.Point(309, 148);
             this.tbl3HedefUc.Name = "tbl3HedefUc";
-            this.tbl3HedefUc.Size = new System.Drawing.Size(24, 16);
+            this.tbl3HedefUc.Size = new System.Drawing.Size(19, 13);
             this.tbl3HedefUc.TabIndex = 39;
             this.tbl3HedefUc.Text = "----";
             // 
             // tbl3YonDort
             // 
             this.tbl3YonDort.AutoSize = true;
-            this.tbl3YonDort.Location = new System.Drawing.Point(404, 103);
+            this.tbl3YonDort.Location = new System.Drawing.Point(409, 179);
             this.tbl3YonDort.Name = "tbl3YonDort";
-            this.tbl3YonDort.Size = new System.Drawing.Size(24, 16);
+            this.tbl3YonDort.Size = new System.Drawing.Size(19, 13);
             this.tbl3YonDort.TabIndex = 49;
             this.tbl3YonDort.Text = "----";
             // 
             // tbl3YonUc
             // 
             this.tbl3YonUc.AutoSize = true;
-            this.tbl3YonUc.Location = new System.Drawing.Point(404, 82);
+            this.tbl3YonUc.Location = new System.Drawing.Point(409, 148);
             this.tbl3YonUc.Name = "tbl3YonUc";
-            this.tbl3YonUc.Size = new System.Drawing.Size(24, 16);
+            this.tbl3YonUc.Size = new System.Drawing.Size(19, 13);
             this.tbl3YonUc.TabIndex = 40;
             this.tbl3YonUc.Text = "----";
             // 
             // tbl3KapasiteDort
             // 
             this.tbl3KapasiteDort.AutoSize = true;
-            this.tbl3KapasiteDort.Location = new System.Drawing.Point(475, 103);
+            this.tbl3KapasiteDort.Location = new System.Drawing.Point(490, 179);
             this.tbl3KapasiteDort.Name = "tbl3KapasiteDort";
-            this.tbl3KapasiteDort.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KapasiteDort.Size = new System.Drawing.Size(19, 13);
             this.tbl3KapasiteDort.TabIndex = 50;
             this.tbl3KapasiteDort.Text = "----";
             // 
             // tbl3KapasiteUc
             // 
             this.tbl3KapasiteUc.AutoSize = true;
-            this.tbl3KapasiteUc.Location = new System.Drawing.Point(475, 82);
+            this.tbl3KapasiteUc.Location = new System.Drawing.Point(490, 148);
             this.tbl3KapasiteUc.Name = "tbl3KapasiteUc";
-            this.tbl3KapasiteUc.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KapasiteUc.Size = new System.Drawing.Size(19, 13);
             this.tbl3KapasiteUc.TabIndex = 41;
             this.tbl3KapasiteUc.Text = "----";
             // 
             // tbl3AnlikDort
             // 
             this.tbl3AnlikDort.AutoSize = true;
-            this.tbl3AnlikDort.Location = new System.Drawing.Point(561, 103);
+            this.tbl3AnlikDort.Location = new System.Drawing.Point(577, 179);
             this.tbl3AnlikDort.Name = "tbl3AnlikDort";
-            this.tbl3AnlikDort.Size = new System.Drawing.Size(24, 16);
+            this.tbl3AnlikDort.Size = new System.Drawing.Size(19, 13);
             this.tbl3AnlikDort.TabIndex = 51;
             this.tbl3AnlikDort.Text = "----";
             // 
             // tbl3AnlikUc
             // 
             this.tbl3AnlikUc.AutoSize = true;
-            this.tbl3AnlikUc.Location = new System.Drawing.Point(561, 82);
+            this.tbl3AnlikUc.Location = new System.Drawing.Point(577, 148);
             this.tbl3AnlikUc.Name = "tbl3AnlikUc";
-            this.tbl3AnlikUc.Size = new System.Drawing.Size(24, 16);
+            this.tbl3AnlikUc.Size = new System.Drawing.Size(19, 13);
             this.tbl3AnlikUc.TabIndex = 42;
             this.tbl3AnlikUc.Text = "----";
             // 
             // tbl3KAT
             // 
             this.tbl3KAT.AutoSize = true;
-            this.tbl3KAT.Location = new System.Drawing.Point(249, 1);
+            this.tbl3KAT.Location = new System.Drawing.Point(208, 33);
             this.tbl3KAT.Name = "tbl3KAT";
-            this.tbl3KAT.Size = new System.Drawing.Size(34, 16);
+            this.tbl3KAT.Size = new System.Drawing.Size(28, 13);
             this.tbl3KAT.TabIndex = 3;
             this.tbl3KAT.Text = "KAT";
             // 
             // tbl3KatSifir
             // 
             this.tbl3KatSifir.AutoSize = true;
-            this.tbl3KatSifir.Location = new System.Drawing.Point(249, 22);
+            this.tbl3KatSifir.Location = new System.Drawing.Point(208, 58);
             this.tbl3KatSifir.Name = "tbl3KatSifir";
-            this.tbl3KatSifir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KatSifir.Size = new System.Drawing.Size(19, 13);
             this.tbl3KatSifir.TabIndex = 11;
             this.tbl3KatSifir.Text = "----";
             // 
             // tbl3KatBir
             // 
             this.tbl3KatBir.AutoSize = true;
-            this.tbl3KatBir.Location = new System.Drawing.Point(249, 40);
+            this.tbl3KatBir.Location = new System.Drawing.Point(208, 91);
             this.tbl3KatBir.Name = "tbl3KatBir";
-            this.tbl3KatBir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KatBir.Size = new System.Drawing.Size(19, 13);
             this.tbl3KatBir.TabIndex = 20;
             this.tbl3KatBir.Text = "----";
             // 
             // tbl3KatIki
             // 
             this.tbl3KatIki.AutoSize = true;
-            this.tbl3KatIki.Location = new System.Drawing.Point(249, 61);
+            this.tbl3KatIki.Location = new System.Drawing.Point(208, 120);
             this.tbl3KatIki.Name = "tbl3KatIki";
-            this.tbl3KatIki.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KatIki.Size = new System.Drawing.Size(19, 13);
             this.tbl3KatIki.TabIndex = 29;
             this.tbl3KatIki.Text = "----";
             // 
             // tbl3HedefIki
             // 
             this.tbl3HedefIki.AutoSize = true;
-            this.tbl3HedefIki.Location = new System.Drawing.Point(333, 61);
+            this.tbl3HedefIki.Location = new System.Drawing.Point(309, 120);
             this.tbl3HedefIki.Name = "tbl3HedefIki";
-            this.tbl3HedefIki.Size = new System.Drawing.Size(24, 16);
+            this.tbl3HedefIki.Size = new System.Drawing.Size(19, 13);
             this.tbl3HedefIki.TabIndex = 30;
             this.tbl3HedefIki.Text = "----";
             // 
             // tbl3HedefBir
             // 
             this.tbl3HedefBir.AutoSize = true;
-            this.tbl3HedefBir.Location = new System.Drawing.Point(333, 40);
+            this.tbl3HedefBir.Location = new System.Drawing.Point(309, 91);
             this.tbl3HedefBir.Name = "tbl3HedefBir";
-            this.tbl3HedefBir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3HedefBir.Size = new System.Drawing.Size(19, 13);
             this.tbl3HedefBir.TabIndex = 21;
             this.tbl3HedefBir.Text = "----";
             // 
             // tbl3HedefSifir
             // 
             this.tbl3HedefSifir.AutoSize = true;
-            this.tbl3HedefSifir.Location = new System.Drawing.Point(333, 22);
+            this.tbl3HedefSifir.Location = new System.Drawing.Point(309, 58);
             this.tbl3HedefSifir.Name = "tbl3HedefSifir";
-            this.tbl3HedefSifir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3HedefSifir.Size = new System.Drawing.Size(19, 13);
             this.tbl3HedefSifir.TabIndex = 12;
             this.tbl3HedefSifir.Text = "----";
             // 
             // tbl3HEDEF
             // 
             this.tbl3HEDEF.AutoSize = true;
-            this.tbl3HEDEF.Location = new System.Drawing.Point(333, 1);
+            this.tbl3HEDEF.Location = new System.Drawing.Point(309, 33);
             this.tbl3HEDEF.Name = "tbl3HEDEF";
-            this.tbl3HEDEF.Size = new System.Drawing.Size(54, 16);
+            this.tbl3HEDEF.Size = new System.Drawing.Size(43, 13);
             this.tbl3HEDEF.TabIndex = 4;
             this.tbl3HEDEF.Text = "HEDEF";
             // 
             // tbl3YON
             // 
             this.tbl3YON.AutoSize = true;
-            this.tbl3YON.Location = new System.Drawing.Point(404, 1);
+            this.tbl3YON.Location = new System.Drawing.Point(409, 33);
             this.tbl3YON.Name = "tbl3YON";
-            this.tbl3YON.Size = new System.Drawing.Size(37, 16);
+            this.tbl3YON.Size = new System.Drawing.Size(30, 13);
             this.tbl3YON.TabIndex = 5;
             this.tbl3YON.Text = "YÖN";
             // 
             // tbl3YonSifir
             // 
             this.tbl3YonSifir.AutoSize = true;
-            this.tbl3YonSifir.Location = new System.Drawing.Point(404, 22);
+            this.tbl3YonSifir.Location = new System.Drawing.Point(409, 58);
             this.tbl3YonSifir.Name = "tbl3YonSifir";
-            this.tbl3YonSifir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3YonSifir.Size = new System.Drawing.Size(19, 13);
             this.tbl3YonSifir.TabIndex = 13;
             this.tbl3YonSifir.Text = "----";
             // 
             // tbl3YonBir
             // 
             this.tbl3YonBir.AutoSize = true;
-            this.tbl3YonBir.Location = new System.Drawing.Point(404, 40);
+            this.tbl3YonBir.Location = new System.Drawing.Point(409, 91);
             this.tbl3YonBir.Name = "tbl3YonBir";
-            this.tbl3YonBir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3YonBir.Size = new System.Drawing.Size(19, 13);
             this.tbl3YonBir.TabIndex = 22;
             this.tbl3YonBir.Text = "----";
             // 
             // tbl3YonIki
             // 
             this.tbl3YonIki.AutoSize = true;
-            this.tbl3YonIki.Location = new System.Drawing.Point(404, 61);
+            this.tbl3YonIki.Location = new System.Drawing.Point(409, 120);
             this.tbl3YonIki.Name = "tbl3YonIki";
-            this.tbl3YonIki.Size = new System.Drawing.Size(24, 16);
+            this.tbl3YonIki.Size = new System.Drawing.Size(19, 13);
             this.tbl3YonIki.TabIndex = 31;
             this.tbl3YonIki.Text = "----";
             // 
             // tbl3KapasiteIki
             // 
             this.tbl3KapasiteIki.AutoSize = true;
-            this.tbl3KapasiteIki.Location = new System.Drawing.Point(475, 61);
+            this.tbl3KapasiteIki.Location = new System.Drawing.Point(490, 120);
             this.tbl3KapasiteIki.Name = "tbl3KapasiteIki";
-            this.tbl3KapasiteIki.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KapasiteIki.Size = new System.Drawing.Size(19, 13);
             this.tbl3KapasiteIki.TabIndex = 32;
             this.tbl3KapasiteIki.Text = "----";
             // 
             // tbl3KapasiteBir
             // 
             this.tbl3KapasiteBir.AutoSize = true;
-            this.tbl3KapasiteBir.Location = new System.Drawing.Point(475, 40);
+            this.tbl3KapasiteBir.Location = new System.Drawing.Point(490, 91);
             this.tbl3KapasiteBir.Name = "tbl3KapasiteBir";
-            this.tbl3KapasiteBir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KapasiteBir.Size = new System.Drawing.Size(19, 13);
             this.tbl3KapasiteBir.TabIndex = 23;
             this.tbl3KapasiteBir.Text = "----";
             // 
             // tbl3KapasiteSifir
             // 
             this.tbl3KapasiteSifir.AutoSize = true;
-            this.tbl3KapasiteSifir.Location = new System.Drawing.Point(475, 22);
+            this.tbl3KapasiteSifir.Location = new System.Drawing.Point(490, 58);
             this.tbl3KapasiteSifir.Name = "tbl3KapasiteSifir";
-            this.tbl3KapasiteSifir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3KapasiteSifir.Size = new System.Drawing.Size(19, 13);
             this.tbl3KapasiteSifir.TabIndex = 14;
             this.tbl3KapasiteSifir.Text = "----";
             // 
             // tbl3KAPASITE
             // 
             this.tbl3KAPASITE.AutoSize = true;
-            this.tbl3KAPASITE.Location = new System.Drawing.Point(475, 1);
+            this.tbl3KAPASITE.Location = new System.Drawing.Point(490, 33);
             this.tbl3KAPASITE.Name = "tbl3KAPASITE";
-            this.tbl3KAPASITE.Size = new System.Drawing.Size(73, 16);
+            this.tbl3KAPASITE.Size = new System.Drawing.Size(59, 13);
             this.tbl3KAPASITE.TabIndex = 6;
             this.tbl3KAPASITE.Text = "KAPASİTE";
             // 
             // tbl3ANLIK
             // 
             this.tbl3ANLIK.AutoSize = true;
-            this.tbl3ANLIK.Location = new System.Drawing.Point(561, 1);
+            this.tbl3ANLIK.Location = new System.Drawing.Point(577, 33);
             this.tbl3ANLIK.Name = "tbl3ANLIK";
-            this.tbl3ANLIK.Size = new System.Drawing.Size(116, 16);
+            this.tbl3ANLIK.Size = new System.Drawing.Size(98, 13);
             this.tbl3ANLIK.TabIndex = 7;
             this.tbl3ANLIK.Text = "ANLIK KİŞİ SAYISI";
             // 
             // tbl3AnlikSifir
             // 
             this.tbl3AnlikSifir.AutoSize = true;
-            this.tbl3AnlikSifir.Location = new System.Drawing.Point(561, 22);
+            this.tbl3AnlikSifir.Location = new System.Drawing.Point(577, 58);
             this.tbl3AnlikSifir.Name = "tbl3AnlikSifir";
-            this.tbl3AnlikSifir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3AnlikSifir.Size = new System.Drawing.Size(19, 13);
             this.tbl3AnlikSifir.TabIndex = 15;
             this.tbl3AnlikSifir.Text = "----";
             // 
             // tbl3AnlikBir
             // 
             this.tbl3AnlikBir.AutoSize = true;
-            this.tbl3AnlikBir.Location = new System.Drawing.Point(561, 40);
+            this.tbl3AnlikBir.Location = new System.Drawing.Point(577, 91);
             this.tbl3AnlikBir.Name = "tbl3AnlikBir";
-            this.tbl3AnlikBir.Size = new System.Drawing.Size(24, 16);
+            this.tbl3AnlikBir.Size = new System.Drawing.Size(19, 13);
             this.tbl3AnlikBir.TabIndex = 24;
             this.tbl3AnlikBir.Text = "----";
             // 
             // tbl3AnlikIki
             // 
             this.tbl3AnlikIki.AutoSize = true;
-            this.tbl3AnlikIki.Location = new System.Drawing.Point(561, 61);
+            this.tbl3AnlikIki.Location = new System.Drawing.Point(577, 120);
             this.tbl3AnlikIki.Name = "tbl3AnlikIki";
-            this.tbl3AnlikIki.Size = new System.Drawing.Size(24, 16);
+            this.tbl3AnlikIki.Size = new System.Drawing.Size(19, 13);
             this.tbl3AnlikIki.TabIndex = 33;
             this.tbl3AnlikIki.Text = "----";
-            // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            tableLayoutPanel3.ColumnCount = 2;
-            tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.32283F));
-            tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.67716F));
-            tableLayoutPanel3.Controls.Add(this.tbl2KatDort, 0, 5);
-            tableLayoutPanel3.Controls.Add(this.tbl2KuyrukDort, 0, 5);
-            tableLayoutPanel3.Controls.Add(this.tbl2KuyrukUc, 1, 4);
-            tableLayoutPanel3.Controls.Add(this.tbl2KatUc, 0, 4);
-            tableLayoutPanel3.Controls.Add(this.tbl2KuyrukIki, 1, 3);
-            tableLayoutPanel3.Controls.Add(this.tbl2KatIki, 0, 3);
-            tableLayoutPanel3.Controls.Add(this.tbl2KuyrukBir, 1, 2);
-            tableLayoutPanel3.Controls.Add(this.tbl2KatBir, 0, 2);
-            tableLayoutPanel3.Controls.Add(this.tbl2KuyrukZemin, 1, 1);
-            tableLayoutPanel3.Controls.Add(this.tbl2KatZemin, 0, 1);
-            tableLayoutPanel3.Controls.Add(this.tbl2KUYRUK, 1, 0);
-            tableLayoutPanel3.Controls.Add(this.tbl2KAT, 0, 0);
-            tableLayoutPanel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            tableLayoutPanel3.Location = new System.Drawing.Point(521, 88);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 6;
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel3.Size = new System.Drawing.Size(506, 134);
-            tableLayoutPanel3.TabIndex = 2;
             // 
             // tbl2KatDort
             // 
             this.tbl2KatDort.AutoSize = true;
-            this.tbl2KatDort.Location = new System.Drawing.Point(4, 112);
+            this.tbl2KatDort.Location = new System.Drawing.Point(42, 176);
             this.tbl2KatDort.Name = "tbl2KatDort";
-            this.tbl2KatDort.Size = new System.Drawing.Size(40, 16);
+            this.tbl2KatDort.Size = new System.Drawing.Size(35, 13);
             this.tbl2KatDort.TabIndex = 11;
             this.tbl2KatDort.Text = "4. Kat";
             // 
             // tbl2KuyrukDort
             // 
             this.tbl2KuyrukDort.AutoSize = true;
-            this.tbl2KuyrukDort.Location = new System.Drawing.Point(92, 112);
+            this.tbl2KuyrukDort.Location = new System.Drawing.Point(148, 176);
             this.tbl2KuyrukDort.Name = "tbl2KuyrukDort";
-            this.tbl2KuyrukDort.Size = new System.Drawing.Size(24, 16);
+            this.tbl2KuyrukDort.Size = new System.Drawing.Size(19, 13);
             this.tbl2KuyrukDort.TabIndex = 10;
             this.tbl2KuyrukDort.Text = "----";
             // 
             // tbl2KuyrukUc
             // 
             this.tbl2KuyrukUc.AutoSize = true;
-            this.tbl2KuyrukUc.Location = new System.Drawing.Point(92, 91);
+            this.tbl2KuyrukUc.Location = new System.Drawing.Point(148, 140);
             this.tbl2KuyrukUc.Name = "tbl2KuyrukUc";
-            this.tbl2KuyrukUc.Size = new System.Drawing.Size(24, 16);
+            this.tbl2KuyrukUc.Size = new System.Drawing.Size(19, 13);
             this.tbl2KuyrukUc.TabIndex = 9;
             this.tbl2KuyrukUc.Text = "----";
             // 
             // tbl2KatUc
             // 
             this.tbl2KatUc.AutoSize = true;
-            this.tbl2KatUc.Location = new System.Drawing.Point(4, 91);
+            this.tbl2KatUc.Location = new System.Drawing.Point(42, 140);
             this.tbl2KatUc.Name = "tbl2KatUc";
-            this.tbl2KatUc.Size = new System.Drawing.Size(40, 16);
+            this.tbl2KatUc.Size = new System.Drawing.Size(35, 13);
             this.tbl2KatUc.TabIndex = 8;
             this.tbl2KatUc.Text = "3. Kat";
             // 
             // tbl2KuyrukIki
             // 
             this.tbl2KuyrukIki.AutoSize = true;
-            this.tbl2KuyrukIki.Location = new System.Drawing.Point(92, 70);
+            this.tbl2KuyrukIki.Location = new System.Drawing.Point(148, 111);
             this.tbl2KuyrukIki.Name = "tbl2KuyrukIki";
-            this.tbl2KuyrukIki.Size = new System.Drawing.Size(24, 16);
+            this.tbl2KuyrukIki.Size = new System.Drawing.Size(19, 13);
             this.tbl2KuyrukIki.TabIndex = 7;
             this.tbl2KuyrukIki.Text = "----";
             // 
             // tbl2KatIki
             // 
             this.tbl2KatIki.AutoSize = true;
-            this.tbl2KatIki.Location = new System.Drawing.Point(4, 70);
+            this.tbl2KatIki.Location = new System.Drawing.Point(42, 111);
             this.tbl2KatIki.Name = "tbl2KatIki";
-            this.tbl2KatIki.Size = new System.Drawing.Size(40, 16);
+            this.tbl2KatIki.Size = new System.Drawing.Size(35, 13);
             this.tbl2KatIki.TabIndex = 6;
             this.tbl2KatIki.Text = "2. Kat";
             // 
             // tbl2KuyrukBir
             // 
             this.tbl2KuyrukBir.AutoSize = true;
-            this.tbl2KuyrukBir.Location = new System.Drawing.Point(92, 49);
+            this.tbl2KuyrukBir.Location = new System.Drawing.Point(148, 81);
             this.tbl2KuyrukBir.Name = "tbl2KuyrukBir";
-            this.tbl2KuyrukBir.Size = new System.Drawing.Size(24, 16);
+            this.tbl2KuyrukBir.Size = new System.Drawing.Size(19, 13);
             this.tbl2KuyrukBir.TabIndex = 5;
             this.tbl2KuyrukBir.Text = "----";
             // 
             // tbl2KatBir
             // 
             this.tbl2KatBir.AutoSize = true;
-            this.tbl2KatBir.Location = new System.Drawing.Point(4, 49);
+            this.tbl2KatBir.Location = new System.Drawing.Point(42, 81);
             this.tbl2KatBir.Name = "tbl2KatBir";
-            this.tbl2KatBir.Size = new System.Drawing.Size(40, 16);
+            this.tbl2KatBir.Size = new System.Drawing.Size(35, 13);
             this.tbl2KatBir.TabIndex = 4;
             this.tbl2KatBir.Text = "1. Kat";
             // 
             // tbl2KuyrukZemin
             // 
             this.tbl2KuyrukZemin.AutoSize = true;
-            this.tbl2KuyrukZemin.Location = new System.Drawing.Point(92, 25);
+            this.tbl2KuyrukZemin.Location = new System.Drawing.Point(148, 53);
             this.tbl2KuyrukZemin.Name = "tbl2KuyrukZemin";
-            this.tbl2KuyrukZemin.Size = new System.Drawing.Size(24, 16);
+            this.tbl2KuyrukZemin.Size = new System.Drawing.Size(19, 13);
             this.tbl2KuyrukZemin.TabIndex = 3;
             this.tbl2KuyrukZemin.Text = "----";
             // 
             // tbl2KatZemin
             // 
             this.tbl2KatZemin.AutoSize = true;
-            this.tbl2KatZemin.Location = new System.Drawing.Point(4, 25);
+            this.tbl2KatZemin.Location = new System.Drawing.Point(32, 53);
             this.tbl2KatZemin.Name = "tbl2KatZemin";
-            this.tbl2KatZemin.Size = new System.Drawing.Size(67, 16);
+            this.tbl2KatZemin.Size = new System.Drawing.Size(55, 13);
             this.tbl2KatZemin.TabIndex = 2;
             this.tbl2KatZemin.Text = "Zemin Kat";
             // 
             // tbl2KUYRUK
             // 
             this.tbl2KUYRUK.AutoSize = true;
-            this.tbl2KUYRUK.Location = new System.Drawing.Point(92, 1);
+            this.tbl2KUYRUK.Location = new System.Drawing.Point(131, 29);
             this.tbl2KUYRUK.Name = "tbl2KUYRUK";
-            this.tbl2KUYRUK.Size = new System.Drawing.Size(63, 16);
+            this.tbl2KUYRUK.Size = new System.Drawing.Size(52, 13);
             this.tbl2KUYRUK.TabIndex = 1;
             this.tbl2KUYRUK.Text = "KUYRUK";
             // 
             // tbl2KAT
             // 
             this.tbl2KAT.AutoSize = true;
-            this.tbl2KAT.Location = new System.Drawing.Point(4, 1);
+            this.tbl2KAT.Location = new System.Drawing.Point(25, 29);
             this.tbl2KAT.Name = "tbl2KAT";
-            this.tbl2KAT.Size = new System.Drawing.Size(34, 16);
+            this.tbl2KAT.Size = new System.Drawing.Size(68, 13);
             this.tbl2KAT.TabIndex = 0;
-            this.tbl2KAT.Text = "KAT";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.45454F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.54546F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KuyrukDort, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KuyrukUc, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KuyrukIki, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KuyrukBir, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KuyrukZemin, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KUYRUKTABEKLEYENSAYISI, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KISISAYISI, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KATBILGISI, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KatBilgDortKt, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KisiSayisiDort, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KisiSayisiUc, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KatBilgUcKt, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KatBilgIkiKt, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KatBilgBirKt, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KatBilgZeminKt, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KisiSayisiIki, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KisiSayisiBir, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tbl1KisiSayisiZemin, 1, 1);
-            this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 87);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(477, 135);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tbl2KAT.Text = "KAT BİLGİSİ";
             // 
             // tbl1KuyrukDort
             // 
             this.tbl1KuyrukDort.AutoSize = true;
-            this.tbl1KuyrukDort.Location = new System.Drawing.Point(247, 113);
+            this.tbl1KuyrukDort.Location = new System.Drawing.Point(289, 181);
             this.tbl1KuyrukDort.Name = "tbl1KuyrukDort";
-            this.tbl1KuyrukDort.Size = new System.Drawing.Size(24, 16);
+            this.tbl1KuyrukDort.Size = new System.Drawing.Size(19, 13);
             this.tbl1KuyrukDort.TabIndex = 14;
             this.tbl1KuyrukDort.Text = "----";
             // 
             // tbl1KuyrukUc
             // 
             this.tbl1KuyrukUc.AutoSize = true;
-            this.tbl1KuyrukUc.Location = new System.Drawing.Point(247, 92);
+            this.tbl1KuyrukUc.Location = new System.Drawing.Point(289, 145);
             this.tbl1KuyrukUc.Name = "tbl1KuyrukUc";
-            this.tbl1KuyrukUc.Size = new System.Drawing.Size(24, 16);
+            this.tbl1KuyrukUc.Size = new System.Drawing.Size(19, 13);
             this.tbl1KuyrukUc.TabIndex = 13;
             this.tbl1KuyrukUc.Text = "----";
             // 
             // tbl1KuyrukIki
             // 
             this.tbl1KuyrukIki.AutoSize = true;
-            this.tbl1KuyrukIki.Location = new System.Drawing.Point(247, 71);
+            this.tbl1KuyrukIki.Location = new System.Drawing.Point(289, 116);
             this.tbl1KuyrukIki.Name = "tbl1KuyrukIki";
-            this.tbl1KuyrukIki.Size = new System.Drawing.Size(24, 16);
+            this.tbl1KuyrukIki.Size = new System.Drawing.Size(19, 13);
             this.tbl1KuyrukIki.TabIndex = 12;
             this.tbl1KuyrukIki.Text = "----";
             // 
             // tbl1KuyrukBir
             // 
             this.tbl1KuyrukBir.AutoSize = true;
-            this.tbl1KuyrukBir.Location = new System.Drawing.Point(247, 50);
+            this.tbl1KuyrukBir.Location = new System.Drawing.Point(289, 86);
             this.tbl1KuyrukBir.Name = "tbl1KuyrukBir";
-            this.tbl1KuyrukBir.Size = new System.Drawing.Size(24, 16);
+            this.tbl1KuyrukBir.Size = new System.Drawing.Size(19, 13);
             this.tbl1KuyrukBir.TabIndex = 11;
             this.tbl1KuyrukBir.Text = "----";
             // 
             // tbl1KuyrukZemin
             // 
             this.tbl1KuyrukZemin.AutoSize = true;
-            this.tbl1KuyrukZemin.Location = new System.Drawing.Point(247, 26);
+            this.tbl1KuyrukZemin.Location = new System.Drawing.Point(289, 58);
             this.tbl1KuyrukZemin.Name = "tbl1KuyrukZemin";
-            this.tbl1KuyrukZemin.Size = new System.Drawing.Size(24, 16);
+            this.tbl1KuyrukZemin.Size = new System.Drawing.Size(19, 13);
             this.tbl1KuyrukZemin.TabIndex = 10;
             this.tbl1KuyrukZemin.Text = "----";
             // 
             // tbl1KUYRUKTABEKLEYENSAYISI
             // 
             this.tbl1KUYRUKTABEKLEYENSAYISI.AutoSize = true;
-            this.tbl1KUYRUKTABEKLEYENSAYISI.Location = new System.Drawing.Point(247, 1);
+            this.tbl1KUYRUKTABEKLEYENSAYISI.Location = new System.Drawing.Point(217, 34);
             this.tbl1KUYRUKTABEKLEYENSAYISI.Name = "tbl1KUYRUKTABEKLEYENSAYISI";
-            this.tbl1KUYRUKTABEKLEYENSAYISI.Size = new System.Drawing.Size(199, 16);
+            this.tbl1KUYRUKTABEKLEYENSAYISI.Size = new System.Drawing.Size(162, 13);
             this.tbl1KUYRUKTABEKLEYENSAYISI.TabIndex = 9;
             this.tbl1KUYRUKTABEKLEYENSAYISI.Text = "KUYRUKTA BEKLEYEN SAYISI";
             // 
             // tbl1KISISAYISI
             // 
             this.tbl1KISISAYISI.AutoSize = true;
-            this.tbl1KISISAYISI.Location = new System.Drawing.Point(134, 1);
+            this.tbl1KISISAYISI.Location = new System.Drawing.Point(117, 34);
             this.tbl1KISISAYISI.Name = "tbl1KISISAYISI";
-            this.tbl1KISISAYISI.Size = new System.Drawing.Size(76, 16);
+            this.tbl1KISISAYISI.Size = new System.Drawing.Size(64, 13);
             this.tbl1KISISAYISI.TabIndex = 8;
             this.tbl1KISISAYISI.Text = "KİŞİ SAYISI";
             // 
             // tbl1KATBILGISI
             // 
             this.tbl1KATBILGISI.AutoSize = true;
-            this.tbl1KATBILGISI.Location = new System.Drawing.Point(4, 1);
+            this.tbl1KATBILGISI.Location = new System.Drawing.Point(29, 34);
             this.tbl1KATBILGISI.Name = "tbl1KATBILGISI";
-            this.tbl1KATBILGISI.Size = new System.Drawing.Size(81, 16);
+            this.tbl1KATBILGISI.Size = new System.Drawing.Size(68, 13);
             this.tbl1KATBILGISI.TabIndex = 7;
             this.tbl1KATBILGISI.Text = "KAT BİLGİSİ";
             // 
             // tbl1KatBilgDortKt
             // 
             this.tbl1KatBilgDortKt.AutoSize = true;
-            this.tbl1KatBilgDortKt.Location = new System.Drawing.Point(4, 113);
+            this.tbl1KatBilgDortKt.Location = new System.Drawing.Point(46, 181);
             this.tbl1KatBilgDortKt.Name = "tbl1KatBilgDortKt";
-            this.tbl1KatBilgDortKt.Size = new System.Drawing.Size(40, 16);
+            this.tbl1KatBilgDortKt.Size = new System.Drawing.Size(35, 13);
             this.tbl1KatBilgDortKt.TabIndex = 5;
             this.tbl1KatBilgDortKt.Text = "4. Kat";
             // 
             // tbl1KisiSayisiDort
             // 
             this.tbl1KisiSayisiDort.AutoSize = true;
-            this.tbl1KisiSayisiDort.Location = new System.Drawing.Point(134, 113);
+            this.tbl1KisiSayisiDort.Location = new System.Drawing.Point(140, 181);
             this.tbl1KisiSayisiDort.Name = "tbl1KisiSayisiDort";
-            this.tbl1KisiSayisiDort.Size = new System.Drawing.Size(24, 16);
+            this.tbl1KisiSayisiDort.Size = new System.Drawing.Size(19, 13);
             this.tbl1KisiSayisiDort.TabIndex = 6;
             this.tbl1KisiSayisiDort.Text = "----";
             // 
             // tbl1KisiSayisiUc
             // 
             this.tbl1KisiSayisiUc.AutoSize = true;
-            this.tbl1KisiSayisiUc.Location = new System.Drawing.Point(134, 92);
+            this.tbl1KisiSayisiUc.Location = new System.Drawing.Point(140, 145);
             this.tbl1KisiSayisiUc.Name = "tbl1KisiSayisiUc";
-            this.tbl1KisiSayisiUc.Size = new System.Drawing.Size(24, 16);
+            this.tbl1KisiSayisiUc.Size = new System.Drawing.Size(19, 13);
             this.tbl1KisiSayisiUc.TabIndex = 4;
             this.tbl1KisiSayisiUc.Text = "----";
             // 
             // tbl1KatBilgUcKt
             // 
             this.tbl1KatBilgUcKt.AutoSize = true;
-            this.tbl1KatBilgUcKt.Location = new System.Drawing.Point(4, 92);
+            this.tbl1KatBilgUcKt.Location = new System.Drawing.Point(47, 145);
             this.tbl1KatBilgUcKt.Name = "tbl1KatBilgUcKt";
-            this.tbl1KatBilgUcKt.Size = new System.Drawing.Size(37, 16);
+            this.tbl1KatBilgUcKt.Size = new System.Drawing.Size(32, 13);
             this.tbl1KatBilgUcKt.TabIndex = 4;
             this.tbl1KatBilgUcKt.Text = "3.Kat";
             // 
             // tbl1KatBilgIkiKt
             // 
             this.tbl1KatBilgIkiKt.AutoSize = true;
-            this.tbl1KatBilgIkiKt.Location = new System.Drawing.Point(4, 71);
+            this.tbl1KatBilgIkiKt.Location = new System.Drawing.Point(47, 116);
             this.tbl1KatBilgIkiKt.Name = "tbl1KatBilgIkiKt";
-            this.tbl1KatBilgIkiKt.Size = new System.Drawing.Size(37, 16);
+            this.tbl1KatBilgIkiKt.Size = new System.Drawing.Size(32, 13);
             this.tbl1KatBilgIkiKt.TabIndex = 3;
             this.tbl1KatBilgIkiKt.Text = "2.Kat";
             // 
             // tbl1KatBilgBirKt
             // 
             this.tbl1KatBilgBirKt.AutoSize = true;
-            this.tbl1KatBilgBirKt.Location = new System.Drawing.Point(4, 50);
+            this.tbl1KatBilgBirKt.Location = new System.Drawing.Point(46, 86);
             this.tbl1KatBilgBirKt.Name = "tbl1KatBilgBirKt";
-            this.tbl1KatBilgBirKt.Size = new System.Drawing.Size(40, 16);
+            this.tbl1KatBilgBirKt.Size = new System.Drawing.Size(35, 13);
             this.tbl1KatBilgBirKt.TabIndex = 2;
             this.tbl1KatBilgBirKt.Text = "1. Kat";
             // 
             // tbl1KatBilgZeminKt
             // 
             this.tbl1KatBilgZeminKt.AutoSize = true;
-            this.tbl1KatBilgZeminKt.Location = new System.Drawing.Point(4, 26);
+            this.tbl1KatBilgZeminKt.Location = new System.Drawing.Point(36, 58);
             this.tbl1KatBilgZeminKt.Name = "tbl1KatBilgZeminKt";
-            this.tbl1KatBilgZeminKt.Size = new System.Drawing.Size(67, 16);
+            this.tbl1KatBilgZeminKt.Size = new System.Drawing.Size(55, 13);
             this.tbl1KatBilgZeminKt.TabIndex = 1;
             this.tbl1KatBilgZeminKt.Text = "Zemin Kat";
             // 
             // tbl1KisiSayisiIki
             // 
             this.tbl1KisiSayisiIki.AutoSize = true;
-            this.tbl1KisiSayisiIki.Location = new System.Drawing.Point(134, 71);
+            this.tbl1KisiSayisiIki.Location = new System.Drawing.Point(140, 116);
             this.tbl1KisiSayisiIki.Name = "tbl1KisiSayisiIki";
-            this.tbl1KisiSayisiIki.Size = new System.Drawing.Size(24, 16);
+            this.tbl1KisiSayisiIki.Size = new System.Drawing.Size(19, 13);
             this.tbl1KisiSayisiIki.TabIndex = 3;
             this.tbl1KisiSayisiIki.Text = "----";
             // 
             // tbl1KisiSayisiBir
             // 
             this.tbl1KisiSayisiBir.AutoSize = true;
-            this.tbl1KisiSayisiBir.Location = new System.Drawing.Point(134, 50);
+            this.tbl1KisiSayisiBir.Location = new System.Drawing.Point(140, 86);
             this.tbl1KisiSayisiBir.Name = "tbl1KisiSayisiBir";
-            this.tbl1KisiSayisiBir.Size = new System.Drawing.Size(24, 16);
+            this.tbl1KisiSayisiBir.Size = new System.Drawing.Size(19, 13);
             this.tbl1KisiSayisiBir.TabIndex = 2;
             this.tbl1KisiSayisiBir.Text = "----";
             // 
             // tbl1KisiSayisiZemin
             // 
             this.tbl1KisiSayisiZemin.AutoSize = true;
-            this.tbl1KisiSayisiZemin.Location = new System.Drawing.Point(134, 26);
+            this.tbl1KisiSayisiZemin.Location = new System.Drawing.Point(140, 58);
             this.tbl1KisiSayisiZemin.Name = "tbl1KisiSayisiZemin";
-            this.tbl1KisiSayisiZemin.Size = new System.Drawing.Size(24, 16);
+            this.tbl1KisiSayisiZemin.Size = new System.Drawing.Size(19, 13);
             this.tbl1KisiSayisiZemin.TabIndex = 1;
             this.tbl1KisiSayisiZemin.Text = "----";
-            // 
-            // label85
-            // 
-            this.label85.AutoSize = true;
-            this.label85.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.label85.ForeColor = System.Drawing.Color.Red;
-            this.label85.Location = new System.Drawing.Point(44, 9);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(395, 60);
-            this.label85.TabIndex = 3;
-            this.label85.Text = "             KATLARDA BULUNAN KİŞİLERİN\r\n                                        " +
-    "VE\r\nKUYRUKTA BEKLEYENLERİN TOPLAM SAYISI";
-            // 
-            // label86
-            // 
-            this.label86.AutoSize = true;
-            this.label86.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label86.ForeColor = System.Drawing.Color.Red;
-            this.label86.Location = new System.Drawing.Point(588, 28);
-            this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(384, 20);
-            this.label86.TabIndex = 4;
-            this.label86.Text = "KATLAR VE KUYRUKTA  BEKLEYEN KİŞİLER";
-            // 
-            // label87
-            // 
-            this.label87.AutoSize = true;
-            this.label87.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.label87.ForeColor = System.Drawing.Color.Red;
-            this.label87.Location = new System.Drawing.Point(384, 238);
-            this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(253, 20);
-            this.label87.TabIndex = 5;
-            this.label87.Text = "ASANSÖRLER VE BİLGİLERİ\r\n";
             // 
             // label56
             // 
@@ -1032,7 +844,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label56.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(164)))), ((int)(((byte)(4)))));
             this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.label56.ForeColor = System.Drawing.Color.White;
-            this.label56.Location = new System.Drawing.Point(792, 424);
+            this.label56.Location = new System.Drawing.Point(794, 586);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(33, 13);
             this.label56.TabIndex = 6;
@@ -1042,7 +854,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // 
             this.label57.AutoSize = true;
             this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label57.Location = new System.Drawing.Point(831, 424);
+            this.label57.Location = new System.Drawing.Point(833, 586);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(194, 13);
             this.label57.TabIndex = 7;
@@ -1052,7 +864,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // 
             this.label66.AutoSize = true;
             this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label66.Location = new System.Drawing.Point(587, 424);
+            this.label66.Location = new System.Drawing.Point(589, 586);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(154, 13);
             this.label66.TabIndex = 11;
@@ -1064,7 +876,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label72.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(66)))), ((int)(((byte)(106)))));
             this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.label72.ForeColor = System.Drawing.Color.White;
-            this.label72.Location = new System.Drawing.Point(540, 424);
+            this.label72.Location = new System.Drawing.Point(542, 586);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(35, 13);
             this.label72.TabIndex = 10;
@@ -1075,7 +887,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.LoginThreadCount.AutoSize = true;
             this.LoginThreadCount.Cursor = System.Windows.Forms.Cursors.No;
             this.LoginThreadCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.LoginThreadCount.Location = new System.Drawing.Point(187, 394);
+            this.LoginThreadCount.Location = new System.Drawing.Point(189, 556);
             this.LoginThreadCount.Name = "LoginThreadCount";
             this.LoginThreadCount.Size = new System.Drawing.Size(101, 13);
             this.LoginThreadCount.TabIndex = 12;
@@ -1086,7 +898,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.ExitThreadCount.AutoSize = true;
             this.ExitThreadCount.Cursor = System.Windows.Forms.Cursors.No;
             this.ExitThreadCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.ExitThreadCount.Location = new System.Drawing.Point(187, 412);
+            this.ExitThreadCount.Location = new System.Drawing.Point(189, 574);
             this.ExitThreadCount.Name = "ExitThreadCount";
             this.ExitThreadCount.Size = new System.Drawing.Size(103, 13);
             this.ExitThreadCount.TabIndex = 13;
@@ -1098,7 +910,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.StartBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StartBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
             this.StartBtn.ForeColor = System.Drawing.Color.White;
-            this.StartBtn.Location = new System.Drawing.Point(10, 394);
+            this.StartBtn.Location = new System.Drawing.Point(12, 556);
             this.StartBtn.Name = "StartBtn";
             this.StartBtn.Size = new System.Drawing.Size(164, 43);
             this.StartBtn.TabIndex = 14;
@@ -1110,7 +922,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // 
             this.label63.AutoSize = true;
             this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label63.Location = new System.Drawing.Point(625, 397);
+            this.label63.Location = new System.Drawing.Point(627, 559);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(404, 13);
             this.label63.TabIndex = 16;
@@ -1122,39 +934,139 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label65.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(146)))), ((int)(((byte)(184)))));
             this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.label65.ForeColor = System.Drawing.Color.White;
-            this.label65.Location = new System.Drawing.Point(540, 397);
+            this.label65.Location = new System.Drawing.Point(542, 559);
             this.label65.Name = "label65";
             this.label65.Size = new System.Drawing.Size(79, 13);
             this.label65.TabIndex = 15;
             this.label65.Text = "Durduruluyor";
-            // 
-            // label90
-            // 
-            this.label90.AutoSize = true;
-            this.label90.Location = new System.Drawing.Point(434, 431);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(41, 13);
-            this.label90.TabIndex = 17;
-            this.label90.Text = "label90";
             // 
             // LogoutThreadCount
             // 
             this.LogoutThreadCount.AutoSize = true;
             this.LogoutThreadCount.Cursor = System.Windows.Forms.Cursors.No;
             this.LogoutThreadCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.LogoutThreadCount.Location = new System.Drawing.Point(187, 431);
+            this.LogoutThreadCount.Location = new System.Drawing.Point(189, 593);
             this.LogoutThreadCount.Name = "LogoutThreadCount";
             this.LogoutThreadCount.Size = new System.Drawing.Size(149, 13);
             this.LogoutThreadCount.TabIndex = 18;
             this.LogoutThreadCount.Text = "AVM Çıkan Kişi Sayısı : 0";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tbl1KATBILGISI);
+            this.groupBox1.Controls.Add(this.tbl1KisiSayisiZemin);
+            this.groupBox1.Controls.Add(this.tbl1KatBilgZeminKt);
+            this.groupBox1.Controls.Add(this.tbl1KisiSayisiBir);
+            this.groupBox1.Controls.Add(this.tbl1KatBilgBirKt);
+            this.groupBox1.Controls.Add(this.tbl1KatBilgIkiKt);
+            this.groupBox1.Controls.Add(this.tbl1KisiSayisiIki);
+            this.groupBox1.Controls.Add(this.tbl1KatBilgUcKt);
+            this.groupBox1.Controls.Add(this.tbl1KuyrukZemin);
+            this.groupBox1.Controls.Add(this.tbl1KisiSayisiUc);
+            this.groupBox1.Controls.Add(this.tbl1KatBilgDortKt);
+            this.groupBox1.Controls.Add(this.tbl1KisiSayisiDort);
+            this.groupBox1.Controls.Add(this.tbl1KuyrukBir);
+            this.groupBox1.Controls.Add(this.tbl1KuyrukIki);
+            this.groupBox1.Controls.Add(this.tbl1KuyrukUc);
+            this.groupBox1.Controls.Add(this.tbl1KISISAYISI);
+            this.groupBox1.Controls.Add(this.tbl1KuyrukDort);
+            this.groupBox1.Controls.Add(this.tbl1KUYRUKTABEKLEYENSAYISI);
+            this.groupBox1.Location = new System.Drawing.Point(12, 49);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(508, 222);
+            this.groupBox1.TabIndex = 58;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "KATLARDA BULUNAN KİŞİLERİN VE KUYRUKTA BEKLEYENLERİN TOPLAM SAYISI";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.tbl2KAT);
+            this.groupBox2.Controls.Add(this.tbl2KUYRUK);
+            this.groupBox2.Controls.Add(this.tbl2KatZemin);
+            this.groupBox2.Controls.Add(this.tbl2KatBir);
+            this.groupBox2.Controls.Add(this.tbl2KatIki);
+            this.groupBox2.Controls.Add(this.tbl2KatUc);
+            this.groupBox2.Controls.Add(this.tbl2KuyrukZemin);
+            this.groupBox2.Controls.Add(this.tbl2KuyrukDort);
+            this.groupBox2.Controls.Add(this.tbl2KuyrukBir);
+            this.groupBox2.Controls.Add(this.tbl2KuyrukIki);
+            this.groupBox2.Controls.Add(this.tbl2KatDort);
+            this.groupBox2.Controls.Add(this.tbl2KuyrukUc);
+            this.groupBox2.Location = new System.Drawing.Point(535, 49);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(461, 222);
+            this.groupBox2.TabIndex = 59;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "KATLAR VE KUYRUKTA  BEKLEYEN KİŞİLER";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.tbl3Asansor);
+            this.groupBox3.Controls.Add(this.tbl3KAPASITE);
+            this.groupBox3.Controls.Add(this.tbl3ANLIK);
+            this.groupBox3.Controls.Add(this.tbl3KuyrukDort);
+            this.groupBox3.Controls.Add(this.tbl3AsansorSifir);
+            this.groupBox3.Controls.Add(this.tbl3ModDort);
+            this.groupBox3.Controls.Add(this.tbl3AsansorBir);
+            this.groupBox3.Controls.Add(this.tbl3KuyrukUc);
+            this.groupBox3.Controls.Add(this.tbl3HEDEF);
+            this.groupBox3.Controls.Add(this.tbl3ModUc);
+            this.groupBox3.Controls.Add(this.tbl3YON);
+            this.groupBox3.Controls.Add(this.tbl3KuyrukIki);
+            this.groupBox3.Controls.Add(this.tbl3AsansorIki);
+            this.groupBox3.Controls.Add(this.tbl3KuyrukBir);
+            this.groupBox3.Controls.Add(this.tbl3AsansorUc);
+            this.groupBox3.Controls.Add(this.tbl3KuyrukSifir);
+            this.groupBox3.Controls.Add(this.tbl3KAT);
+            this.groupBox3.Controls.Add(this.tbl3AnlikDort);
+            this.groupBox3.Controls.Add(this.tbl3AsansorDort);
+            this.groupBox3.Controls.Add(this.tbl3KapasiteDort);
+            this.groupBox3.Controls.Add(this.tbl3MOD);
+            this.groupBox3.Controls.Add(this.tbl3AnlikUc);
+            this.groupBox3.Controls.Add(this.tbl3KatSifir);
+            this.groupBox3.Controls.Add(this.tbl3YonDort);
+            this.groupBox3.Controls.Add(this.tbl3KatBir);
+            this.groupBox3.Controls.Add(this.tbl3AnlikIki);
+            this.groupBox3.Controls.Add(this.tbl3KatIki);
+            this.groupBox3.Controls.Add(this.tbl3AnlikBir);
+            this.groupBox3.Controls.Add(this.tbl3ModSifir);
+            this.groupBox3.Controls.Add(this.tbl3AnlikSifir);
+            this.groupBox3.Controls.Add(this.tbl3ModBir);
+            this.groupBox3.Controls.Add(this.tbl3KapasiteUc);
+            this.groupBox3.Controls.Add(this.tbl3HedefSifir);
+            this.groupBox3.Controls.Add(this.tbl3HedefDort);
+            this.groupBox3.Controls.Add(this.tbl3HedefBir);
+            this.groupBox3.Controls.Add(this.tbl3YonUc);
+            this.groupBox3.Controls.Add(this.tbl3HedefIki);
+            this.groupBox3.Controls.Add(this.tbl3KatDort);
+            this.groupBox3.Controls.Add(this.tbl3ModIki);
+            this.groupBox3.Controls.Add(this.tbl3KapasiteIki);
+            this.groupBox3.Controls.Add(this.tbl3YonSifir);
+            this.groupBox3.Controls.Add(this.tbl3HedefUc);
+            this.groupBox3.Controls.Add(this.tbl3YonBir);
+            this.groupBox3.Controls.Add(this.tbl3KapasiteBir);
+            this.groupBox3.Controls.Add(this.tbl3YonIki);
+            this.groupBox3.Controls.Add(this.tbl3KUYRUK);
+            this.groupBox3.Controls.Add(this.tbl3KatUc);
+            this.groupBox3.Controls.Add(this.tbl3KapasiteSifir);
+            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox3.Location = new System.Drawing.Point(12, 279);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(984, 231);
+            this.groupBox3.TabIndex = 60;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "ASANSÖRLER VE BİLGİLERİ";
+            // 
             // ShoppingMallInformationDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 453);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(249)))), ((int)(((byte)(222)))));
+            this.ClientSize = new System.Drawing.Size(1038, 621);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.LogoutThreadCount);
-            this.Controls.Add(this.label90);
             this.Controls.Add(this.label63);
             this.Controls.Add(this.label65);
             this.Controls.Add(this.StartBtn);
@@ -1164,12 +1076,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.Controls.Add(this.label72);
             this.Controls.Add(this.label57);
             this.Controls.Add(this.label56);
-            this.Controls.Add(this.label87);
-            this.Controls.Add(this.label86);
-            this.Controls.Add(this.label85);
-            this.Controls.Add(tableLayoutPanel3);
-            this.Controls.Add(tableLayoutPanel2);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(3)))), ((int)(((byte)(9)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ShoppingMallInformationDisplay";
@@ -1177,20 +1084,18 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.Text = "Alışveriş Merkezi Bilgi Ekranı";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ShoppingMallInformationDisplay_FormClosing);
             this.Load += new System.EventHandler(this.ShoppingMallInformationDisplay_Load);
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
-            tableLayoutPanel3.ResumeLayout(false);
-            tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label tbl1KuyrukDort;
         private System.Windows.Forms.Label tbl1KuyrukUc;
         private System.Windows.Forms.Label tbl1KuyrukIki;
@@ -1260,9 +1165,6 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
         private System.Windows.Forms.Label tbl2KatZemin;
         private System.Windows.Forms.Label tbl2KUYRUK;
         private System.Windows.Forms.Label tbl2KAT;
-        private System.Windows.Forms.Label label85;
-        private System.Windows.Forms.Label label86;
-        private System.Windows.Forms.Label label87;
         private System.Windows.Forms.Label tbl3ModUc;
         private System.Windows.Forms.Label tbl3ModDort;
         private System.Windows.Forms.Label tbl3KuyrukDort;
@@ -1281,8 +1183,10 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
         private System.Windows.Forms.Button StartBtn;
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.Label label90;
         private System.Windows.Forms.Label LogoutThreadCount;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
 
