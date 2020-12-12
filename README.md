@@ -3,12 +3,10 @@
 ```plaintext
 Talep_Yogunlugunun_Multithread_Kontrolu
 ├── UI/
-│   ├── ShoppingMallInformationDisplay.cs
-│   ├── ShoppingMallInformationDisplay.Designer.cs
-│   └── ShoppingMallInformationDisplay.resx
+│   └── ShoppingMallInformationDisplay.cs
 └── ShoppingCenter/
-	├── Core
-	│	├── Settings.cs
+	├── Core/
+	│	└── Settings.cs
 	├── Elevator/
 	│	├── Abstract/
 	│	│	└── IElevator.cs
@@ -45,8 +43,7 @@ Talep_Yogunlugunun_Multithread_Kontrolu
 **NOT:** Zemin kattan diğer katlara (AVM’ye) giriş yapmak isteyenler, ya da diğer katlardan (AVM’den) çıkış yapmak isteyenler kuyruk oluştururlar.
 4. **Kontrol Thread:** Katlardaki kuyrukları kontrol eder. Kuyrukta bekleyen kişilerin toplam sayısı asansörün kapasitesinin 2 katını aştığı durumda (20) yeni asansörü aktif hale getirir. Kuyrukta bekleyen kişilerin toplam sayısı asansör kapasitenin altına indiğinde asansörlerden biri pasif hale gelir. Bu işlem tek asansörün çalıştığı durumda geçerli değildir.
 
-![Örnek Çıktı](https://raw.githubusercontent.com/nginY26/TALEP_YOGUNLUGUNUN_MULTITHREAD_ILE_KONTROLU/master/D%C3%B6k%C3%BCmanlar/OrnekCikti.png?token=AKJEJQOKX3P7YGY2FAUYW2C7YVQME)
-
+![Örnek Çıktı](https://github.com/nginY26/Talep_Yogunlugunun_Multithread_Kontrolu/blob/master/D%C3%B6k%C3%BCmanlar/OrnekCikti.png)
 
 | Değerlendirme Ölçütleri | Puan |
 | --| -- |
