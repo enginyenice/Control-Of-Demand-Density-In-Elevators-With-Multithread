@@ -54,9 +54,9 @@
 |TESLİM EDİLEN DOSYALAR VE İÇERİKLERİ												|
 |																|
 |190201133-Rapor.pdf      : Projenin raporu											|
-|190201133-Kaba-Kod.pdf   : Proje içerisinde yazıların kodların kaba kod çıktıları						|
+|190201133-Kabakod.pdf   : Proje içerisinde yazıların kodların kaba kod çıktıları						|
 |190201133-Proje.zip	  : Proje dosyalarının bulunduğu zip dosyası								|
-|Altın Oyunu Exe	  : Projenin exe olarak çalıştırılabilir hali bulunmaktadır.						|
+|Asansör_Bilgi Sistemi_Exe: Projenin exe olarak çalıştırılabilir hali bulunmaktadır.						|
 |190201133.txt 	    	  : Projenin tüm kodlarının kopyalandığı metin belgesi							|		
 |readme.txt	    	  : Projenin nasıl çalıştırılacağı ve önemli notların bulunduğu metin belgesi				|
 |_______________________________________________________________________________________________________________________________|
@@ -66,22 +66,27 @@
 |																|
 |Projeyi çalıştırmak için 3 farklı yol izleyebilirsiniz.									|
 |																|
-|1-)Altın Oyunu Exe klasörü içerisindeki Altın Oyunu.exe uygulaması ile çalıştırabilirsiniz.					|
-|2-)AltınOyunuCSharp\bin\Debug klasörü altında bulunan AltınOyunuCSharp.exe uygulaması ile çalıştırabilirsiniz.			|
-|3-)Proje dizini içerisindeki AltınOyunuCSharp.sln proje dosyasını açarak visual studio programından projeyi başlatabilirsiniz.	|
+|1-)Asansör_Bilgi Sistemi_Exe klasörü içerisindeki Alışveriş Merkezi Bilgi Ekranı.exe uygulaması ile çalıştırabilirsiniz.	|
+|2-)AltınOyunuCSharp\bin\Debug klasörü altında bulunan Alışveriş Merkezi Bilgi Ekranı.exe uygulaması ile çalıştırabilirsiniz.	|
+|3-)Proje dizini içerisindeki Talep_Yogunlugunun_Multithread_Kontrolu.sln proje dosyasını açarak visual studio programından 	|
+|projeyi başlatabilirsiniz.													|
 |_______________________________________________________________________________________________________________________________|
 
  _______________________________________________________________________________________________________________________________
 |(!!)ÖNEMLİ NOT:													    (!!)|
-|Oyuncu hareketleri önce yatay düzlemde(X) tamamlanır. Ardından dikey düzlemde(Y) tamamlanır.					|
-|Örneğin:															|
-|X:0 Y:0 koordinatında bulunan bir oyuncunun X:3 Y:3 koordinatına gidebilmesi için						|
-| ->Oyuncu önce yatay düzlemde (X koordinatında) 3 birim hareket eder. 								|
-| ->Ardından dikey düzlemde (Y koordinatında) 3 birim hareket eder.								|
+|Hareket Bilgileri bölümü içerisinde bulanan:											|
+|Giriş Yapan Toplam Müşteri Sayısı : Alışveriş merkezi içerisine giren toplam müşteri sayısını belirtmektedir.			|
+|Çıkış Yapan Toplam Müşteri Sayısı : Alışveriş merkezinden ayrılmış toplam müşteri sayısını belirtmektedir.			|
+|																|
+|İşaret ve Semboller:														|
+|Pasif       : Asansör pasif durumda ise bu durum gösterilir.									|
+|Aktif       : Asansör aktif durumda ise bu durum gösterilir.									|
+|Durduruluyor: Asansör içerisinde bulunan yolcuları gitmek istedikleri katlara bıraktıktan sonra pasif konuma geçiriliyor.	|
 |_______________________________________________________________________________________________________________________________|
 
  _______________________________________________________________________________________________________________________________
 |PROJE NASIL KULLANILIR														|
 |Program başlatıldığında Alışveriş merkezi bilgi ekranı sizi karşılayacaktır. Bu ekran üzerinde bulunan Başlat butonuna 	|
 |tıklayarak programı başlatabilirsiniz.												|
+|Başlat butonuna basılması durumunda proje kapatılıncaya kadar aktif olarak çalışmaktadır.					|
 |_______________________________________________________________________________________________________________________________|
