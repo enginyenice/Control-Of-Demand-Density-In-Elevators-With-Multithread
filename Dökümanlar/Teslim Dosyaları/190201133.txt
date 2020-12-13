@@ -1,0 +1,1227 @@
+//----------------------------------------------------------------------------
+// ShoppingCenter/Core/Settings.cs
+//----------------------------------------------------------------------------
+
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Core
+{
+    /// <summary>
+    /// Genel ayarların yapıldığı sınıf
+    /// </summary>
+    public class Settings
+    {
+        /// <summary>
+        /// Tüm asansörlerin kapasitesini belirtir.
+        /// </summary>
+        /// <returns>
+        /// Varsayılan: 10
+        /// </returns>
+        public int Capacity { get; }
+
+        /// <summary>
+        /// Asansör(Elevator) thread hızını belirler.
+        /// </summary>
+        /// <returns>
+        /// Varsayılan: 200
+        /// </returns>
+        public int ElevatorSpeed { get; }
+
+        /// <summary>
+        /// Giriş(Login) threadının hızını belirler.
+        /// </summary>
+        /// <returns>
+        /// Varsayılan: 500
+        /// </returns>
+        public int LoginSpeed { get; }
+
+        /// <summary>
+        /// Çıkış(Exit) threadının hızını belirler.
+        /// </summary>
+        /// <returns>
+        /// Varsayılan: 1000
+        /// </returns>
+        public int ExitSpeed { get; }
+
+        private int totalLoginCount;
+        private int totalExitCount;
+        private int totalLogoutCount;
+
+        /// <summary>
+        /// Alışveriş merkezine giren toplam müşteri sayısını günceller ve döndürür
+        /// </summary>
+        /// <returns>
+        /// Alışveriş merkezine giren müşteri sayısı
+        /// </returns>
+        /// <param name="value">
+        /// Alışveriş merkezine anlık olarak giren toplam müşteri sayısı
+        /// </param>
+        public int TotalLoginCount
+        {
+            get { return totalLoginCount; }
+            set { totalLoginCount += value; }
+        }
+
+        /// <summary>
+        /// Alışveriş merkezinden çıkan ve çıkmak için kuyruğa giren toplam müşteri sayısını günceller ve döndürür
+        /// </summary>
+        /// <returns>
+        /// Alışveriş merkezinden çıkan toplam müşteri sayısı
+        /// </returns>
+        /// <param name="value">
+        /// Alışveriş merkezinden anlık olarak çıkan müşteri sayısı
+        /// </param>
+        public int TotalExitCount
+        {
+            get { return totalExitCount; }
+            set { totalExitCount += value; }
+        }
+
+        /// <summary>
+        /// Alışveriş merkezinden çıkan toplam müşteri sayısını günceller ve döndürür
+        /// </summary>
+        /// <returns>
+        /// Alışveriş merkezinden çıkan toplam müşteri sayısı
+        /// </returns>
+        /// <param name="value">
+        /// Alışveriş merkezinden anlık olarak çıkan müşteri sayısı
+        /// </param>
+        public int TotalLogoutCount
+        {
+            get { return totalLogoutCount; }
+            set { totalLogoutCount += value; }
+        }
+
+        /// <summary>
+        /// Alışveriş merkezinin genel ayarlarının tutulduğu yapıcı metot.
+        /// </summary>
+        public Settings()
+        {
+            totalLoginCount = 0;
+            totalExitCount = 0;
+            Capacity = 10;
+            ElevatorSpeed = 200 * 1;
+            LoginSpeed = 500 * 1;
+            ExitSpeed = 1000 * 1;
+        }
+    }
+}
+
+//----------------------------------------------------------------------------
+// ShoppingCenter/Elevator/Abstract/IElevator.cs
+//----------------------------------------------------------------------------
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Abstract
+{
+    public interface IElevator
+    {
+        /// <summary>
+        /// Asansörün isminin güncellenmesi ve getirilmesi işlemini yapar.
+        /// </summary>
+        /// <returns>
+        /// Asansörün ismi
+        /// </returns>
+        /// <param name="value">
+        /// Asansörün ismi
+        /// </param>
+        int Name { get; set; }
+
+        /// <summary>
+        /// Asansörün çalışıp çalışmadığının bilgisinin güncellenmesi ve getirilmesi işlemini yapar.
+        /// </summary>
+        /// <returns>
+        /// True: Asansör aktif. False: Asansör pasif
+        /// </returns>
+        /// <param name="value">
+        /// Asansörün o anlık durumu
+        /// </param>
+        bool IsActive { get; set; }
+
+        /// <summary>
+        /// Asansörün gitmek için hedeflediği katın bilgisinin güncellenmesi ve getirilmesi işlemini yapar.
+        /// </summary>
+        /// <returns>
+        /// 0-> Zemin Kat, 1-2-3-4 Diğer katlar.
+        /// </returns>
+        /// <param name="value">
+        /// Asansörün hedeflediği kat
+        /// </param>
+        int Destination { get; set; }
+
+        /// <summary>
+        /// Asansörün gidece yönü belirtir ve  güncellenmesi ve getirilmesi işlemini yapar.
+        /// </summary>
+        /// <returns>
+        /// True: Yukarı, False: Aşağı
+        /// </returns>
+        /// <param name="value">
+        /// Asansörün gideceği yön: True: Yukarı, False: Aşağı
+        /// </param>
+        bool Direction { get; set; }
+
+        /// <summary>
+        /// Asansörün bulunduğu katı belirtir ve  güncellenmesi ve getirilmesi işlemini yapar.
+        /// </summary>
+        /// <returns>
+        /// 0-> Zemin Kat, 1-2-3-4 Diğer katlar.
+        /// </returns>
+        /// <param name="value">
+        /// Bulunduğu kat
+        /// </param>
+        int Floor { get; set; }
+
+        /// <summary>
+        /// Asansörde bulunan müşteri sayısını günceller.
+        /// </summary>
+        /// <returns>
+        /// void
+        /// </returns>
+        /// <param name="floor">
+        /// Gidilecek kat
+        /// </param>
+        /// <param name="count">
+        /// Gidecek müşteri sayısı
+        /// </param>
+        void SetFloorCount(int floor, int count);
+
+        /// <summary>
+        /// Asansörde bulunan müşterileri belirli bir formatta string olarak geri döndürür
+        /// </summary>
+        /// <returns>
+        /// [Gidilecek kat, Gidecek müşteri sayısı] ->[0,2] [1,2] [2,0] [3,0] [4,0]
+        /// </returns>
+        string FloorCountString();
+
+        /// <summary>
+        /// Parametre olarak gönderilen katta inecek kişi sayısını geriye döndürür.
+        /// </summary>
+        /// <returns>
+        /// İnecek kişi sayısı
+        /// </returns>
+        /// <param name="floor">
+        /// Hangi katta inilecek müşteri sayısı getirilsin.
+        /// </param>
+        int GetFloorCount(int floor);
+
+        /// <summary>
+        /// Asansörde bulunan tüm müşterileri temizler.
+        /// </summary>
+        /// <returns>
+        /// void
+        /// </returns>
+        void FloorCountClear();
+
+        /// <summary>
+        /// Asansör içerisinde kaç adet müşteri olduğunu döndürür.
+        /// </summary>
+        /// <returns>
+        /// Asansör içerisinde bulunan müşteri sayısı
+        /// </returns>
+        int GetCount();
+
+        /// <summary>
+        /// Bulunduğu kata en yakın hedefi belirler.
+        /// </summary>
+        /// <returns>
+        /// Hedeflenen kat
+        /// </returns>
+        int GetFirstDestination();
+    }
+}
+
+
+
+//----------------------------------------------------------------------------
+// ShoppingCenter/Elevator/Concrete/Elevator.cs
+//----------------------------------------------------------------------------
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Abstract;
+
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Concrete
+{
+    public class Elevator : IElevator // Asansör
+    {
+        public int Name { get; set; }
+        private int Count;
+        public bool IsActive { get; set; }
+        public int Destination { get; set; }
+
+        public bool Direction { get; set; } // (+) True (-) False
+        public int Floor { get; set; } // 0-1-2-3-4
+        private static readonly object Kontrol = new object();
+        private readonly int[] floorCount; // Katlarda inecek kişi sayısı
+
+        public Elevator(int name)
+        {
+            this.Destination = 1;
+            this.Floor = 0;
+            this.Count = 0;
+            this.Direction = true;
+            this.Name = name;
+            this.IsActive = false;
+            this.floorCount = new int[5];
+            floorCount[0] = 0;
+            floorCount[1] = 0;
+            floorCount[2] = 0;
+            floorCount[3] = 0;
+            floorCount[4] = 0;
+        }
+
+        public void SetFloorCount(int floor, int count)
+        {
+            lock (Kontrol)
+            {
+                this.floorCount[floor] += count;
+                this.Count += count;
+            }
+        }
+
+        public string FloorCountString()
+        {
+            lock (Kontrol)
+            {
+                string queueList = "";
+                for (int i = 0; i < floorCount.Length; i++)
+                {
+                    queueList += "[" + i + "," + floorCount[i] + "]";
+                }
+                return queueList;
+            }
+        }
+
+        public int GetFloorCount(int floor)
+        {
+            return this.floorCount[floor];
+        }
+
+        public void FloorCountClear()
+        {
+            lock (Kontrol)
+            {
+                floorCount[0] = 0;
+                floorCount[1] = 0;
+                floorCount[2] = 0;
+                floorCount[3] = 0;
+                floorCount[4] = 0;
+                Count = 0;
+            }
+        }
+
+        public int GetCount()
+        {
+            lock (Kontrol)
+            {
+                int count = 0;
+                foreach (var t in floorCount)
+                    count += t;
+
+                this.Count = count;
+                return Count;
+            }
+        }
+
+        public int GetFirstDestination()
+        {
+            int firstDestinationalFloor = -1;
+            for (int i = Floor; i < floorCount.Length; i++)
+            {
+                if (floorCount[i] > 0 && Floor != i)
+                {
+                    firstDestinationalFloor = i;
+                    break;
+                }
+            }
+
+            return firstDestinationalFloor;
+        }
+    }
+}
+
+//----------------------------------------------------------------------------
+// ShoppingCenter/Floor/Abstract/IFloor.cs
+//----------------------------------------------------------------------------
+using System.Collections.Generic;
+
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Abstract
+{
+    /// <summary>
+    /// Alışveriş merkezinin katlarının bilgilerinin tutulduğu ve güncellendiği sınıf.
+    /// </summary>
+    public interface IFloor
+    {
+        /// <summary>
+        /// Alışveriş merkezinde bulunan katın isminin güncellenmesi ve getirilmesi işlemini yapar.
+        /// </summary>
+        /// <returns>
+        /// 0-> Zemin kat,1-2-3-4
+        /// </returns>
+        /// <param name="value">
+        /// Katın ismi
+        /// </param>
+        int Name { get; set; }
+
+        /// <summary>
+        /// Katta bulunan müşteri sayısının güncellenmesi ve getirilmesi işlemini yapar.
+        /// </summary>
+        /// <returns>
+        /// Katta bulunan müşteri sayısı
+        /// </returns>
+        /// <param name="value">
+        /// Katta bulunan müşteri sayısı
+        /// </param>
+        int FloorCount { get; set; }
+
+        /// <summary>
+        /// Katın kuyruğunda bulunan müşteri sayısının güncellenmesi ve getirilmesi işlemini yapar.
+        /// </summary>
+        /// <returns>
+        /// Katın kuyruğunda bulunan müşteri sayısı
+        /// </returns>
+        /// <param name="value">
+        /// Katın kuyruğunda bulunan müşteri sayısı
+        /// </param>
+        int QueueCount { get; set; }
+
+        /// <summary>
+        /// Kuyruğun başındaki değerin güncellenmesi için kullanılan metot.
+        /// </summary>
+        /// <returns>
+        /// void
+        /// </returns>
+        /// <param name="floor">
+        /// Gideceği kat
+        /// </param>
+        /// <param name="count">
+        /// Gidecek müşteri sayısı
+        /// </param>
+        void RetryQueue(int floor, int count);
+
+        /// <summary>
+        /// Kat kuyruğunun toplam değerinden (QueueCount) parametre olarak gelen müşteri sayısını çıkart.
+        /// </summary>
+        /// <returns>
+        /// void
+        /// </returns>
+        /// <param name="count">
+        /// Kat kuyruğunun toplam değerinden (QueueCount) çıkarılacak müşteri sayısı
+        /// </param>
+        void RemoveQueueFloor(int count);
+
+        /// <summary>
+        /// Kat kuyruğuna yeni eleman ekleme metodu.
+        /// </summary>
+        /// <returns>
+        /// void
+        /// </returns>
+        /// <param name="floor">
+        /// Hedeflenen kat
+        /// </param>
+        /// <param name="count">
+        /// Hedeflenen kata gidecek müşteri sayısı
+        /// </param>
+        void SetFloorQueue(int floor, int count);
+
+        /// <summary>
+        /// Kat kuyruğuna yeni eleman ekleme ve kuyruktaki toplam müşteri sayısını arttırma metodu.
+        /// </summary>
+        /// <returns>
+        /// void
+        /// </returns>
+        /// <param name="floor">
+        /// Hedeflenen kat
+        /// </param>
+        /// <param name="count">
+        /// Hedeflenen kata gidecek müşteri sayısı
+        /// </param>
+        void CreateFloorQueue(int floor, int count);
+
+        /// <summary>
+        /// Katta bulunan müşterileri belirli bir formatta string olarak geri döndürür
+        /// </summary>
+        /// <returns>
+        /// [Gidilecek kat, Gidecek müşteri sayısı] ->[0,2] [1,2] [2,0] [3,0] [4,0]
+        /// </returns>
+        string FloorQueueString();
+
+        /// <summary>
+        /// Kuyruğu geriye döndürür.
+        /// </summary>
+        /// <returns>
+        /// Katta bulunan kuyruğu geriye döndürür.
+        /// </returns>
+        Queue<string> GetFloorQueue();
+    }
+}
+
+//----------------------------------------------------------------------------
+// ShoppingCenter/Floor/Concrete/Floor.cs
+//----------------------------------------------------------------------------
+using System.Collections.Generic;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Abstract;
+
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete
+{
+    public class Floor : IFloor // Kat
+    {
+        public int Name { get; set; }
+        public int FloorCount { get; set; }
+        public int QueueCount { get; set; }
+        private readonly Queue<string> floorQueue;
+        private static readonly object Kontrol = new object();
+
+        public Floor(int name)
+        {
+            lock (Kontrol)
+            {
+                this.Name = name;
+                this.FloorCount = 0;
+                this.QueueCount = 0;
+                this.floorQueue = new Queue<string>();
+            }
+        }
+
+        public void RetryQueue(int floor, int count)
+        {
+            lock (Kontrol)
+            {
+                //this.QueueCount = count; // // Kalan müşterisi güncelle
+                var items = floorQueue.ToArray();
+                floorQueue.Clear();
+
+                floorQueue.Enqueue(floor + "," + count);
+                foreach (var item in items)
+                    floorQueue.Enqueue(item);
+            }
+        }
+
+        public void RemoveQueueFloor(int count)
+        {
+            lock (Kontrol)
+            {
+                QueueCount -= count;
+            }
+        }
+
+        public void SetFloorQueue(int floor, int count)
+        {
+            lock (Kontrol)
+            {
+                QueueCount += count;
+                FloorCount -= count;
+                floorQueue.Enqueue(floor + "," + count);
+            }
+        }
+
+        public void CreateFloorQueue(int floor, int count)
+        {
+            lock (Kontrol)
+            {
+                QueueCount += count;
+                floorQueue.Enqueue(floor + "," + count);
+            }
+        }
+
+        public string FloorQueueString()
+        {
+            if (floorQueue.Count > 0)
+            {
+                string queueList = "";
+                lock (Kontrol)
+                {
+                    foreach (string queue in GetFloorQueue())
+                    {
+                        queueList += "[" + queue + "] ";
+                    }
+                    return queueList;
+                }
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public Queue<string> GetFloorQueue()
+        {
+            lock (Kontrol)
+            {
+                return floorQueue;
+            }
+        }
+    }
+}
+
+//----------------------------------------------------------------------------
+// ShoppingCenter/Threads/Abstract/ITControl.cs
+//----------------------------------------------------------------------------
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Abstract
+{
+    internal interface ITControl
+    {
+        /// <summary>
+        /// Katlardaki kuyrukları kontrol eder.
+        /// Kuyrukta bekleyen kişilerin toplam sayısı asansörün kapasitesinin
+        /// 2 katını aştığı durumda (20) yeni asansörü aktif hale getirir.
+        /// Kuyrukta bekleyen kişilerin toplam sayısı asansör kapasitenin altına indiğinde
+        /// asansörlerden biri pasif hale gelir. Bu işlem tek asansörün çalıştığı durumda geçerli değildir.
+        /// </summary>
+        /// <returns>
+        /// True: Asansör aktif edildi. False: Asansör aktif edilmedi.
+        /// </returns>
+        /// <param name="floors">
+        /// Alışveris merkezinde bulunan tüm katların dizi hali
+        /// </param>
+        /// <param name="elevators">
+        /// Alışveris merkezinde bulunan tüm asansörlerin dizi hali
+        /// </param>
+        /// <param name="capacity">
+        /// Alışveriş merkezinde bulunan tüm asansörlerin maksimum müşteri kapasitesi
+        /// </param>
+        bool ControlThread(Floor.Concrete.Floor[] floors, Elevator.Concrete.Elevator[] elevators, int capacity);
+    }
+}
+//----------------------------------------------------------------------------
+// ShoppingCenter/Threads/Abstract/ITElevator.cs
+//----------------------------------------------------------------------------
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Core;
+
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Abstract
+{
+    public interface ITElevator
+    {
+        /// <summary>
+        /// Katlardaki kuyrukları kontrol eder.
+        /// Maksimum kapasiteyi aşmayacak şekilde kuyruktaki müşterilerin talep ettikleri katlarda
+        /// taşınabilmesini sağlar. Bu thread asansör sayısı kadar (5 adet) olmalıdır.
+        /// NOT: Zemin kattan diğer katlara (AVM’ye) giriş yapmak isteyenler,
+        /// ya da diğer katlardan (AVM’den) çıkış yapmak isteyenler kuyruk oluştururlar.
+        /// </summary>
+        /// <param name="elevator">Asansör nesnesi</param>
+        /// <param name="floors">Alışveriş merkezinde bulunan tüm katların bilgilerinin dizi olarak belirtildiği parametre</param>
+        /// <param name="capacity">Asansörün içerisinde bulunacak maksimum kişi sayısı</param>
+        /// <param name="settings">Genel Ayarlar</param>
+        /// <returns>
+        /// Dönüş Yok
+        /// </returns>
+        void ElevatorThread(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, int capacity, Settings settings);
+    }
+}
+//----------------------------------------------------------------------------
+// ShoppingCenter/Threads/Abstract/ITExit.cs
+//----------------------------------------------------------------------------
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Core;
+
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Abstract
+{
+    public interface ITExit
+    {
+        /// <summary>
+        /// [1-5] arasında rastgele sayıda müşterinin
+        /// AVM’den çıkış yapmasını sağlamaktadır (Zemin Kat). Çıkmak isteyen müşterileri
+        /// rastgele bir kattan (1-4), zemin kata gitmek için asansör kuyruğuna alır.
+        /// </summary>
+        /// <param name="floors">Alışveriş merkezinde bulunan tüm katların bilgilerinin dizi olarak belirtildiği parametre</param>
+        /// <param name="settings">Alışveriş merkezinin genel ayarlarının bulunduğu sınıf</param>
+        /// <returns>
+        /// Dönüş Yok
+        /// </returns>
+        void ExitThread(Floor.Concrete.Floor[] floors, Settings settings);
+    }
+}
+//----------------------------------------------------------------------------
+// ShoppingCenter/Threads/Abstract/ITLogin.cs
+//----------------------------------------------------------------------------
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Core;
+
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Abstract
+{
+    public interface ITLogin
+    {
+        /// <summary>
+        /// [1-10] arasında rastgele sayıda müşterinin AVM' ye giriş yapmasını sağlamaktadır (Zemin Kat).
+        /// Giren müşterileri rastgele bir kata (1-4) gitmek için asansör kuyruğuna alır.
+        /// </summary>
+        /// <param name="floors">Alışveriş merkezinde bulunan tüm katların bilgilerinin dizi olarak belirtildiği parametre</param>
+        /// <param name="settings">Alışveriş merkezinin genel ayarlarının bulunduğu sınıf</param>
+        /// <returns>
+        /// Dönüş Yok
+        /// </returns>
+        void LoginThread(Floor.Concrete.Floor[] floors, Settings settings);
+
+        //Login Thread Function
+    }
+}
+//----------------------------------------------------------------------------
+// ShoppingCenter/Threads/Concrete/TControl.cs
+//----------------------------------------------------------------------------
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Abstract;
+
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concrete
+{
+    public class TControl : ITControl
+    {
+        private readonly object locked = new object();
+
+        public bool ControlThread(Floor.Concrete.Floor[] floors, Elevator.Concrete.Elevator[] elevators, int capacity)
+        {
+            lock (locked)
+            {
+                var queueCount = floors[0].QueueCount + floors[1].QueueCount + floors[2].QueueCount +
+                                 floors[3].QueueCount + floors[4].QueueCount;
+                bool control = false;
+                if (queueCount > (capacity * 2))
+                    foreach (var elevator in elevators)
+                        if (elevator.IsActive == false && elevator.GetCount() == 0)
+                        {
+                            elevator.IsActive = true;
+                            control = true;
+                            break;
+                        }
+
+                if (queueCount < capacity)
+                {
+                    var i = 0;
+                    foreach (var elevator in elevators)
+                    {
+                        if (elevator.IsActive && i != 0)
+                        {
+                            //   Console.WriteLine("Asansör Pasif Edildi");
+
+                            elevator.IsActive = false;
+                            control = true;
+                        }
+                        i++;
+                    }
+                }
+                return control;
+            }
+        }
+    }
+}
+//----------------------------------------------------------------------------
+// ShoppingCenter/Threads/Concrete/TElevator.cs
+//----------------------------------------------------------------------------
+using System;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Core;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Abstract;
+
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concrete
+{
+    public class TElevator : ITElevator
+    {
+        public void ElevatorThread(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, int capacity, Settings settings)
+        {
+            lock (elevator)
+            {
+                if (elevator.IsActive)
+                {
+                    PassengerLowering(elevator, floors, settings);
+                    PassengerBoarding(elevator, floors, capacity);
+                }
+                else if (elevator.IsActive == false && elevator.GetCount() > 0)
+                {
+                    PassengerLowering(elevator, floors, settings);
+                }
+            }
+
+            lock (elevator)
+            {
+                if (elevator.Destination == elevator.Floor)
+                {
+                    if (elevator.GetFirstDestination() != -1) elevator.Destination = elevator.GetFirstDestination();
+                    else if (CheckTopFloor(floors, elevator.Floor) > 0 && elevator.Direction == true)
+                        elevator.Destination = CheckTopFloor(floors, elevator.Floor);
+                    else if (CheckButtomFloor(floors, elevator.Floor) > 0 && elevator.Direction == false)
+                        elevator.Destination = CheckButtomFloor(floors, elevator.Floor);
+                    else elevator.Destination = 0;
+
+                    
+                    if (elevator.Floor < elevator.Destination) elevator.Direction = true;
+                    else elevator.Direction = false;
+                }
+            }
+
+            lock (elevator)
+            {
+                if (elevator.GetCount() > 0 || elevator.IsActive == true)
+                    FloorChange(elevator);
+            }
+        }
+
+        /// <summary>
+        /// Asansörün kat arttırma ve azaltma işlemi
+        /// </summary>
+        /// <param name="elevator">Asansör</param>
+        private void FloorChange(Elevator.Concrete.Elevator elevator)
+        {
+            lock (elevator)
+            {
+                if (elevator.Direction == true)
+                {
+                    elevator.Floor++;
+                }
+
+                if (elevator.Direction == false)
+                {
+                    elevator.Floor--;
+                }
+
+                if (elevator.Floor < 0)
+                {
+                    elevator.Floor = 0;
+                    elevator.Direction = false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Bulunduğu katın üstündeki katları kontrol eder. Zemin kata inecek müşteri varsa hedef olarak onu belirler
+        /// </summary>
+        /// <param name="floors">AVM içerisinde bulunan tüm katlar</param>
+        /// <param name="maxDestinationalFloor">Asansörün şuan bulunduğu kat</param>
+        /// <returns>-1 Hedef yok. 0+ durumda hedef olarak belirler </returns>
+        private int CheckTopFloor(Floor.Concrete.Floor[] floors, int maxDestinationalFloor)
+        {
+            int isThere = -1; // Üst katta müşteri var mı
+            for (int i = maxDestinationalFloor; i < floors.Length; i++)
+            {
+                if (floors[i].QueueCount > 0)
+                {
+                    isThere = i;
+                    break;
+                }
+            }
+
+            return isThere;
+        }
+
+        /// <summary>
+        /// Bulunduğu katın altındaki katları kontrol eder. Zemin kata inecek Müşteri varsa hedef olarak onu belirler
+        /// </summary>
+        /// <param name="floors">AVM içerisinde bulunan tüm katlar</param>
+        /// <param name="elevatorFloor">Asansörün şuan bulunduğu kat</param>
+        /// <returns>-1 Hedef yok. 0+ durumda hedef olarak belirler </returns>
+        private int CheckButtomFloor(Floor.Concrete.Floor[] floors, int elevatorFloor)
+        {
+            int isThere = -1; // Alt katta müşteri var mı
+            for (int i = elevatorFloor; i > 0; i--)
+            {
+                if (floors[i].QueueCount > 0)
+                {
+                    isThere = i;
+                    break;
+                }
+            }
+
+            return isThere;
+        }
+
+
+        /// <summary>
+        /// Asansör içerisindeki müşterileri bulundukları katlara geldiğinde indirme işlemini yapar
+        /// </summary>
+        /// <param name="elevator">Asansör</param>
+        /// <param name="floors">AVM içerisinde bulunan tüm katlar</param>
+        /// <param name="settings">Genel ayarlar</param>
+        private void PassengerLowering(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, Settings settings)
+        {
+            if (elevator.GetCount() > 0)
+                //İndirme işlemi
+                if (elevator.GetFloorCount(elevator.Floor) > 0)
+                {
+                    if (elevator.Floor > 0)
+                        floors[elevator.Floor].FloorCount = floors[elevator.Floor].FloorCount +
+                                                            elevator.GetFloorCount(elevator
+                                                                .Floor); // Kat Müşteri Arttır.
+                    if (elevator.Floor == 0)
+                    {
+                        settings.TotalLogoutCount = elevator.GetFloorCount(elevator.Floor);
+                    }
+
+                    elevator.SetFloorCount(elevator.Floor,
+                        -1 * elevator.GetFloorCount(elevator.Floor)); // Asansör Azaldı
+                }
+        }
+
+        /// <summary>
+        ///  Bulunduğu katın kuyruğunda müşteri varsa müşteriyi asansörün kapasitesine uygun olacak şekilde asansöre alır.
+        /// </summary>
+        /// <param name="elevator">Asansör</param>
+        /// <param name="floors">AVM içerisinde bulunan tüm katlar</param>
+        /// <param name="capacity">Asansörün maksimum taşıyacağı müşteri sayısı</param>
+        private void PassengerBoarding(Elevator.Concrete.Elevator elevator,Floor.Concrete.Floor[] floors, int capacity)
+        {
+            if (elevator.IsActive)
+            {
+            // Asansör aktif mi?
+
+            ElevetorControl:
+                lock (floors[elevator.Floor].GetFloorQueue())
+                {
+                    if (floors[elevator.Floor].GetFloorQueue().Count > 0)
+                    {
+                        string[] queueSplit;
+                        // Katta kuyruk var mı
+                        lock (floors[elevator.Floor].GetFloorQueue())
+                        {
+                            queueSplit = floors[elevator.Floor].GetFloorQueue().Peek().Split(','); // Kuyruk
+                        }
+                        var floor = int.Parse(queueSplit[0]); // Hedef kat
+                        var count = int.Parse(queueSplit[1]); // Müşteri Sayısı
+
+                        if (elevator.GetCount() + count > capacity)
+                        {
+                            // Kuyruktaki müşteri sayısı ile asansördeki müşteri sayısının toplamı kapasiteden büyük mü?
+
+                            try
+                            {
+                                floors[elevator.Floor].GetFloorQueue().Dequeue(); //Müşteriyi kuyruktan sil.
+
+                                var maxCustomer = capacity - elevator.GetCount(); // Maksimum alacağı kişi sayısı
+                                var remainingCustomer = count - maxCustomer; // Katta kalan müşteri sayısı
+                                elevator.SetFloorCount(floor, maxCustomer); // Müşteriyi asansöre al
+                                floors[elevator.Floor]
+                                    .RemoveQueueFloor(maxCustomer); // Kat kuyruğundan müşteri sayısını çıkart.
+                                floors[elevator.Floor]
+                                    .RetryQueue(floor,
+                                        remainingCustomer); // Kalan müşteriyi sıranın başına koyacak şekilde kuyruğu güncelle
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e);
+                            }
+                        }
+                        else
+                        {
+                            try
+                            {
+                                floors[elevator.Floor].GetFloorQueue().Dequeue();
+                                elevator.SetFloorCount(floor, count); // Müşteriyi asansöre al
+                                floors[elevator.Floor]
+                                    .RemoveQueueFloor(count); // Kat kuyruğundan müşteri sayısını çıkart.
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e);
+                            }
+                        }
+                    }
+
+                    if (elevator.GetCount() != capacity && floors[elevator.Floor].QueueCount > 0)
+                        // Asansörde yer varsa ve kuyrukta bekleyen müşteri varsa
+                        goto ElevetorControl;
+                }
+            }
+        }
+    }
+}
+//----------------------------------------------------------------------------
+// ShoppingCenter/Threads/Concrete/TExit.cs
+//----------------------------------------------------------------------------
+using System;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Core;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Abstract;
+
+namespace ShoppingCenter.Threads.Concrete
+{
+    public class TExit : ITExit
+    {
+        public void ExitThread(Floor[] floors, Settings settings)
+        {
+            var randomNumber = new Random();
+            var exitCustomerCount = randomNumber.Next(1, 6);
+            var floor = randomNumber.Next(1, 5);
+
+            if (floors[floor].FloorCount > 0)
+            {
+                if (floors[floor].FloorCount > exitCustomerCount)
+                {
+                    settings.TotalExitCount = exitCustomerCount;
+                    floors[floor].SetFloorQueue(0, exitCustomerCount);
+                }
+                else
+                {
+                    settings.TotalExitCount = floors[floor].FloorCount;
+                    floors[floor].SetFloorQueue(0, floors[floor].FloorCount);
+                }
+            }
+        }
+    }
+}
+//----------------------------------------------------------------------------
+// ShoppingCenter/Threads/Concrete/TLogin.cs
+//----------------------------------------------------------------------------
+using System;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Core;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Abstract;
+
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concrete
+{
+    public class TLogin : ITLogin
+    {
+        public void LoginThread(Floor.Concrete.Floor[] floors, Settings settings)
+        {
+            var randomNumber = new Random();
+            var count = randomNumber.Next(1, 10);
+            floors[0].CreateFloorQueue(randomNumber.Next(1, 5), count);
+            settings.TotalLoginCount = count;
+        }
+    }
+}
+//----------------------------------------------------------------------------
+// UI/ShoppingMallInformationDisplay.cs
+//----------------------------------------------------------------------------
+using ShoppingCenter.Threads.Concrete;
+using System;
+using System.Drawing;
+using System.Threading;
+using System.Windows.Forms;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Core;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Elevator.Concrete;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete;
+using Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concrete;
+
+namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
+{
+    public partial class ShoppingMallInformationDisplay : Form
+    {
+        private readonly Elevator[] elevators = new Elevator[5];
+        private readonly Floor[] floors = new Floor[5];
+        private readonly Settings settings = new Settings();
+        private readonly Thread loginThread;
+        private readonly Thread controlThread;
+        private readonly Thread exitThread;
+        private readonly Thread elevatorThread0;
+        private readonly Thread elevatorThread1;
+        private readonly Thread elevatorThread2;
+        private readonly Thread elevatorThread3;
+        private readonly Thread elevatorThread4;
+        private readonly Thread screenThread;
+
+        public ShoppingMallInformationDisplay()
+        {
+            // Asansörlerin oluşturulması
+            elevators[0] = new Elevator(0);
+            elevators[1] = new Elevator(1);
+            elevators[2] = new Elevator(2);
+            elevators[3] = new Elevator(3);
+            elevators[4] = new Elevator(4);
+
+            // Katların oluşturulması
+            floors[0] = new Floor(0);
+            floors[1] = new Floor(1);
+            floors[2] = new Floor(2);
+            floors[3] = new Floor(3);
+            floors[4] = new Floor(4);
+
+            // 1. Asansörün hareketini aktifleştirir.
+            loginThread = new Thread(LoginThread);
+            controlThread = new Thread(ControlThread);
+            exitThread = new Thread(ExitThread);
+            elevatorThread0 = new Thread(() => ElevatorThread(elevators[0]));
+            elevatorThread1 = new Thread(() => ElevatorThread(elevators[1]));
+            elevatorThread2 = new Thread(() => ElevatorThread(elevators[2]));
+            elevatorThread3 = new Thread(() => ElevatorThread(elevators[3]));
+            elevatorThread4 = new Thread(() => ElevatorThread(elevators[4]));
+            screenThread = new Thread(ScreenThread);
+            elevators[0].IsActive = true; // 1. Asansör aktif edildi.
+            InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
+            CapacityLbl.Text = "Maksimum Asansör Kapasitesi: " + settings.Capacity.ToString();
+            ElevatorSpeedLbl.Text = "Asansör Thread Hızı: " + settings.ElevatorSpeed.ToString() + "ms";
+            LoginThreadSpeedLbl.Text = "Login Thread Hızı: " + settings.LoginSpeed.ToString() + "ms";
+            ExitThreadSpeedLbl.Text = "Exit Thread Hızı: " + settings.ExitSpeed.ToString() + "ms";
+        }
+
+        private void ScreenThread()
+        {
+            while (true)
+            {
+                GeneralInformation();
+                ElevatorInformation(elevators[0]);
+                ElevatorInformation(elevators[1]);
+                ElevatorInformation(elevators[2]);
+                ElevatorInformation(elevators[3]);
+                ElevatorInformation(elevators[4]);
+            }
+        }
+
+        private void ElevatorThread(Elevator elevator)
+        {
+            TElevator tElevator = new TElevator();
+            while (true)
+            {
+                tElevator.ElevatorThread(elevator, floors, settings.Capacity, settings);
+
+                Thread.Sleep(settings.ElevatorSpeed);
+            }
+        }
+
+        private void ControlThread()
+        {
+            TControl tControl = new TControl();
+            while (true)
+            {
+                bool sleep = tControl.ControlThread(floors, elevators, settings.Capacity);
+                if (sleep)
+                    Thread.Sleep(settings.LoginSpeed);
+            }
+        }
+
+        private void ExitThread()
+        {
+            TExit tExit = new TExit();
+            while (true)
+            {
+                tExit.ExitThread(floors, settings);
+
+                Thread.Sleep(settings.ExitSpeed);
+            }
+        }
+
+        private void LoginThread()
+        {
+            TLogin tLogin = new TLogin();
+            while (true)
+            {
+                tLogin.LoginThread(floors, settings);
+                Thread.Sleep(settings.LoginSpeed);
+            }
+        }
+
+        private void GeneralInformation()
+        {
+            LogoutThreadCount.Text = "Çıkış Yapan Toplam Müşteri Sayısı: " + settings.TotalLogoutCount;
+            LoginThreadCount.Text = "Giriş Yapan Toplam Müşteri Sayısı: " + settings.TotalLoginCount;
+            
+            
+            tbl1KisiSayisiZemin.Text = (floors[0].FloorCount + floors[0].QueueCount).ToString();
+            tbl1KisiSayisiBir.Text = (floors[1].FloorCount + floors[1].QueueCount).ToString();
+            tbl1KisiSayisiIki.Text = (floors[2].FloorCount + floors[2].QueueCount).ToString();
+            tbl1KisiSayisiUc.Text = (floors[3].FloorCount + floors[3].QueueCount).ToString();
+            tbl1KisiSayisiDort.Text = (floors[4].FloorCount + floors[4].QueueCount).ToString();
+
+            tbl1KuyrukZemin.Text = floors[0].QueueCount.ToString();
+            tbl1KuyrukBir.Text = floors[1].QueueCount.ToString();
+            tbl1KuyrukIki.Text = floors[2].QueueCount.ToString();
+            tbl1KuyrukUc.Text = floors[3].QueueCount.ToString();
+            tbl1KuyrukDort.Text = floors[4].QueueCount.ToString();
+
+            tbl2KuyrukZemin.Text = floors[0].FloorQueueString();
+            tbl2KuyrukBir.Text = floors[1].FloorQueueString();
+            tbl2KuyrukIki.Text = floors[2].FloorQueueString();
+            tbl2KuyrukUc.Text = floors[3].FloorQueueString();
+            tbl2KuyrukDort.Text = floors[4].FloorQueueString();
+        }
+
+        private void LabelColor(bool status, int count, Label label)
+        {
+            if (status == true)
+            {
+                label.Text = "Aktif";
+                label.BackColor = Color.FromArgb(48, 164, 4);
+                label.ForeColor = Color.White;
+            }
+            else if (status == false && count > 0)
+            {
+                label.Text = "Durduruluyor";
+                label.BackColor = Color.FromArgb(77, 146, 184);
+                label.ForeColor = Color.White;
+            }
+            else
+            {
+                label.Text = "Pasif";
+                label.BackColor = Color.FromArgb(210, 66, 106);
+                label.ForeColor = Color.White;
+            }
+        }
+
+        private void ElevatorInformation(Elevator elevator)
+        {
+            lock (elevator)
+            {
+                
+                if (elevator.Name == 0)
+                {
+                    tbl3AsansorSifir.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), tbl3ModSifir);
+                    tbl3KatSifir.Text = elevator.Floor.ToString();
+                    tbl3HedefSifir.Text = elevator.Destination.ToString();
+                    tbl3YonSifir.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    tbl3AnlikSifir.Text = elevator.GetCount().ToString();
+                    tbl3KuyrukSifir.Text = elevator.FloorCountString();
+                }
+                else if (elevator.Name == 1)
+                {
+                    tbl3AsansorBir.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), tbl3ModBir);
+                    tbl3KatBir.Text = elevator.Floor.ToString();
+                    tbl3HedefBir.Text = elevator.Destination.ToString();
+                    tbl3YonBir.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    tbl3AnlikBir.Text = elevator.GetCount().ToString();
+                    tbl3KuyrukBir.Text = elevator.FloorCountString();
+                }
+                else if (elevator.Name == 2)
+                {
+                    tbl3AsansorIki.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), tbl3ModIki);
+                    tbl3KatIki.Text = elevator.Floor.ToString();
+                    tbl3HedefIki.Text = elevator.Destination.ToString();
+                    tbl3YonIki.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    tbl3AnlikIki.Text = elevator.GetCount().ToString();
+                    tbl3KuyrukIki.Text = elevator.FloorCountString();
+                }
+                else if (elevator.Name == 3)
+                {
+                    tbl3AsansorUc.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), tbl3ModUc);
+                    tbl3KatUc.Text = elevator.Floor.ToString();
+                    tbl3HedefUc.Text = elevator.Destination.ToString();
+                    tbl3YonUc.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    tbl3AnlikUc.Text = elevator.GetCount().ToString();
+                    tbl3KuyrukUc.Text = elevator.FloorCountString();
+                }
+                else
+                {
+                    tbl3AsansorDort.Text = elevator.Name.ToString();
+                    LabelColor(elevator.IsActive, elevator.GetCount(), tbl3ModDort);
+                    tbl3KatDort.Text = elevator.Floor.ToString();
+                    tbl3HedefDort.Text = elevator.Destination.ToString();
+                    tbl3YonDort.Text = (elevator.Direction == true) ? "Yukarı" : "Aşağı";
+                    tbl3AnlikDort.Text = elevator.GetCount().ToString();
+                    tbl3KuyrukDort.Text = elevator.FloorCountString();
+                }
+            }
+        }
+
+        private void ShoppingMallInformationDisplay_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            loginThread.Abort();
+            exitThread.Abort();
+            controlThread.Abort();
+            elevatorThread0.Abort();
+            elevatorThread1.Abort();
+            elevatorThread2.Abort();
+            elevatorThread3.Abort();
+            elevatorThread4.Abort();
+            screenThread.Abort();
+        }
+
+        private void StartBtn_Click(object sender, EventArgs e)
+        {
+            StartBtn.BackColor = Color.FromArgb(210, 66, 106);
+            StartBtn.Text = "Çalışıyor...";
+            StartBtn.Enabled = false;
+            loginThread.Start();
+            exitThread.Start();
+            controlThread.Start();
+            elevatorThread0.Start();
+            elevatorThread1.Start();
+            elevatorThread2.Start();
+            elevatorThread3.Start();
+            elevatorThread4.Start();
+            screenThread.Start();
+        }
+
+        private void ShoppingMallInformationDisplay_Load(object sender, EventArgs e)
+        {
+        }
+    }
+}

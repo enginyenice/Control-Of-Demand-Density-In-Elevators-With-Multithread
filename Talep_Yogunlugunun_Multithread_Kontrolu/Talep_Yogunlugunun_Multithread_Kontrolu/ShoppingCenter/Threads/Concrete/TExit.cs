@@ -12,6 +12,7 @@ namespace ShoppingCenter.Threads.Concrete
             var randomNumber = new Random();
             var exitCustomerCount = randomNumber.Next(1, 6);
             var floor = randomNumber.Next(1, 5);
+
             if (floors[floor].FloorCount > 0)
             {
                 if (floors[floor].FloorCount > exitCustomerCount)

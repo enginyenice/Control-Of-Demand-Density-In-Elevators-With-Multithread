@@ -57,7 +57,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             CapacityLbl.Text = "Maksimum Asansör Kapasitesi: " + settings.Capacity.ToString();
             ElevatorSpeedLbl.Text = "Asansör Thread Hızı: " + settings.ElevatorSpeed.ToString() + "ms";
             LoginThreadSpeedLbl.Text = "Login Thread Hızı: " + settings.LoginSpeed.ToString() + "ms";
-            LoginThreadSpeedLbl.Text = "Exit Thread Hızı: " + settings.ExitSpeed.ToString() + "ms";
+            ExitThreadSpeedLbl.Text = "Exit Thread Hızı: " + settings.ExitSpeed.ToString() + "ms";
         }
 
         private void ScreenThread()
@@ -91,7 +91,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             {
                 bool sleep = tControl.ControlThread(floors, elevators, settings.Capacity);
                 if (sleep)
-                    Thread.Sleep(settings.ElevatorSpeed);
+                    Thread.Sleep(settings.LoginSpeed);
             }
         }
 
@@ -118,10 +118,10 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
 
         private void GeneralInformation()
         {
-            LogoutThreadCount.Text = "AVM Çıkan Kişi Sayısı : " + settings.TotalLogoutCount;
-            LoginThreadCount.Text = "Giriş Kuyruğu: " + settings.TotalLoginCount;
-            ExitThreadCount.Text = "Çıkış Kuyruğu: " + settings.TotalExitCount;
-            //label90.Text = "Giriş - Çıkış: " + (settings.TotalLoginCount - settings.TotalExitCount);
+            LogoutThreadCount.Text = "Çıkış Yapan Toplam Müşteri Sayısı: " + settings.TotalLogoutCount;
+            LoginThreadCount.Text = "Giriş Yapan Toplam Müşteri Sayısı: " + settings.TotalLoginCount;
+            
+            
             tbl1KisiSayisiZemin.Text = (floors[0].FloorCount + floors[0].QueueCount).ToString();
             tbl1KisiSayisiBir.Text = (floors[1].FloorCount + floors[1].QueueCount).ToString();
             tbl1KisiSayisiIki.Text = (floors[2].FloorCount + floors[2].QueueCount).ToString();

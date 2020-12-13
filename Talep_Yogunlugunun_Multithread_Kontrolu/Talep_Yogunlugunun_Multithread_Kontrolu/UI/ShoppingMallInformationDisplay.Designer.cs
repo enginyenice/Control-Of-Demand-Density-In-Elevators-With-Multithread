@@ -107,7 +107,6 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label66 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
             this.LoginThreadCount = new System.Windows.Forms.Label();
-            this.ExitThreadCount = new System.Windows.Forms.Label();
             this.StartBtn = new System.Windows.Forms.Button();
             this.label63 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
@@ -119,7 +118,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.CapacityLbl = new System.Windows.Forms.Label();
             this.LoginThreadSpeedLbl = new System.Windows.Forms.Label();
-            this.LogoutThreadSpeedLbl = new System.Windows.Forms.Label();
+            this.ExitThreadSpeedLbl = new System.Windows.Forms.Label();
             this.ElevatorSpeedLbl = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
@@ -292,9 +291,9 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.tbl3MOD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tbl3MOD.Location = new System.Drawing.Point(117, 20);
             this.tbl3MOD.Name = "tbl3MOD";
-            this.tbl3MOD.Size = new System.Drawing.Size(39, 15);
+            this.tbl3MOD.Size = new System.Drawing.Size(59, 15);
             this.tbl3MOD.TabIndex = 2;
-            this.tbl3MOD.Text = "MOD";
+            this.tbl3MOD.Text = "DURUM";
             // 
             // tbl3ModSifir
             // 
@@ -866,7 +865,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label56.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(164)))), ((int)(((byte)(4)))));
             this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.label56.ForeColor = System.Drawing.Color.White;
-            this.label56.Location = new System.Drawing.Point(272, 37);
+            this.label56.Location = new System.Drawing.Point(268, 30);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(33, 13);
             this.label56.TabIndex = 6;
@@ -876,7 +875,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // 
             this.label57.AutoSize = true;
             this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label57.Location = new System.Drawing.Point(311, 37);
+            this.label57.Location = new System.Drawing.Point(307, 30);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(194, 13);
             this.label57.TabIndex = 7;
@@ -886,7 +885,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // 
             this.label66.AutoSize = true;
             this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label66.Location = new System.Drawing.Point(64, 37);
+            this.label66.Location = new System.Drawing.Point(60, 30);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(154, 13);
             this.label66.TabIndex = 11;
@@ -898,7 +897,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label72.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(66)))), ((int)(((byte)(106)))));
             this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.label72.ForeColor = System.Drawing.Color.White;
-            this.label72.Location = new System.Drawing.Point(17, 37);
+            this.label72.Location = new System.Drawing.Point(13, 30);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(35, 13);
             this.label72.TabIndex = 10;
@@ -909,22 +908,11 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.LoginThreadCount.AutoSize = true;
             this.LoginThreadCount.Cursor = System.Windows.Forms.Cursors.No;
             this.LoginThreadCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.LoginThreadCount.Location = new System.Drawing.Point(15, 26);
+            this.LoginThreadCount.Location = new System.Drawing.Point(13, 36);
             this.LoginThreadCount.Name = "LoginThreadCount";
-            this.LoginThreadCount.Size = new System.Drawing.Size(101, 13);
+            this.LoginThreadCount.Size = new System.Drawing.Size(214, 13);
             this.LoginThreadCount.TabIndex = 12;
-            this.LoginThreadCount.Text = "Giriş Kuyruğu:  0";
-            // 
-            // ExitThreadCount
-            // 
-            this.ExitThreadCount.AutoSize = true;
-            this.ExitThreadCount.Cursor = System.Windows.Forms.Cursors.No;
-            this.ExitThreadCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.ExitThreadCount.Location = new System.Drawing.Point(15, 55);
-            this.ExitThreadCount.Name = "ExitThreadCount";
-            this.ExitThreadCount.Size = new System.Drawing.Size(103, 13);
-            this.ExitThreadCount.TabIndex = 13;
-            this.ExitThreadCount.Text = "Çıkış Kuyruğu:  0";
+            this.LoginThreadCount.Text = "Giriş Yapan Toplam Müşteri Sayısı: 0";
             // 
             // StartBtn
             // 
@@ -944,7 +932,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // 
             this.label63.AutoSize = true;
             this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label63.Location = new System.Drawing.Point(101, 78);
+            this.label63.Location = new System.Drawing.Point(97, 71);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(404, 13);
             this.label63.TabIndex = 16;
@@ -956,7 +944,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.label65.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(146)))), ((int)(((byte)(184)))));
             this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.label65.ForeColor = System.Drawing.Color.White;
-            this.label65.Location = new System.Drawing.Point(16, 78);
+            this.label65.Location = new System.Drawing.Point(12, 71);
             this.label65.Name = "label65";
             this.label65.Size = new System.Drawing.Size(79, 13);
             this.label65.TabIndex = 15;
@@ -967,11 +955,11 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.LogoutThreadCount.AutoSize = true;
             this.LogoutThreadCount.Cursor = System.Windows.Forms.Cursors.No;
             this.LogoutThreadCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.LogoutThreadCount.Location = new System.Drawing.Point(15, 84);
+            this.LogoutThreadCount.Location = new System.Drawing.Point(13, 77);
             this.LogoutThreadCount.Name = "LogoutThreadCount";
-            this.LogoutThreadCount.Size = new System.Drawing.Size(149, 13);
+            this.LogoutThreadCount.Size = new System.Drawing.Size(216, 13);
             this.LogoutThreadCount.TabIndex = 18;
-            this.LogoutThreadCount.Text = "AVM Çıkan Kişi Sayısı : 0";
+            this.LogoutThreadCount.Text = "Çıkış Yapan Toplam Müşteri Sayısı: 0";
             // 
             // groupBox1
             // 
@@ -1077,10 +1065,9 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // 
             this.groupBox4.Controls.Add(this.LogoutThreadCount);
             this.groupBox4.Controls.Add(this.LoginThreadCount);
-            this.groupBox4.Controls.Add(this.ExitThreadCount);
             this.groupBox4.Location = new System.Drawing.Point(183, 477);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(267, 108);
+            this.groupBox4.Size = new System.Drawing.Size(302, 108);
             this.groupBox4.TabIndex = 61;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Hareket Bilgileri";
@@ -1093,9 +1080,9 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.groupBox5.Controls.Add(this.label72);
             this.groupBox5.Controls.Add(this.label66);
             this.groupBox5.Controls.Add(this.label65);
-            this.groupBox5.Location = new System.Drawing.Point(459, 483);
+            this.groupBox5.Location = new System.Drawing.Point(491, 477);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(537, 102);
+            this.groupBox5.Size = new System.Drawing.Size(505, 108);
             this.groupBox5.TabIndex = 62;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "İşaret ve Semboller";
@@ -1122,16 +1109,16 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.LoginThreadSpeedLbl.TabIndex = 20;
             this.LoginThreadSpeedLbl.Text = "Login Thread Hızı: 500ms";
             // 
-            // LogoutThreadSpeedLbl
+            // ExitThreadSpeedLbl
             // 
-            this.LogoutThreadSpeedLbl.AutoSize = true;
-            this.LogoutThreadSpeedLbl.Cursor = System.Windows.Forms.Cursors.No;
-            this.LogoutThreadSpeedLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.LogoutThreadSpeedLbl.Location = new System.Drawing.Point(434, 33);
-            this.LogoutThreadSpeedLbl.Name = "LogoutThreadSpeedLbl";
-            this.LogoutThreadSpeedLbl.Size = new System.Drawing.Size(141, 13);
-            this.LogoutThreadSpeedLbl.TabIndex = 21;
-            this.LogoutThreadSpeedLbl.Text = "Exit Thread Hızı: 500ms";
+            this.ExitThreadSpeedLbl.AutoSize = true;
+            this.ExitThreadSpeedLbl.Cursor = System.Windows.Forms.Cursors.No;
+            this.ExitThreadSpeedLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.ExitThreadSpeedLbl.Location = new System.Drawing.Point(434, 33);
+            this.ExitThreadSpeedLbl.Name = "ExitThreadSpeedLbl";
+            this.ExitThreadSpeedLbl.Size = new System.Drawing.Size(141, 13);
+            this.ExitThreadSpeedLbl.TabIndex = 21;
+            this.ExitThreadSpeedLbl.Text = "Exit Thread Hızı: 500ms";
             // 
             // ElevatorSpeedLbl
             // 
@@ -1148,7 +1135,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             // 
             this.groupBox6.Controls.Add(this.ElevatorSpeedLbl);
             this.groupBox6.Controls.Add(this.CapacityLbl);
-            this.groupBox6.Controls.Add(this.LogoutThreadSpeedLbl);
+            this.groupBox6.Controls.Add(this.ExitThreadSpeedLbl);
             this.groupBox6.Controls.Add(this.LoginThreadSpeedLbl);
             this.groupBox6.Location = new System.Drawing.Point(183, 591);
             this.groupBox6.Name = "groupBox6";
@@ -1272,7 +1259,6 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
         private System.Windows.Forms.Label label66;
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.Label LoginThreadCount;
-        private System.Windows.Forms.Label ExitThreadCount;
         private System.Windows.Forms.Button StartBtn;
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.Label label65;
@@ -1284,7 +1270,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label CapacityLbl;
         private System.Windows.Forms.Label LoginThreadSpeedLbl;
-        private System.Windows.Forms.Label LogoutThreadSpeedLbl;
+        private System.Windows.Forms.Label ExitThreadSpeedLbl;
         private System.Windows.Forms.Label ElevatorSpeedLbl;
         private System.Windows.Forms.GroupBox groupBox6;
     }

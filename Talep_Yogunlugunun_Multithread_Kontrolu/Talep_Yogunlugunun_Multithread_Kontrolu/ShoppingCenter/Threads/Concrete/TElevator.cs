@@ -32,6 +32,17 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concret
                         elevator.Destination = CheckButtomFloor(floors, elevator.Floor);
                     else elevator.Destination = 0;
 
+                    
+                    if (elevator.Floor < elevator.Destination) elevator.Direction = true;
+                    else elevator.Direction = false;
+                }
+
+                if (elevator.IsActive == false && elevator.GetCount() > 0 && elevator.Floor != elevator.Destination)
+                {
+                    if (elevator.GetFirstDestination() != -1) elevator.Destination = elevator.GetFirstDestination();
+                    else elevator.Destination = 0;
+
+
                     if (elevator.Floor < elevator.Destination) elevator.Direction = true;
                     else elevator.Direction = false;
                 }
