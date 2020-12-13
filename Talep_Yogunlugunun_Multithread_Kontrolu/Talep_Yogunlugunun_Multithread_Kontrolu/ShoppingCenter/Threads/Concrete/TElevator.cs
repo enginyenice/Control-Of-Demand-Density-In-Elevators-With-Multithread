@@ -44,6 +44,10 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concret
             }
         }
 
+        /// <summary>
+        /// Asansörün kat arttırma ve azaltma işlemi
+        /// </summary>
+        /// <param name="elevator">Asansör</param>
         private void FloorChange(Elevator.Concrete.Elevator elevator)
         {
             lock (elevator)
@@ -66,6 +70,12 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concret
             }
         }
 
+        /// <summary>
+        /// Bulunduğu katın üstündeki katları kontrol eder. Zemin kata inecek müşteri varsa hedef olarak onu belirler
+        /// </summary>
+        /// <param name="floors">AVM içerisinde bulunan tüm katlar</param>
+        /// <param name="maxDestinationalFloor">Asansörün şuan bulunduğu kat</param>
+        /// <returns>-1 Hedef yok. 0+ durumda hedef olarak belirler </returns>
         private int CheckTopFloor(Floor.Concrete.Floor[] floors, int maxDestinationalFloor)
         {
             int isThere = -1; // Üst katta müşteri var mı
@@ -81,6 +91,12 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concret
             return isThere;
         }
 
+        /// <summary>
+        /// Bulunduğu katın altındaki katları kontrol eder. Zemin kata inecek Müşteri varsa hedef olarak onu belirler
+        /// </summary>
+        /// <param name="floors">AVM içerisinde bulunan tüm katlar</param>
+        /// <param name="elevatorFloor">Asansörün şuan bulunduğu kat</param>
+        /// <returns>-1 Hedef yok. 0+ durumda hedef olarak belirler </returns>
         private int CheckButtomFloor(Floor.Concrete.Floor[] floors, int elevatorFloor)
         {
             int isThere = -1; // Alt katta müşteri var mı
@@ -96,6 +112,13 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concret
             return isThere;
         }
 
+
+        /// <summary>
+        /// Asansör içerisindeki müşterileri bulundukları katlara geldiğinde indirme işlemini yapar
+        /// </summary>
+        /// <param name="elevator">Asansör</param>
+        /// <param name="floors">AVM içerisinde bulunan tüm katlar</param>
+        /// <param name="settings">Genel ayarlar</param>
         private void PassengerLowering(Elevator.Concrete.Elevator elevator, Floor.Concrete.Floor[] floors, Settings settings)
         {
             if (elevator.GetCount() > 0)
@@ -116,7 +139,13 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Threads.Concret
                 }
         }
 
-        private void PassengerBoarding(Elevator.Concrete.Elevator elevator, global::Talep_Yogunlugunun_Multithread_Kontrolu.ShoppingCenter.Floor.Concrete.Floor[] floors, int capacity)
+        /// <summary>
+        ///  Bulunduğu katın kuyruğunda müşteri varsa müşteriyi asansörün kapasitesine uygun olacak şekilde asansöre alır.
+        /// </summary>
+        /// <param name="elevator">Asansör</param>
+        /// <param name="floors">AVM içerisinde bulunan tüm katlar</param>
+        /// <param name="capacity">Asansörün maksimum taşıyacağı müşteri sayısı</param>
+        private void PassengerBoarding(Elevator.Concrete.Elevator elevator,Floor.Concrete.Floor[] floors, int capacity)
         {
             if (elevator.IsActive)
             {

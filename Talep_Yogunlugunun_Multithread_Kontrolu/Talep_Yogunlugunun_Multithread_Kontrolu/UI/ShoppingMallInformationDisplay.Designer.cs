@@ -998,7 +998,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.groupBox1.Size = new System.Drawing.Size(508, 222);
             this.groupBox1.TabIndex = 58;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "KATLARDA BULUNAN KİŞİLERİN VE KUYRUKTA BEKLEYENLERİN TOPLAM SAYISI";
+            this.groupBox1.Text = "ANLIK KAT BİLGİLERİ";
             // 
             // groupBox2
             // 
@@ -1019,7 +1019,7 @@ namespace Talep_Yogunlugunun_Multithread_Kontrolu.UI
             this.groupBox2.Size = new System.Drawing.Size(461, 222);
             this.groupBox2.TabIndex = 59;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "KATLAR VE KUYRUKTA  BEKLEYEN KİŞİLER";
+            this.groupBox2.Text = "KATLARDA OLUŞAN KUYRUKLAR";
             // 
             // groupBox3
             // 

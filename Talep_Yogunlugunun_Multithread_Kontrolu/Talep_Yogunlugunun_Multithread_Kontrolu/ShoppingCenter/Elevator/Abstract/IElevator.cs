@@ -91,7 +91,7 @@
         int GetFloorCount(int floor);
 
         /// <summary>
-        /// Asansörde bulunan tüm müşterileri temizle.
+        /// Asansörde bulunan tüm müşterileri temizler.
         /// </summary>
         /// <returns>
         /// void
