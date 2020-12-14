@@ -1,5 +1,48 @@
+## T.C.
+## KOCAELİ ÜNİVERSİTESİ
+## BİLGİSAYAR MÜHENDİSLİĞİ
+## YAZILIM LABORATUVARI-1 PROJE -2
+## ASANSÖRLERDEKİ TALEP YOĞUNLUĞUNUN MULTITHREAD İLE KONTROLÜ
+## ENGİN YENİCE - 190201133
 
-## Klasör Yapısı
+|Dosya Adı| İçerik  |
+|--|--|
+|  190201133-Rapor.pdf  | [Projenin raporu](https://github.com/enginyenice/Talep_Yogunlugunun_Multithread_Kontrolu-YazLab-1-Proje-2/blob/master/D%C3%B6k%C3%BCmanlar/Teslim%20Dosyalar%C4%B1/190201133-Rapor.pdf) |
+|  190201133-Kaba-Kod.pdf  | [Proje içerisinde yazıların kodların kaba kod çıktıları](https://github.com/enginyenice/Talep_Yogunlugunun_Multithread_Kontrolu-YazLab-1-Proje-2/blob/master/D%C3%B6k%C3%BCmanlar/Teslim%20Dosyalar%C4%B1/190201133-Kaba-Kod.pdf) |
+|  190201133-Proje.zip  | [Proje dosyalarının bulunduğu zip dosyası](https://github.com/enginyenice/Talep_Yogunlugunun_Multithread_Kontrolu-YazLab-1-Proje-2/blob/master/D%C3%B6k%C3%BCmanlar/Teslim%20Dosyalar%C4%B1/190201133-Proje.zip) |
+|  Alışveriş-Merkezi-Bilgi-Ekranı  | Projenin exe olarak çalıştırılabilir hali bulunmaktadır. |
+|  190201133.txt | [Projenin tüm kodlarının kopyalandığı metin belgesi](https://github.com/enginyenice/Talep_Yogunlugunun_Multithread_Kontrolu-YazLab-1-Proje-2/blob/master/D%C3%B6k%C3%BCmanlar/Teslim%20Dosyalar%C4%B1/190201133.txt) |
+|  readme.txt  | [Projenin nasıl çalıştırılacağı ve önemli notların bulunduğu metin belgesi](https://github.com/enginyenice/Talep_Yogunlugunun_Multithread_Kontrolu-YazLab-1-Proje-2/blob/master/D%C3%B6k%C3%BCmanlar/Teslim%20Dosyalar%C4%B1/readme.txt)			 |
+
+	
+
+## PROJE NASIL ÇALIŞTIRILIR													
+																
+Projeyi çalıştırmak için 3 farklı yol izleyebilirsiniz.									
+																
+1. Alışveriş-Merkezi-Bilgi-Ekranı klasörü içerisindeki Alışveriş Merkezi Bilgi Ekranı.exe uygulaması ile çalıştırabilirsiniz.	
+2.  Talep_Yogunlugunun_Multithread_Kontrolu\bin\Debug klasörü altında bulunan Alışveriş Merkezi Bilgi Ekranı.exe uygulaması	
+ile çalıştırabilirsiniz.													
+3. Proje dizini içerisindeki Talep_Yogunlugunun_Multithread_Kontrolu.sln proje dosyasını açarak visual studio programından 	
+projeyi başlatabilirsiniz.													
+
+## (!!)ÖNEMLİ NOT (!!)
+**Hareket Bilgileri bölümü içerisinde bulanan**:											
+**Giriş Yapan Toplam Müşteri Sayısı** : Alışveriş merkezi içerisine giren toplam müşteri sayısını belirtmektedir.			
+**Çıkış Yapan Toplam Müşteri Sayısı** : Alışveriş merkezinden ayrılmış toplam müşteri sayısını belirtmektedir.			
+																
+**İşaret ve Semboller**:														
+**Pasif**       : Asansör pasif durumda ise bu durum gösterilir.									
+**Aktif**       : Asansör aktif durumda ise bu durum gösterilir.									
+**Durduruluyor**: Asansör içerisinde bulunan yolcuları gitmek istedikleri katlara bıraktıktan sonra pasif konuma geçiriliyor.	
+
+
+## PROJE NASIL KULLANILIR														
+Program başlatıldığında Alışveriş merkezi bilgi ekranı sizi karşılayacaktır. Bu ekran üzerinde bulunan Başlat butonuna 	
+tıklayarak programı başlatabilirsiniz.												
+Başlat butonuna basılması durumunda proje kapatılıncaya kadar aktif olarak çalışmaktadır.		
+
+## KLASÖR YAPISI
 ```plaintext
 Talep_Yogunlugunun_Multithread_Kontrolu
 ├── UI/
@@ -28,28 +71,13 @@ Talep_Yogunlugunun_Multithread_Kontrolu
 			├── TElevator.cs
 			├── TExit.cs
 			└── TLogin.cs
-```
-## AVM Özellikleri
-
- - AVM deki kat sayısı 5'tir.
- - Toplamda 5 adet asansör bulunmaktadır.
- - Asansörlerden biri sürekli çalışmaktadır. Geriye kalanlar, yoğunluk durumuna göre aktif veya pasif durumdadır
- - Asansörlerin maksimum kapasitesi 10'dur.
- - Asansörlerdeki kat arası geçiş 200ms'dir.
-## Proje bileşenlerinin özellikleri
-1.	**AVM Giriş (Login) Thread:** 500 ms zaman aralıklarıyla [1-10] arasında rastgele sayıda müşterinin AVM' ye  giriş yapmasını sağlamaktadır (Zemin Kat). Giren müşterileri rastgele bir kata (1-4) gitmek için asansör kuyruğuna alır.
-2.	**AVM Çıkış (Exit) Thread:** 1000 ms zaman aralıklarıyla [1-5] arasında rastgele sayıda müşterinin AVM’den çıkış yapmasını sağlamaktadır (Zemin Kat). Çıkmak isteyen müşterileri rastgele bir kattan (1-4), zemin kata gitmek için asansör kuyruğuna alır.
-3.	**Asansör Thread :** Katlardaki kuyrukları kontrol eder. Maksimum kapasiteyi aşmayacak şekilde kuyruktaki müşterilerin talep ettikleri katlarda taşınabilmesini sağlar. Bu thread asansör sayısı kadar (5 adet) olmalıdır.
-**NOT:** Zemin kattan diğer katlara (AVM’ye) giriş yapmak isteyenler, ya da diğer katlardan (AVM’den) çıkış yapmak isteyenler kuyruk oluştururlar.
-4. **Kontrol Thread:** Katlardaki kuyrukları kontrol eder. Kuyrukta bekleyen kişilerin toplam sayısı asansörün kapasitesinin 2 katını aştığı durumda (20) yeni asansörü aktif hale getirir. Kuyrukta bekleyen kişilerin toplam sayısı asansör kapasitenin altına indiğinde asansörlerden biri pasif hale gelir. Bu işlem tek asansörün çalıştığı durumda geçerli değildir.
-
-![Örnek Çıktı](https://github.com/nginY26/Talep_Yogunlugunun_Multithread_Kontrolu/blob/master/D%C3%B6k%C3%BCmanlar/OrnekCikti.png)
-
+```		
+ 
+ ## FORM EKRANI GÖRSELİ
+ ![Genel Ekran](https://raw.githubusercontent.com/enginyenice/Asansorlerdeki-Talep-Yogunlugunun-Multithreadler-Ile-Kontrolu-Yazlab-1-Proje-1/master/D%C3%B6k%C3%BCmanlar/D%C3%B6k%C3%BCmanlar/Proje%20Resimleri/GenelForm.png?token=AKJEJQM5GGSZNNJQ2U3M43K7374NE)	
 | Değerlendirme Ölçütleri | Puan |
 | --| -- |
 | Giriş Çıkış Threadlerinin Çalışması | 25 |
 | Asansör Threadinin Çalışması | 25 |
 | Threadlerin çalışmasının arayüz üzerinden gösterilmesi | 20 |
 | Rapor | 10
-
-
