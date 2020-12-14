@@ -7,6 +7,7 @@
 
 |Dosya Adı| İçerik  |
 |--|--|
+|  YazLab-1-Proje-2.pdf.pdf  | [Proje Detayları](https://github.com/enginyenice/Talep_Yogunlugunun_Multithread_Kontrolu-YazLab-1-Proje-2/blob/master/D%C3%B6k%C3%BCmanlar/YazLab-1-Proje-2.pdf) |
 |  190201133-Rapor.pdf  | [Projenin raporu](https://github.com/enginyenice/Talep_Yogunlugunun_Multithread_Kontrolu-YazLab-1-Proje-2/blob/master/D%C3%B6k%C3%BCmanlar/Teslim%20Dosyalar%C4%B1/190201133-Rapor.pdf) |
 |  190201133-Kaba-Kod.pdf  | [Proje içerisinde yazıların kodların kaba kod çıktıları](https://github.com/enginyenice/Talep_Yogunlugunun_Multithread_Kontrolu-YazLab-1-Proje-2/blob/master/D%C3%B6k%C3%BCmanlar/Teslim%20Dosyalar%C4%B1/190201133-Kaba-Kod.pdf) |
 |  190201133-Proje.zip  | [Proje dosyalarının bulunduğu zip dosyası](https://github.com/enginyenice/Talep_Yogunlugunun_Multithread_Kontrolu-YazLab-1-Proje-2/blob/master/D%C3%B6k%C3%BCmanlar/Teslim%20Dosyalar%C4%B1/190201133-Proje.zip) |
@@ -40,7 +41,15 @@ projeyi başlatabilirsiniz.
 ## PROJE NASIL KULLANILIR														
 Program başlatıldığında Alışveriş merkezi bilgi ekranı sizi karşılayacaktır. Bu ekran üzerinde bulunan Başlat butonuna 	
 tıklayarak programı başlatabilirsiniz.												
-Başlat butonuna basılması durumunda proje kapatılıncaya kadar aktif olarak çalışmaktadır.		
+Başlat butonuna basılması durumunda proje kapatılıncaya kadar aktif olarak çalışmaktadır.
+
+## DEĞERLENDİRME ÖLÇÜTLERİ
+| Değerlendirme Ölçütleri | Puan |
+| --| -- |
+| Giriş Çıkış Threadlerinin Çalışması | 25 |
+| Asansör Threadinin Çalışması | 25 |
+| Threadlerin çalışmasının arayüz üzerinden gösterilmesi | 20 |
+| Rapor | 10
 
 ## KLASÖR YAPISI
 ```plaintext
@@ -75,9 +84,4 @@ Talep_Yogunlugunun_Multithread_Kontrolu
  
  ## FORM EKRANI GÖRSELİ
  ![Genel Ekran](https://github.com/enginyenice/Talep_Yogunlugunun_Multithread_Kontrolu-YazLab-1-Proje-2/blob/master/D%C3%B6k%C3%BCmanlar/D%C3%B6k%C3%BCmanlar/Proje%20Resimleri/GenelForm.png)	
-| Değerlendirme Ölçütleri | Puan |
-| --| -- |
-| Giriş Çıkış Threadlerinin Çalışması | 25 |
-| Asansör Threadinin Çalışması | 25 |
-| Threadlerin çalışmasının arayüz üzerinden gösterilmesi | 20 |
-| Rapor | 10
+
