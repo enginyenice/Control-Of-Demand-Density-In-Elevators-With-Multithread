@@ -74,7 +74,7 @@ Talep_Yogunlugunun_Multithread_Kontrolu
 ```		
  
  ## FORM EKRANI GÖRSELİ
- ![Genel Ekran](https://raw.githubusercontent.com/enginyenice/Asansorlerdeki-Talep-Yogunlugunun-Multithreadler-Ile-Kontrolu-Yazlab-1-Proje-1/master/D%C3%B6k%C3%BCmanlar/D%C3%B6k%C3%BCmanlar/Proje%20Resimleri/GenelForm.png?token=AKJEJQM5GGSZNNJQ2U3M43K7374NE)	
+ ![Genel Ekran](https://github.com/enginyenice/Talep_Yogunlugunun_Multithread_Kontrolu-YazLab-1-Proje-2/blob/master/D%C3%B6k%C3%BCmanlar/D%C3%B6k%C3%BCmanlar/Proje%20Resimleri/GenelForm.png)	
 | Değerlendirme Ölçütleri | Puan |
 | --| -- |
 | Giriş Çıkış Threadlerinin Çalışması | 25 |
